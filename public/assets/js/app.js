@@ -5,6 +5,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initAdminMobileSidebar();
+  initAdminSidebarCollapse();
   initWeatherWidget();
   initChatChips();
   initChatFab();
@@ -59,6 +60,33 @@ function initProximityWidget() {
   setInterval(() => {
     navigator.geolocation.getCurrentPosition(checkPosition, () => {}, { enableHighAccuracy: false, timeout: 8000 });
   }, 60000);
+}
+
+function initAdminSidebarCollapse() {
+  const btn = document.getElementById('admin-collapse-menu-btn');
+  const sidebar = document.getElementById('admin-sidebar');
+  if (!btn || !sidebar) return;
+
+  const storageKey = 'le-commerce-admin-sidebar-collapsed';
+
+  const applyState = (collapsed) => {
+    if (collapsed) {
+      sidebar.classList.add('sidebar-collapsed');
+      btn.setAttribute('aria-pressed', 'true');
+    } else {
+      sidebar.classList.remove('sidebar-collapsed');
+      btn.setAttribute('aria-pressed', 'false');
+    }
+  };
+
+  const stored = localStorage.getItem(storageKey);
+  applyState(stored === '1');
+
+  btn.addEventListener('click', () => {
+    const collapsed = !sidebar.classList.contains('sidebar-collapsed');
+    applyState(collapsed);
+    localStorage.setItem(storageKey, collapsed ? '1' : '0');
+  });
 }
 
 /** Sidebar admin en drawer mobile */

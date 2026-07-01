@@ -25,34 +25,39 @@ $sidebarSections = [
     ],
 ];
 
-$implementedRoutes = ['/admin', '/admin/clients', '/admin/offres', '/admin/offres/scanner', '/admin/sondages', '/admin/zonage', '/admin/avis-google', '/admin/statistiques', '/admin/facturation', '/admin/parametres'];
+$implementedRoutes = ['/admin', '/admin/clients', '/admin/etablissement', '/admin/services', '/admin/portefeuilles', '/admin/messages', '/admin/reservations', '/admin/offres', '/admin/offres/scanner', '/admin/sondages', '/admin/zonage', '/admin/avis-google', '/admin/statistiques', '/admin/facturation', '/admin/parametres'];
 ?>
 <div id="admin-sidebar-backdrop" class="hidden fixed inset-0 bg-black/40 z-40 lg:hidden"></div>
-<aside id="admin-sidebar" class="fixed lg:sticky top-0 left-0 z-50 flex flex-col w-72 shrink-0 bg-[#111214] text-gray-300 h-screen overflow-y-auto -translate-x-full lg:translate-x-0 transition-transform duration-200">
+<aside id="admin-sidebar" class="fixed lg:sticky top-0 left-0 z-50 flex flex-col w-80 shrink-0 bg-slate-950 text-gray-300 h-screen overflow-y-auto -translate-x-full lg:translate-x-0 transition-transform duration-200 shadow-2xl">
 
-  <div class="px-6 py-6 border-b border-white/5">
-    <a href="<?= BASE_PATH ?>/admin" class="flex flex-col leading-none">
-      <span class="font-logo text-[26px] font-bold text-brand-500 -mb-1"><?= htmlspecialchars($shop['name']) ?></span>
-      <span class="text-[10px] tracking-[0.15em] text-gray-500 font-medium">BAR · TABAC · PMU · FDJ · PRESSE</span>
+  <div class="px-6 py-6 border-b border-white/10 sidebar-brand flex items-center justify-between gap-3">
+    <a href="<?= BASE_PATH ?>/admin" class="flex flex-col leading-none sidebar-logo">
+      <span class="font-logo text-[28px] font-bold text-brand-500 -mb-1 sidebar-logo-text"><?= htmlspecialchars($shop['name']) ?></span>
+      <span class="text-[10px] tracking-[0.18em] text-gray-500 font-medium sidebar-logo-tagline">BAR · TABAC · PMU · FDJ · PRESSE</span>
     </a>
+    <button id="admin-collapse-menu-btn" class="hidden lg:inline-flex items-center justify-center p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-shadow shadow-sm" aria-label="Réduire le menu" aria-pressed="false">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
   </div>
 
   <nav class="flex-1 px-4 py-5 space-y-6">
     <?php foreach ($sidebarSections as $sectionTitle => $items): ?>
-      <div>
-        <p class="px-3 text-[10px] font-bold uppercase tracking-widest text-gray-600 mb-2"><?= htmlspecialchars($sectionTitle) ?></p>
+      <div class="sidebar-section">
+        <p class="px-3 text-[10px] font-bold uppercase tracking-widest text-gray-600 mb-2 sidebar-section-title"><?= htmlspecialchars($sectionTitle) ?></p>
         <div class="space-y-1">
           <?php foreach ($items as $href => [$label, $iconPath]): ?>
             <?php $isActive = $currentUri === $href; $isReady = in_array($href, $implementedRoutes, true); ?>
             <a href="<?= BASE_PATH . $href ?>"
-               class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors
-                      <?= $isActive ? 'bg-brand-500 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' ?>">
+               class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-2xl text-sm font-medium transition-colors
+                      <?= $isActive ? 'bg-brand-500 text-white shadow-lg' : 'text-gray-300 hover:bg-white/5 hover:text-white' ?>">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-[18px] h-[18px] shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="<?= $iconPath ?>"/>
               </svg>
-              <span class="flex-1"><?= htmlspecialchars($label) ?></span>
+              <span class="flex-1 sidebar-link-text"><?= htmlspecialchars($label) ?></span>
               <?php if (!$isReady): ?>
-                <span class="text-[9px] font-bold uppercase tracking-wide bg-white/10 text-gray-400 px-1.5 py-0.5 rounded">Bientôt</span>
+                <span class="text-[9px] font-bold uppercase tracking-wide bg-white/10 text-gray-300 px-1.5 py-0.5 rounded">Bientôt</span>
               <?php endif; ?>
             </a>
           <?php endforeach; ?>
@@ -61,14 +66,18 @@ $implementedRoutes = ['/admin', '/admin/clients', '/admin/offres', '/admin/offre
     <?php endforeach; ?>
   </nav>
 
-  <div class="px-4 py-5 border-t border-white/5">
+  <div class="px-4 py-5 border-t border-white/5 sidebar-footer">
+    <div class="mb-4 rounded-2xl bg-slate-900/70 p-4 text-sm text-gray-400">
+      <p class="font-semibold text-gray-200">Tableau de bord admin</p>
+      <p class="mt-1 text-xs text-gray-500">Navigation fluide, accès rapide et transparence des statuts.</p>
+    </div>
     <form method="POST" action="<?= BASE_PATH ?>/deconnexion">
       <?= \App\Core\Csrf::field() ?>
-      <button type="submit" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-400 hover:bg-white/5 hover:text-white transition-colors">
+      <button type="submit" class="w-full flex items-center gap-3 px-3 py-3 rounded-2xl text-sm font-semibold text-gray-300 bg-white/5 hover:bg-white/10 transition-colors">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
         </svg>
-        Déconnexion
+        <span class="sidebar-link-text">Déconnexion</span>
       </button>
     </form>
   </div>
