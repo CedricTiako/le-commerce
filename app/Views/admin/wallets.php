@@ -1,11 +1,12 @@
 <div class="space-y-6">
-  <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-    <div>
-      <h1 class="text-4xl font-extrabold text-ink">Portefeuille client</h1>
-      <p class="mt-2 text-sm text-gray-500 max-w-2xl">Suivez le flux de recharges, le solde global et les clients qui dépensent le plus.</p>
-    </div>
-    <a href="<?= BASE_PATH ?>/admin/clients" class="btn-primary inline-flex items-center justify-center px-5 py-3">Voir les clients</a>
-  </div>
+  <?php
+  $pageTitle = 'Portefeuille client';
+  $pageSubtitle = 'Suivez le flux de recharges, le solde global et les clients qui dépensent le plus.';
+  $pageActions = [
+    ['href' => BASE_PATH . '/admin/clients', 'label' => 'Voir les clients', 'class' => 'btn-primary'],
+  ];
+  require __DIR__ . '/../partials/admin-page-header.php';
+  ?>
 
   <div class="grid gap-5 lg:grid-cols-4">
     <div class="card card-md">

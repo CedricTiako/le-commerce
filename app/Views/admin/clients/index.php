@@ -1,27 +1,28 @@
 <?php use App\Core\Csrf; ?>
 
-<div class="grid gap-4 md:grid-cols-[1.4fr_auto] mb-6 items-center">
-  <div>
-    <p class="text-sm text-gray-500">Retrouvez vos clients inscrits et communiquez facilement avec eux.</p>
-  </div>
-  <div class="grid gap-3 sm:grid-cols-2">
-    <div class="rounded-[28px] border border-gray-100 bg-white px-5 py-4 shadow-sm">
-      <p class="text-[11px] font-semibold uppercase tracking-[0.24em] text-gray-400">Total clients</p>
-      <div class="mt-3 flex items-center gap-3">
-        <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-500">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-1.13a4 4 0 10-4-4 4 4 0 004 4zm6 0a4 4 0 10-4-4"/></svg>
-        </div>
-        <div>
-          <p class="text-3xl font-bold text-ink"><?= $totalAll ?></p>
-          <p class="text-sm text-emerald-500 font-semibold">+<?= $newThisMonth ?> ce mois-ci</p>
-        </div>
+<?php
+$pageTitle = 'Clients inscrits';
+$pageSubtitle = 'Retrouvez vos clients et suivez leur engagement, les segments et le solde de portefeuille directement depuis votre back-office.';
+$pageActions = [
+    ['href' => BASE_PATH . '/admin/clients/export?' . http_build_query($filters), 'label' => 'Exporter la liste', 'class' => 'btn-secondary'],
+];
+require __DIR__ . '/../../partials/admin-page-header.php';
+?>
+
+
+
+<div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-6">
+  <div class="card card-md">
+    <p class="text-xs uppercase tracking-[0.24em] text-gray-400 font-semibold">Total clients</p>
+    <div class="mt-4 flex items-center gap-3">
+      <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-500">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-1.13a4 4 0 10-4-4 4 4 0 004 4zm6 0a4 4 0 10-4-4"/></svg>
+      </div>
+      <div>
+        <p class="text-3xl font-bold text-ink"><?= $totalAll ?></p>
+        <p class="text-sm text-emerald-500 font-semibold">+<?= $newThisMonth ?> ce mois-ci</p>
       </div>
     </div>
-    <a href="<?= BASE_PATH ?>/admin/clients/export?<?= http_build_query($filters) ?>"
-       class="inline-flex items-center justify-center gap-2 rounded-[28px] bg-slate-950 px-5 py-4 text-sm font-bold text-white shadow-sm transition-colors hover:bg-black">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/></svg>
-      Exporter la liste
-    </a>
   </div>
 </div>
 

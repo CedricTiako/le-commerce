@@ -1,5 +1,12 @@
 <?php use App\Core\Csrf; ?>
 
+<?php
+$pageTitle = 'Créer une offre';
+$pageSubtitle = 'Configurez une nouvelle offre attractive pour vos clients et gérez sa publication depuis le back-office.';
+$pageActions = [];
+require __DIR__ . '/../../partials/admin-page-header.php';
+?>
+
 <div class="max-w-2xl">
   <a href="<?= BASE_PATH ?>/admin/offres" class="inline-flex items-center gap-1.5 text-sm font-semibold text-gray-500 hover:text-brand-500 mb-4">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
@@ -7,7 +14,6 @@
   </a>
 
   <div class="card card-md sm:p-8">
-    <h1 class="section-title mb-1">Créer une nouvelle offre</h1>
     <p class="text-sm text-gray-500 mb-6">Choisissez le type d'offre que vous souhaitez proposer à vos clients.</p>
 
     <form method="POST" action="<?= BASE_PATH ?>/admin/offres" class="space-y-5">

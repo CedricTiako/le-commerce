@@ -1,5 +1,12 @@
 <?php use App\Core\Csrf; ?>
 
+<?php
+$pageTitle = 'Scanner une offre';
+$pageSubtitle = 'Vérifiez rapidement un code d’offre et validez son utilisation en boutique.';
+$pageActions = [];
+require __DIR__ . '/../../partials/admin-page-header.php';
+?>
+
 <div class="max-w-lg mx-auto">
   <div class="card card-md text-center">
 
@@ -7,7 +14,6 @@
       <span class="w-16 h-16 rounded-full bg-gray-50 text-gray-400 flex items-center justify-center mx-auto mb-5">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h4V2H2v6h2V4zm16 0v4h2V2h-6v2h4zM4 20h4v2H2v-6h2v4zm16 0h-4v2h6v-6h-2v4zM8 8h8v8H8V8z"/></svg>
       </span>
-      <h1 class="font-extrabold text-xl text-ink mb-1">Scanner une offre</h1>
       <p class="text-gray-500 text-sm mb-6">Saisissez le code présenté par le client pour vérifier sa validité.</p>
 
       <?php if ($error): ?>

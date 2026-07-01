@@ -1,5 +1,14 @@
 <?php use App\Core\Csrf; ?>
 
+<?php
+$pageTitle = 'Paramètres du commerce';
+$pageSubtitle = 'Modifiez les informations de votre établissement et les coordonnées utilisées partout sur le site.';
+$pageActions = [];
+require __DIR__ . '/../../partials/admin-page-header.php';
+?>
+
+
+
 <div class="max-w-4xl mx-auto space-y-6">
   <div class="card card-md">
     <p class="text-sm text-gray-500">Ces informations sont utilisées sur tout le site (en-tête, pied de page, contact).</p>

@@ -1,4 +1,9 @@
-<p class="text-sm text-gray-500 mb-6">Historique des paiements par carte bancaire effectués par vos clients.</p>
+<?php
+$pageTitle = 'Facturation';
+$pageSubtitle = 'Historique des paiements par carte bancaire effectués par vos clients et suivi des factures.';
+$pageActions = [];
+require __DIR__ . '/../../partials/admin-page-header.php';
+?>
 
 <!-- KPIs -->
 <div class="grid sm:grid-cols-3 gap-5 mb-6">

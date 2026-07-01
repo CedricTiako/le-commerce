@@ -1,6 +1,11 @@
 <?php use App\Core\Csrf; ?>
 
-<p class="text-sm text-gray-500 mb-6">Touchez les clients à proximité de votre établissement avec des offres au bon moment.</p>
+<?php
+$pageTitle = 'Campagnes de proximité';
+$pageSubtitle = 'Créez et suivez vos campagnes géolocalisées pour toucher les clients autour de votre commerce.';
+$pageActions = [];
+require __DIR__ . '/../../partials/admin-page-header.php';
+?>
 
 <!-- KPIs -->
 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">

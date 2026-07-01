@@ -1,4 +1,9 @@
-<p class="text-sm text-gray-500 mb-6">Vue d'ensemble des performances de votre établissement.</p>
+<?php
+$pageTitle = 'Statistiques';
+$pageSubtitle = 'Vue d’ensemble des performances de votre établissement et des tendances sur les portefeuilles, offres et sondages.';
+$pageActions = [];
+require __DIR__ . '/../../partials/admin-page-header.php';
+?>
 
 <!-- KPIs -->
 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">

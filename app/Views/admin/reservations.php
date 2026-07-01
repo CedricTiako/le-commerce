@@ -1,11 +1,12 @@
 <div class="space-y-6">
-  <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-    <div>
-      <h1 class="text-4xl font-extrabold text-ink">Réservations</h1>
-      <p class="mt-2 text-sm text-gray-500 max-w-2xl">Suivez les demandes de réservation et les demandes clients provenant de votre messagerie.</p>
-    </div>
-    <a href="<?= BASE_PATH ?>/admin/messages" class="btn-primary inline-flex items-center justify-center px-5 py-3">Voir les messages</a>
-  </div>
+  <?php
+  $pageTitle = 'Réservations';
+  $pageSubtitle = 'Suivez les demandes de réservation et les messages clients provenant de votre formulaire et WhatsApp.';
+  $pageActions = [
+    ['href' => BASE_PATH . '/admin/messages', 'label' => 'Voir les messages', 'class' => 'btn-primary'],
+  ];
+  require __DIR__ . '/../partials/admin-page-header.php';
+  ?>
 
   <div class="grid gap-5 lg:grid-cols-3">
     <div class="card card-md">

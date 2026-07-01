@@ -1,18 +1,14 @@
 <?php use App\Core\Csrf; ?>
 
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-  <p class="text-sm text-gray-500">Fidélisez vos clients en leur offrant des avantages, réductions, produits...</p>
-  <div class="flex gap-2">
-    <a href="<?= BASE_PATH ?>/admin/offres/scanner" class="btn-secondary">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h4V2H2v6h2V4zm16 0v4h2V2h-6v2h4zM4 20h4v2H2v-6h2v4zm16 0h-4v2h6v-6h-2v4zM8 8h8v8H8V8z"/></svg>
-      Scanner une offre
-    </a>
-    <a href="<?= BASE_PATH ?>/admin/offres/creer" class="btn-primary">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
-      Créer une nouvelle offre
-    </a>
-  </div>
-</div>
+<?php
+$pageTitle = 'Offres';
+$pageSubtitle = 'Gérez vos offres, suivez les performances et activez rapidement des promotions pour vos clients.';
+$pageActions = [
+    ['href' => BASE_PATH . '/admin/offres/scanner', 'label' => 'Scanner une offre', 'class' => 'btn-secondary'],
+    ['href' => BASE_PATH . '/admin/offres/creer', 'label' => 'Créer une offre', 'class' => 'btn-primary'],
+];
+require __DIR__ . '/../../partials/admin-page-header.php';
+?>
 
 <!-- KPIs -->
 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">

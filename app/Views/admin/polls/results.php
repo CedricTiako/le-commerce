@@ -1,12 +1,15 @@
-<div class="max-w-2xl">
-  <a href="<?= BASE_PATH ?>/admin/sondages" class="inline-flex items-center gap-1.5 text-sm font-semibold text-gray-500 hover:text-brand-500 mb-4">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-    Retour aux sondages
-  </a>
+<?php
+$pageTitle = $poll['question'];
+$pageSubtitle = $poll['description'] ?: 'Détails des résultats de ce sondage et suivi des participations.';
+$pageActions = [
+    ['href' => BASE_PATH . '/admin/sondages', 'label' => 'Retour aux sondages', 'class' => 'btn-secondary'],
+];
+require __DIR__ . '/../../partials/admin-page-header.php';
+?>
 
+<div class="max-w-2xl">
   <div class="card card-md sm:p-8">
     <div class="flex items-start justify-between gap-4 mb-1">
-      <h1 class="font-extrabold text-2xl text-ink"><?= htmlspecialchars($poll['question']) ?></h1>
       <?php
         $statusStyles = ['actif' => 'bg-emerald-50 text-emerald-600', 'programme' => 'bg-blue-50 text-blue-600', 'termine' => 'bg-gray-100 text-gray-500'];
         $statusLabels = ['actif' => 'Actif', 'programme' => 'Programmé', 'termine' => 'Terminé'];

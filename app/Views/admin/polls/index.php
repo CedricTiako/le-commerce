@@ -1,12 +1,13 @@
 <?php use App\Core\Csrf; ?>
 
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-  <p class="text-sm text-gray-500">Donnez la parole à vos clients et faites-les participer à la vie de votre établissement.</p>
-  <a href="<?= BASE_PATH ?>/admin/sondages/creer" class="btn-primary shrink-0">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
-    Créer un nouveau sondage
-  </a>
-</div>
+<?php
+$pageTitle = 'Sondages';
+$pageSubtitle = 'Collectez l’avis de vos clients grâce à des sondages simples et engageants.';
+$pageActions = [
+    ['href' => BASE_PATH . '/admin/sondages/creer', 'label' => 'Créer un sondage', 'class' => 'btn-primary'],
+];
+require __DIR__ . '/../../partials/admin-page-header.php';
+?>
 
 <!-- KPIs -->
 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">

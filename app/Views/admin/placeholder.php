@@ -1,3 +1,12 @@
+<?php
+$pageTitle = htmlspecialchars($heading);
+$pageSubtitle = 'Cette section du back-office sera développée dans un prochain lot, avec un tableau de bord dédié et des outils simples à utiliser.';
+$pageActions = [
+    ['href' => BASE_PATH . '/admin', 'label' => 'Retour au tableau de bord', 'class' => 'btn-secondary'],
+];
+require __DIR__ . '/../partials/admin-page-header.php';
+?>
+
 <div class="max-w-5xl mx-auto py-16">
   <div class="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
     <div class="card card-md">
@@ -6,11 +15,9 @@
         PROCHAINEMENT
       </span>
       <div class="flex flex-col gap-3">
-        <h1 class="font-extrabold text-4xl text-ink leading-tight"><?= htmlspecialchars($heading) ?></h1>
         <p class="text-gray-500 text-base leading-7">
           Cette section du back-office sera développée dans un prochain lot, avec un tableau de bord dédié et des outils pour piloter cette fonctionnalité de façon simple et efficace.
         </p>
-      </div>
 
       <div class="mt-8 grid gap-4 sm:grid-cols-2">
         <div class="rounded-3xl border border-gray-100 bg-gray-50 p-5">

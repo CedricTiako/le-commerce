@@ -7,6 +7,15 @@ function kpiDelta(float $value, string $suffix = ''): string
 }
 ?>
 
+<?php
+$pageTitle = 'Tableau de bord';
+$pageSubtitle = 'Obtenez une vue instantanée des performances, des portefeuilles et des tendances de votre établissement.';
+$pageActions = [
+    ['href' => BASE_PATH . '/admin/etablissement', 'label' => 'Voir l’établissement', 'class' => 'btn-secondary'],
+];
+require __DIR__ . '/../partials/admin-page-header.php';
+?>
+
 <!-- KPIs -->
 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
 

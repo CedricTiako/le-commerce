@@ -1,6 +1,13 @@
 <?php use App\Core\Csrf; ?>
 
-<p class="text-sm text-gray-500 mb-6">Suivez et gérez les avis de vos clients.</p>
+<?php
+$pageTitle = 'Avis clients';
+$pageSubtitle = 'Suivez, ajoutez et gérez les avis de vos clients pour améliorer votre réputation en ligne.';
+$pageActions = [];
+require __DIR__ . '/../../partials/admin-page-header.php';
+?>
+
+
 
 <div class="grid lg:grid-cols-3 gap-6">
 

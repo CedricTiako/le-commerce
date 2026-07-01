@@ -1,20 +1,16 @@
 <div class="space-y-6">
+  <?php
+  $pageTitle = htmlspecialchars($shop['name']);
+  $pageSubtitle = 'Cette page présente les informations de votre commerce de proximité et les indicateurs clés qui alimentent votre modèle de fidélisation, de vente et de trafic.';
+  $pageActions = [
+      ['href' => BASE_PATH . '/admin/parametres', 'label' => 'Modifier le commerce', 'class' => 'btn-primary'],
+      ['href' => BASE_PATH . '/admin/offres', 'label' => 'Gérer les offres', 'class' => 'btn-secondary'],
+  ];
+  require __DIR__ . '/../partials/admin-page-header.php';
+  ?>
+
   <div class="grid gap-6 xl:grid-cols-[1.6fr_1fr]">
     <section class="card card-md">
-      <div class="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
-        <div>
-          <span class="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.25em] text-brand-600">Établissement</span>
-          <h1 class="mt-4 text-4xl font-extrabold text-ink leading-tight"><?= htmlspecialchars($shop['name']) ?></h1>
-          <p class="mt-3 max-w-2xl text-sm leading-6 text-gray-500">
-            Cette page présente les informations de votre commerce de proximité et les indicateurs clés qui alimentent votre modèle de fidélisation, de vente et de trafic.
-          </p>
-        </div>
-        <div class="flex flex-col gap-3 sm:items-end">
-          <a href="<?= BASE_PATH ?>/admin/parametres" class="btn-primary px-5 py-3">Modifier le commerce</a>
-          <a href="<?= BASE_PATH ?>/admin/offres" class="inline-flex items-center justify-center rounded-full border border-gray-200 bg-white px-5 py-3 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50">Gérer les offres</a>
-        </div>
-      </div>
-
       <div class="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         <div class="rounded-3xl border border-gray-100 bg-white p-6 shadow-sm">
           <p class="text-sm font-semibold text-gray-500 uppercase tracking-[0.18em] mb-3">Adresse</p>

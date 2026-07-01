@@ -1,11 +1,12 @@
 <div class="space-y-6">
-  <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-    <div>
-      <h1 class="text-4xl font-extrabold text-ink">Services du quotidien</h1>
-      <p class="mt-2 text-sm text-gray-500 max-w-2xl">Suivez l’état des offres et campagnes de service qui dynamisent votre commerce de proximité.</p>
-    </div>
-    <a href="<?= BASE_PATH ?>/admin/offres" class="btn-primary inline-flex items-center justify-center px-5 py-3">Voir les offres</a>
-  </div>
+  <?php
+  $pageTitle = 'Services du quotidien';
+  $pageSubtitle = 'Suivez l’état des offres et campagnes de service qui dynamisent votre commerce de proximité.';
+  $pageActions = [
+    ['href' => BASE_PATH . '/admin/offres', 'label' => 'Voir les offres', 'class' => 'btn-primary'],
+  ];
+  require __DIR__ . '/../partials/admin-page-header.php';
+  ?>
 
   <div class="grid gap-5 lg:grid-cols-4">
     <div class="card card-md">

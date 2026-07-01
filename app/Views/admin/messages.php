@@ -1,13 +1,12 @@
 <div class="space-y-6">
-  <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-    <div>
-      <h1 class="text-4xl font-extrabold text-ink">Messages & WhatsApp</h1>
-      <p class="mt-2 text-sm text-gray-500 max-w-2xl">Suivez les demandes clients entrantes et gardez le contact via WhatsApp directement depuis votre back-office.</p>
-    </div>
-    <div class="flex flex-wrap gap-3">
-      <a href="<?= BASE_PATH ?>/admin/clients" class="inline-flex items-center justify-center rounded-full border border-gray-200 bg-white px-5 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50">Clients</a>
-    </div>
-  </div>
+  <?php
+  $pageTitle = 'Messages & WhatsApp';
+  $pageSubtitle = 'Suivez les demandes clients entrantes et gardez le contact via WhatsApp directement depuis votre back-office.';
+  $pageActions = [
+    ['href' => BASE_PATH . '/admin/clients', 'label' => 'Clients', 'class' => 'btn-secondary'],
+  ];
+  require __DIR__ . '/../partials/admin-page-header.php';
+  ?>
 
   <div class="grid gap-5 lg:grid-cols-5">
     <div class="card card-md lg:col-span-2">
