@@ -8,18 +8,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="<?= BASE_PATH ?>/assets/css/app.css">
 </head>
-<body class="bg-gray-50 text-ink antialiased font-sans">
+<body class="bg-slate-100 text-ink antialiased font-sans">
 
-<div class="flex min-h-screen">
-  <?php require __DIR__ . '/../partials/admin-sidebar.php'; ?>
+<div class="min-h-screen">
+  <div class="flex min-h-screen">
+    <?php require __DIR__ . '/../partials/admin-sidebar.php'; ?>
 
-  <div class="flex-1 min-w-0 flex flex-col">
-    <?php require __DIR__ . '/../partials/admin-topbar.php'; ?>
-    <?php require __DIR__ . '/../partials/flash.php'; ?>
+    <div class="flex-1 min-w-0 flex flex-col">
+      <?php require __DIR__ . '/../partials/admin-topbar.php'; ?>
+      <?php require __DIR__ . '/../partials/flash.php'; ?>
 
-    <main class="flex-1 p-6 lg:p-8">
-      <?= $content ?>
-    </main>
+      <main class="flex-1 p-6 lg:p-8">
+        <div class="mx-auto w-full max-w-[1720px]">
+          <?= $content ?>
+        </div>
+      </main>
+    </div>
   </div>
 </div>
 

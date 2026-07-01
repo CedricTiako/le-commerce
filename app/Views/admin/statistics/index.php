@@ -2,42 +2,42 @@
 
 <!-- KPIs -->
 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
-  <div class="bg-white border border-gray-100 rounded-2xl p-6">
+  <div class="card card-md">
     <p class="text-sm font-semibold text-gray-500 mb-2">Solde total portefeuilles</p>
     <p class="font-extrabold text-3xl text-ink"><?= number_format($totalBalance, 2, ',', ' ') ?> €</p>
   </div>
-  <div class="bg-white border border-gray-100 rounded-2xl p-6">
+  <div class="card card-md">
     <p class="text-sm font-semibold text-gray-500 mb-2">Total clients</p>
     <p class="font-extrabold text-3xl text-ink"><?= $totalClients ?></p>
   </div>
-  <div class="bg-white border border-gray-100 rounded-2xl p-6">
+  <div class="card card-md">
     <p class="text-sm font-semibold text-gray-500 mb-2">Offres utilisées ce mois</p>
     <p class="font-extrabold text-3xl text-ink"><?= $offersUsed ?></p>
   </div>
-  <div class="bg-white border border-gray-100 rounded-2xl p-6">
+  <div class="card card-md">
     <p class="text-sm font-semibold text-gray-500 mb-2">Participations sondages</p>
     <p class="font-extrabold text-3xl text-ink"><?= $pollsParticipations ?></p>
   </div>
 </div>
 
 <div class="grid lg:grid-cols-3 gap-6 mb-6">
-  <div class="lg:col-span-2 bg-white border border-gray-100 rounded-2xl p-6">
-    <h2 class="font-bold text-ink mb-4">Recharges &amp; dépenses (14 derniers jours)</h2>
+  <div class="lg:col-span-2 card card-md">
+    <h2 class="section-title mb-4">Recharges &amp; dépenses (14 derniers jours)</h2>
     <canvas id="chart-activity" height="110"></canvas>
   </div>
-  <div class="bg-white border border-gray-100 rounded-2xl p-6">
-    <h2 class="font-bold text-ink mb-4">Moyens de paiement</h2>
+  <div class="card card-md">
+    <h2 class="section-title mb-4">Moyens de paiement</h2>
     <canvas id="chart-payments" height="180"></canvas>
   </div>
 </div>
 
 <div class="grid lg:grid-cols-3 gap-6">
-  <div class="lg:col-span-2 bg-white border border-gray-100 rounded-2xl p-6">
-    <h2 class="font-bold text-ink mb-4">Nouveaux clients par mois</h2>
+  <div class="lg:col-span-2 card card-md">
+    <h2 class="section-title mb-4">Nouveaux clients par mois</h2>
     <canvas id="chart-clients" height="110"></canvas>
   </div>
-  <div class="bg-white border border-gray-100 rounded-2xl p-6">
-    <h2 class="font-bold text-ink mb-4">Top 5 clients (dépenses)</h2>
+  <div class="card card-md">
+    <h2 class="section-title mb-4">Top 5 clients (dépenses)</h2>
     <?php if (empty($topClients)): ?>
       <p class="text-sm text-gray-400">Pas encore de données.</p>
     <?php else: ?>

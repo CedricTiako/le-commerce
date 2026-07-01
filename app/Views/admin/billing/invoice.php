@@ -1,4 +1,4 @@
-<div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-sm p-10">
+<div class="max-w-2xl mx-auto card card-md p-10">
   <div class="flex items-start justify-between mb-10">
     <div>
       <span class="font-logo text-[28px] font-bold text-brand-500 block -mb-1"><?= htmlspecialchars($shop['name']) ?></span>

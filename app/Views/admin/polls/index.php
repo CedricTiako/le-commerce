@@ -2,7 +2,7 @@
 
 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
   <p class="text-sm text-gray-500">Donnez la parole à vos clients et faites-les participer à la vie de votre établissement.</p>
-  <a href="<?= BASE_PATH ?>/admin/sondages/creer" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm px-5 py-3 rounded-xl transition-colors shrink-0">
+  <a href="<?= BASE_PATH ?>/admin/sondages/creer" class="btn-primary shrink-0">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
     Créer un nouveau sondage
   </a>
@@ -10,20 +10,20 @@
 
 <!-- KPIs -->
 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
-  <div class="bg-white border border-gray-100 rounded-2xl p-6">
+  <div class="card card-md">
     <p class="text-sm font-semibold text-gray-500 mb-2">Sondages actifs</p>
     <p class="font-extrabold text-3xl text-ink"><?= $pollsActive ?></p>
     <p class="text-xs font-semibold text-emerald-500 mt-1">+<?= $pollsDelta ?> ce mois-ci</p>
   </div>
-  <div class="bg-white border border-gray-100 rounded-2xl p-6">
+  <div class="card card-md">
     <p class="text-sm font-semibold text-gray-500 mb-2">Total participations</p>
     <p class="font-extrabold text-3xl text-ink"><?= $totalParticipations ?></p>
   </div>
-  <div class="bg-white border border-gray-100 rounded-2xl p-6">
+  <div class="card card-md">
     <p class="text-sm font-semibold text-gray-500 mb-2">Taux de participation moyen</p>
     <p class="font-extrabold text-3xl text-ink"><?= $participationRate ?>%</p>
   </div>
-  <div class="bg-white border border-gray-100 rounded-2xl p-6">
+  <div class="card card-md">
     <p class="text-sm font-semibold text-gray-500 mb-2">Récompenses offertes</p>
     <p class="font-extrabold text-3xl text-ink"><?= number_format($rewardsGiven, 2, ',', ' ') ?> €</p>
   </div>
@@ -32,7 +32,7 @@
 <div class="grid lg:grid-cols-3 gap-6">
 
   <!-- Liste des sondages -->
-  <div class="lg:col-span-2 bg-white border border-gray-100 rounded-2xl overflow-hidden">
+  <div class="lg:col-span-2 card overflow-hidden">
     <div class="flex items-center gap-1 px-5 pt-4 border-b border-gray-50 overflow-x-auto">
       <?php $tabs = ['actifs' => 'Sondages actifs', 'programmes' => 'Sondages programmés', 'termines' => 'Sondages terminés', 'tous' => 'Tous les sondages']; ?>
       <?php foreach ($tabs as $key => $label): ?>
@@ -85,7 +85,7 @@
   <div class="flex flex-col gap-6">
 
     <!-- Sondage à la une -->
-    <div class="bg-white border border-gray-100 rounded-2xl p-6">
+    <div class="card card-md">
       <h2 class="font-bold text-ink mb-4">Sondage à la une</h2>
       <?php if (!$featured): ?>
         <p class="text-sm text-gray-400">Aucun sondage actif pour le moment.</p>
@@ -115,8 +115,8 @@
     </div>
 
     <!-- Types de récompense -->
-    <div class="bg-white border border-gray-100 rounded-2xl p-6">
-      <h2 class="font-bold text-ink mb-1">Récompense pour participation</h2>
+    <div class="card card-md">
+      <h2 class="section-title mb-1">Récompense pour participation</h2>
       <p class="text-xs text-gray-400 mb-4">Remerciez vos clients pour leur avis !</p>
       <div class="grid grid-cols-1 gap-2">
         <?php foreach ($rewardLabels as $key => $label): ?>

@@ -3,11 +3,11 @@
 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
   <p class="text-sm text-gray-500">Fidélisez vos clients en leur offrant des avantages, réductions, produits...</p>
   <div class="flex gap-2">
-    <a href="<?= BASE_PATH ?>/admin/offres/scanner" class="inline-flex items-center gap-2 border-2 border-ink text-ink hover:bg-ink hover:text-white font-bold text-sm px-5 py-3 rounded-xl transition-colors">
+    <a href="<?= BASE_PATH ?>/admin/offres/scanner" class="btn-secondary">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h4V2H2v6h2V4zm16 0v4h2V2h-6v2h4zM4 20h4v2H2v-6h2v4zm16 0h-4v2h6v-6h-2v4zM8 8h8v8H8V8z"/></svg>
       Scanner une offre
     </a>
-    <a href="<?= BASE_PATH ?>/admin/offres/creer" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm px-5 py-3 rounded-xl transition-colors">
+    <a href="<?= BASE_PATH ?>/admin/offres/creer" class="btn-primary">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
       Créer une nouvelle offre
     </a>
@@ -16,20 +16,20 @@
 
 <!-- KPIs -->
 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
-  <div class="bg-white border border-gray-100 rounded-2xl p-6">
+  <div class="card card-md">
     <p class="text-sm font-semibold text-gray-500 mb-2">Offres actives</p>
     <p class="font-extrabold text-3xl text-ink"><?= $offersActive ?></p>
     <p class="text-xs font-semibold text-emerald-500 mt-1">+<?= $offersDelta ?> ce mois-ci</p>
   </div>
-  <div class="bg-white border border-gray-100 rounded-2xl p-6">
+  <div class="card card-md">
     <p class="text-sm font-semibold text-gray-500 mb-2">Utilisations ce mois</p>
     <p class="font-extrabold text-3xl text-ink"><?= $usagesThisMonth ?></p>
   </div>
-  <div class="bg-white border border-gray-100 rounded-2xl p-6">
+  <div class="card card-md">
     <p class="text-sm font-semibold text-gray-500 mb-2">Clients touchés</p>
     <p class="font-extrabold text-3xl text-ink"><?= $clientsTouched ?></p>
   </div>
-  <div class="bg-white border border-gray-100 rounded-2xl p-6">
+  <div class="card card-md">
     <p class="text-sm font-semibold text-gray-500 mb-2">Économies offertes</p>
     <p class="font-extrabold text-3xl text-ink"><?= number_format($savings, 2, ',', ' ') ?> €</p>
   </div>
@@ -38,7 +38,7 @@
 <div class="grid lg:grid-cols-3 gap-6">
 
   <!-- Liste des offres -->
-  <div class="lg:col-span-2 bg-white border border-gray-100 rounded-2xl overflow-hidden">
+  <div class="lg:col-span-2 card overflow-hidden">
     <div class="flex items-center gap-1 px-5 pt-4 border-b border-gray-50 overflow-x-auto">
       <?php
         $tabs = ['active' => 'Mes offres actives', 'brouillons' => 'Brouillons', 'expirees' => 'Offres expirées', 'toutes' => 'Toutes les offres'];
@@ -118,18 +118,18 @@
   <div class="flex flex-col gap-6">
 
     <!-- Générer un code -->
-    <div class="bg-white border border-gray-100 rounded-2xl p-6">
+    <div class="card card-md">
       <h2 class="font-bold text-ink mb-1">Générer un code / QR pour un client</h2>
       <p class="text-xs text-gray-400 mb-4">Créez un code unique à remettre en main propre.</p>
       <form method="POST" action="<?= BASE_PATH ?>/admin/offres/generer" class="space-y-3">
         <?= Csrf::field() ?>
-        <select name="user_id" required class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30">
+        <select name="user_id" required class="form-select">
           <option value="">Sélectionner un client</option>
           <?php foreach ($clients as $c): ?>
             <option value="<?= $c['id'] ?>"><?= htmlspecialchars($c['first_name'] . ' ' . $c['last_name']) ?> — <?= htmlspecialchars($c['phone_whatsapp']) ?></option>
           <?php endforeach; ?>
         </select>
-        <select name="offer_id" required class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30">
+        <select name="offer_id" required class="form-select">
           <option value="">Sélectionner une offre</option>
           <?php foreach ($activeOffers as $o): ?>
             <option value="<?= $o['id'] ?>"><?= htmlspecialchars($o['title']) ?></option>
@@ -142,18 +142,18 @@
     </div>
 
     <!-- Envoyer une offre -->
-    <div class="bg-white border border-gray-100 rounded-2xl p-6">
+    <div class="card card-md">
       <h2 class="font-bold text-ink mb-1">Envoyer une offre à un client</h2>
       <p class="text-xs text-gray-400 mb-4">Envoyez directement l'offre et son code par WhatsApp.</p>
       <form method="POST" action="<?= BASE_PATH ?>/admin/offres/envoyer" class="space-y-3">
         <?= Csrf::field() ?>
-        <select name="user_id" required class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30">
+        <select name="user_id" required class="form-select">
           <option value="">Sélectionner un client</option>
           <?php foreach ($clients as $c): ?>
             <option value="<?= $c['id'] ?>"><?= htmlspecialchars($c['first_name'] . ' ' . $c['last_name']) ?></option>
           <?php endforeach; ?>
         </select>
-        <select name="offer_id" required class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30">
+        <select name="offer_id" required class="form-select">
           <option value="">Sélectionner une offre</option>
           <?php foreach ($activeOffers as $o): ?>
             <option value="<?= $o['id'] ?>"><?= htmlspecialchars($o['title']) ?></option>

@@ -1,7 +1,7 @@
 <?php use App\Core\Csrf; ?>
 
 <div class="max-w-lg mx-auto">
-  <div class="bg-white border border-gray-100 rounded-2xl p-8 text-center">
+  <div class="card card-md text-center">
 
     <?php if ($step === 'input'): ?>
       <span class="w-16 h-16 rounded-full bg-gray-50 text-gray-400 flex items-center justify-center mx-auto mb-5">

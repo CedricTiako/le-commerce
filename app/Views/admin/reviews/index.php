@@ -5,7 +5,7 @@
 <div class="grid lg:grid-cols-3 gap-6">
 
   <!-- Résumé -->
-  <div class="bg-white border border-gray-100 rounded-2xl p-6 text-center">
+  <div class="card card-md text-center">
     <p class="font-extrabold text-5xl text-ink mb-1"><?= number_format($average, 1) ?></p>
     <div class="flex items-center justify-center gap-1 text-amber-400 mb-2">
       <?php for ($i = 0; $i < 5; $i++): ?>
@@ -30,14 +30,14 @@
   </div>
 
   <!-- Ajouter un avis -->
-  <div class="bg-white border border-gray-100 rounded-2xl p-6">
-    <h2 class="font-bold text-ink mb-1">Ajouter un avis</h2>
-    <p class="text-xs text-gray-400 mb-4">Synchronisation automatique via l'API Google Places à venir — ajout manuel pour l'instant.</p>
+  <div class="card card-md">
+    <h2 class="section-title mb-1">Ajouter un avis</h2>
+    <p class="text-sm text-gray-500 mb-4">Synchronisation automatique via l'API Google Places à venir — ajout manuel pour l'instant.</p>
     <form method="POST" action="<?= BASE_PATH ?>/admin/avis-google" class="space-y-3">
       <?= Csrf::field() ?>
       <input type="text" name="author_name" required placeholder="Nom du client"
-             class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30">
-      <select name="rating" class="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30">
+             class="form-input">
+      <select name="rating" class="form-select">
         <option value="5">5 étoiles</option>
         <option value="4">4 étoiles</option>
         <option value="3">3 étoiles</option>
@@ -45,18 +45,18 @@
         <option value="1">1 étoile</option>
       </select>
       <textarea name="comment" rows="3" placeholder="Commentaire (facultatif)"
-                class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30"></textarea>
-      <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm px-5 py-2.5 rounded-lg transition-colors">
+                class="form-textarea"></textarea>
+      <button type="submit" class="btn-primary w-full">
         Ajouter
       </button>
     </form>
   </div>
 
   <!-- Lien Google -->
-  <div class="bg-ink rounded-2xl p-6 text-white flex flex-col justify-between">
+  <div class="card card-md bg-ink text-white flex flex-col justify-between">
     <div>
       <h2 class="font-bold mb-1">Votre fiche Google</h2>
-      <p class="text-gray-400 text-sm">Partagez ce lien à vos clients pour qu'ils laissent un avis directement sur Google.</p>
+      <p class="text-gray-300 text-sm">Partagez ce lien à vos clients pour qu'ils laissent un avis directement sur Google.</p>
     </div>
     <a href="https://www.google.com/maps" target="_blank" rel="noopener" class="mt-4 inline-flex items-center justify-center gap-2 bg-white text-ink font-bold text-sm px-5 py-3 rounded-lg hover:bg-gray-100 transition-colors">
       Voir la fiche Google

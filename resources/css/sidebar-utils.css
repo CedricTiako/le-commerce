@@ -1,0 +1,14 @@
+.sidebar-collapsed {
+  width: 80px !important;
+}
+.sidebar-collapsed .sidebar-label,
+.sidebar-collapsed .sidebar-section-title,
+.sidebar-collapsed .sidebar-secondary {
+  display: none !important;
+}
+.sidebar-collapsed .sidebar-item {
+  justify-content: center;
+}
+.sidebar-collapsed .sidebar-footer {
+  display: none;
+}

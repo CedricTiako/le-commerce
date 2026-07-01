@@ -4,7 +4,7 @@
     Retour aux sondages
   </a>
 
-  <div class="bg-white border border-gray-100 rounded-2xl p-6 sm:p-8">
+  <div class="card card-md sm:p-8">
     <div class="flex items-start justify-between gap-4 mb-1">
       <h1 class="font-extrabold text-2xl text-ink"><?= htmlspecialchars($poll['question']) ?></h1>
       <?php

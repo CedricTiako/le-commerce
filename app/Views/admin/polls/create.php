@@ -6,7 +6,7 @@
     Retour aux sondages
   </a>
 
-  <div class="bg-white border border-gray-100 rounded-2xl p-6 sm:p-8">
+  <div class="card card-md sm:p-8">
     <h1 class="font-extrabold text-2xl text-ink mb-1">Créer un nouveau sondage</h1>
     <p class="text-gray-500 text-sm mb-6">Choisissez un thème, ajoutez vos options et paramétrez la durée.</p>
 
@@ -23,14 +23,14 @@
       <div>
         <label class="block text-sm font-semibold text-ink mb-1.5">Question</label>
         <input type="text" name="question" required value="<?= htmlspecialchars($old['question'] ?? '') ?>" placeholder="Ex : Quelle bière souhaitez-vous en pression ?"
-               class="w-full border <?= isset($errors['question']) ? 'border-brand-400' : 'border-gray-200' ?> rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500">
+               class="form-input <?= isset($errors['question']) ? 'border-brand-400' : '' ?>">
         <?php if (isset($errors['question'])): ?><p class="text-brand-500 text-xs mt-1"><?= htmlspecialchars($errors['question']) ?></p><?php endif; ?>
       </div>
 
       <div>
         <label class="block text-sm font-semibold text-ink mb-1.5">Description <span class="text-gray-400 font-normal">(facultatif)</span></label>
         <textarea name="description" rows="2" placeholder="Ex : Choisissez votre bière préférée !"
-                  class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30"><?= htmlspecialchars($old['description'] ?? '') ?></textarea>
+                  class="form-textarea"><?= htmlspecialchars($old['description'] ?? '') ?></textarea>
       </div>
 
       <div>
@@ -40,7 +40,7 @@
           <?php foreach ($initialOptions as $i => $opt): ?>
             <div class="flex items-center gap-2 option-row">
               <input type="text" name="options[]" value="<?= htmlspecialchars($opt) ?>" required placeholder="Option <?= $i + 1 ?>"
-                     class="flex-1 border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30">
+                     class="form-input">
               <button type="button" onclick="this.closest('.option-row').remove()" class="text-gray-300 hover:text-brand-500 p-2" aria-label="Retirer">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
               </button>
@@ -57,12 +57,12 @@
         <div>
           <label class="block text-sm font-semibold text-ink mb-1.5">Fin du sondage</label>
           <input type="date" name="ends_at" required value="<?= htmlspecialchars($old['endsAt'] ?? '') ?>" min="<?= date('Y-m-d') ?>"
-                 class="w-full border <?= isset($errors['ends_at']) ? 'border-brand-400' : 'border-gray-200' ?> rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30">
+                 class="form-input <?= isset($errors['ends_at']) ? 'border-brand-400' : '' ?>">
           <?php if (isset($errors['ends_at'])): ?><p class="text-brand-500 text-xs mt-1"><?= htmlspecialchars($errors['ends_at']) ?></p><?php endif; ?>
         </div>
         <div>
           <label class="block text-sm font-semibold text-ink mb-1.5">Récompense</label>
-          <select name="reward_type" id="reward-type" required class="w-full border border-gray-200 rounded-lg px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30">
+          <select name="reward_type" id="reward-type" required class="form-select">
             <?php foreach ($rewardLabels as $key => $label): ?>
               <option value="<?= $key ?>" <?= ($old['rewardType'] ?? 'points') === $key ? 'selected' : '' ?>><?= htmlspecialchars($label) ?></option>
             <?php endforeach; ?>
@@ -73,7 +73,7 @@
       <div id="reward-value-wrapper">
         <label class="block text-sm font-semibold text-ink mb-1.5" id="reward-value-label">Nombre de points</label>
         <input type="number" name="reward_value" step="0.01" min="0" value="<?= htmlspecialchars($old['rewardValue'] ?? '10') ?>"
-               class="w-full border <?= isset($errors['reward_value']) ? 'border-brand-400' : 'border-gray-200' ?> rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30">
+               class="form-input <?= isset($errors['reward_value']) ? 'border-brand-400' : '' ?>">
         <?php if (isset($errors['reward_value'])): ?><p class="text-brand-500 text-xs mt-1"><?= htmlspecialchars($errors['reward_value']) ?></p><?php endif; ?>
       </div>
 

@@ -4,19 +4,19 @@
 
 <!-- KPIs -->
 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
-  <div class="bg-white border border-gray-100 rounded-2xl p-6">
+  <div class="card card-md">
     <p class="text-sm font-semibold text-gray-500 mb-2">Campagnes actives</p>
     <p class="font-extrabold text-3xl text-ink"><?= $campaignsActive ?></p>
   </div>
-  <div class="bg-white border border-gray-100 rounded-2xl p-6">
+  <div class="card card-md">
     <p class="text-sm font-semibold text-gray-500 mb-2">Offres envoyées</p>
     <p class="font-extrabold text-3xl text-ink"><?= $totalSent ?></p>
   </div>
-  <div class="bg-white border border-gray-100 rounded-2xl p-6">
+  <div class="card card-md">
     <p class="text-sm font-semibold text-gray-500 mb-2">Offres utilisées</p>
     <p class="font-extrabold text-3xl text-ink"><?= $totalUsed ?></p>
   </div>
-  <div class="bg-white border border-gray-100 rounded-2xl p-6">
+  <div class="card card-md">
     <p class="text-sm font-semibold text-gray-500 mb-2">Taux de conversion</p>
     <p class="font-extrabold text-3xl text-ink"><?= $totalSent > 0 ? round(($totalUsed / $totalSent) * 100, 1) : 0 ?>%</p>
   </div>
@@ -25,9 +25,9 @@
 <div class="grid lg:grid-cols-3 gap-6 mb-6">
 
   <!-- Formulaire de création -->
-  <div class="lg:col-span-2 bg-white border border-gray-100 rounded-2xl p-6">
-    <h2 class="font-bold text-ink mb-1">Créer une campagne de proximité</h2>
-    <p class="text-xs text-gray-400 mb-5">Le client recevra votre offre lorsqu'il entrera dans la zone définie, pendant la plage horaire choisie.</p>
+  <div class="lg:col-span-2 card card-md">
+    <h2 class="section-title mb-1">Créer une campagne de proximité</h2>
+    <p class="text-sm text-gray-500 mb-5">Le client recevra votre offre lorsqu'il entrera dans la zone définie, pendant la plage horaire choisie.</p>
 
     <form method="POST" action="<?= BASE_PATH ?>/admin/zonage" class="space-y-4">
       <?= Csrf::field() ?>
@@ -35,7 +35,7 @@
       <div>
         <label class="block text-sm font-semibold text-ink mb-1.5">Nom de la campagne</label>
         <input type="text" name="name" required placeholder="Ex : Café du matin"
-               class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500">
+               class="form-input">
       </div>
 
       <div>
@@ -53,12 +53,12 @@
         <div>
           <label class="block text-sm font-semibold text-ink mb-1.5">Heure de début</label>
           <input type="time" name="start_time" required value="10:00"
-                 class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30">
+                 class="form-input">
         </div>
         <div>
           <label class="block text-sm font-semibold text-ink mb-1.5">Heure de fin</label>
           <input type="time" name="end_time" required value="11:00"
-                 class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30">
+                 class="form-input">
         </div>
       </div>
 
@@ -79,7 +79,7 @@
       <div class="grid grid-cols-2 gap-4">
         <div>
           <label class="block text-sm font-semibold text-ink mb-1.5">Cible</label>
-          <select name="target_segment" class="w-full border border-gray-200 rounded-lg px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30">
+          <select name="target_segment" class="form-select">
             <?php foreach ($segmentLabels as $key => $label): ?>
               <option value="<?= $key ?>"><?= htmlspecialchars($label) ?></option>
             <?php endforeach; ?>
@@ -87,7 +87,7 @@
         </div>
         <div>
           <label class="block text-sm font-semibold text-ink mb-1.5">Offre liée <span class="text-gray-400 font-normal">(facultatif)</span></label>
-          <select name="offer_id" class="w-full border border-gray-200 rounded-lg px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30">
+          <select name="offer_id" class="form-select">
             <option value="">Aucune offre</option>
             <?php foreach ($activeOffers as $o): ?>
               <option value="<?= $o['id'] ?>"><?= htmlspecialchars($o['title']) ?></option>
@@ -99,15 +99,15 @@
       <div>
         <label class="block text-sm font-semibold text-ink mb-1.5">Message</label>
         <textarea name="message" rows="3" maxlength="160" required placeholder="👋 Bonjour {prenom} ! Vous n'êtes pas loin du Commerce..."
-                  class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30"></textarea>
+                  class="form-textarea"></textarea>
       </div>
 
-      <label class="flex items-center gap-2.5 text-sm text-gray-600 bg-gray-50 rounded-lg px-4 py-3">
+      <label class="flex items-center gap-2.5 text-sm text-gray-600 bg-gray-50 rounded-2xl px-4 py-3">
         <input type="checkbox" name="publish" value="1" checked class="rounded border-gray-300 text-brand-500 focus:ring-brand-500/30">
         Activer immédiatement la campagne
       </label>
 
-      <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm px-6 py-3.5 rounded-lg transition-colors">
+      <button type="submit" class="btn-primary w-full">
         Lancer la campagne
       </button>
     </form>
@@ -115,13 +115,13 @@
 
   <!-- Carte -->
   <div class="flex flex-col gap-6">
-    <div class="bg-white border border-gray-100 rounded-2xl p-4">
+    <div class="card card-md p-4">
       <p class="font-bold text-ink text-sm mb-3 px-2">Zone de diffusion</p>
       <div id="proximity-map" class="w-full h-[280px] rounded-xl overflow-hidden bg-gray-100"></div>
       <p class="text-[11px] text-gray-400 mt-2 px-2">La carte se met à jour selon le rayon choisi ci-contre.</p>
     </div>
 
-    <div class="bg-brand-50 border border-brand-100 rounded-xl px-5 py-4 text-xs text-brand-700">
+    <div class="card card-md bg-brand-50 border-brand-100 text-brand-700">
       <p class="font-bold mb-1">Respect de la vie privée</p>
       <ul class="space-y-1 list-disc list-inside">
         <li>Le client doit avoir accepté la géolocalisation à l'inscription.</li>

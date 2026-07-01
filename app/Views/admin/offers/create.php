@@ -6,9 +6,9 @@
     Retour aux offres
   </a>
 
-  <div class="bg-white border border-gray-100 rounded-2xl p-6 sm:p-8">
-    <h1 class="font-extrabold text-2xl text-ink mb-1">Créer une nouvelle offre</h1>
-    <p class="text-gray-500 text-sm mb-6">Choisissez le type d'offre que vous souhaitez proposer à vos clients.</p>
+  <div class="card card-md sm:p-8">
+    <h1 class="section-title mb-1">Créer une nouvelle offre</h1>
+    <p class="text-sm text-gray-500 mb-6">Choisissez le type d'offre que vous souhaitez proposer à vos clients.</p>
 
     <form method="POST" action="<?= BASE_PATH ?>/admin/offres" class="space-y-5">
       <?= Csrf::field() ?>
@@ -16,21 +16,20 @@
       <div>
         <label class="block text-sm font-semibold text-ink mb-1.5">Nom de l'offre</label>
         <input type="text" name="title" required value="<?= htmlspecialchars($old['title'] ?? '') ?>" placeholder="Ex : Café offert"
-               class="w-full border <?= isset($errors['title']) ? 'border-brand-400' : 'border-gray-200' ?> rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500">
+               class="form-input <?= isset($errors['title']) ? 'border-brand-400' : '' ?>">
         <?php if (isset($errors['title'])): ?><p class="text-brand-500 text-xs mt-1"><?= htmlspecialchars($errors['title']) ?></p><?php endif; ?>
       </div>
 
       <div>
         <label class="block text-sm font-semibold text-ink mb-1.5">Description</label>
         <textarea name="description" rows="2" placeholder="Ex : Un café offert pour bien commencer la journée !"
-                  class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500"><?= htmlspecialchars($old['description'] ?? '') ?></textarea>
+                  class="form-textarea"><?= htmlspecialchars($old['description'] ?? '') ?></textarea>
       </div>
 
       <div class="grid sm:grid-cols-2 gap-4">
         <div>
           <label class="block text-sm font-semibold text-ink mb-1.5">Type d'offre</label>
-          <select name="type" id="offer-type" required
-                  class="w-full border <?= isset($errors['type']) ? 'border-brand-400' : 'border-gray-200' ?> rounded-lg px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30">
+          <select name="type" id="offer-type" required class="form-select <?= isset($errors['type']) ? 'border-brand-400' : '' ?>">
             <option value="">Choisir un type</option>
             <?php foreach ($typeLabels as $key => $label): ?>
               <option value="<?= $key ?>" <?= ($old['type'] ?? '') === $key ? 'selected' : '' ?>><?= htmlspecialchars($label) ?></option>
@@ -42,7 +41,7 @@
         <div>
           <label class="block text-sm font-semibold text-ink mb-1.5" id="value-label">Valeur estimée (€)</label>
           <input type="number" name="value" step="0.01" min="0" value="<?= htmlspecialchars($old['value'] ?? '') ?>" placeholder="Ex : 3.50"
-                 class="w-full border <?= isset($errors['value']) ? 'border-brand-400' : 'border-gray-200' ?> rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500">
+                 class="form-input <?= isset($errors['value']) ? 'border-brand-400' : '' ?>">
           <?php if (isset($errors['value'])): ?><p class="text-brand-500 text-xs mt-1"><?= htmlspecialchars($errors['value']) ?></p><?php endif; ?>
         </div>
       </div>
@@ -50,7 +49,7 @@
       <div class="grid sm:grid-cols-2 gap-4">
         <div>
           <label class="block text-sm font-semibold text-ink mb-1.5">Clients concernés</label>
-          <select name="target_segment" required class="w-full border border-gray-200 rounded-lg px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30">
+          <select name="target_segment" required class="form-select">
             <?php foreach ($segmentLabels as $key => $label): ?>
               <option value="<?= $key ?>" <?= ($old['segment'] ?? 'tous') === $key ? 'selected' : '' ?>><?= htmlspecialchars($label) ?></option>
             <?php endforeach; ?>
@@ -59,17 +58,17 @@
         <div>
           <label class="block text-sm font-semibold text-ink mb-1.5">Valable jusqu'au</label>
           <input type="date" name="valid_until" required value="<?= htmlspecialchars($old['validUntil'] ?? '') ?>" min="<?= date('Y-m-d') ?>"
-                 class="w-full border <?= isset($errors['valid_until']) ? 'border-brand-400' : 'border-gray-200' ?> rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30">
+                 class="form-input <?= isset($errors['valid_until']) ? 'border-brand-400' : '' ?>">
           <?php if (isset($errors['valid_until'])): ?><p class="text-brand-500 text-xs mt-1"><?= htmlspecialchars($errors['valid_until']) ?></p><?php endif; ?>
         </div>
       </div>
 
-      <label class="flex items-center gap-2.5 text-sm text-gray-600 bg-gray-50 rounded-lg px-4 py-3">
+      <label class="flex items-center gap-2.5 text-sm text-gray-600 bg-gray-50 rounded-2xl px-4 py-3">
         <input type="checkbox" name="publish" value="1" checked class="rounded border-gray-300 text-brand-500 focus:ring-brand-500/30">
         Publier immédiatement (sinon l'offre est enregistrée en brouillon)
       </label>
 
-      <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm px-6 py-3.5 rounded-lg transition-colors">
+      <button type="submit" class="btn-primary w-full">
         Créer l'offre
       </button>
     </form>

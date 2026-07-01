@@ -2,21 +2,21 @@
 
 <!-- KPIs -->
 <div class="grid sm:grid-cols-3 gap-5 mb-6">
-  <div class="bg-white border border-gray-100 rounded-2xl p-6">
+  <div class="card card-md">
     <p class="text-sm font-semibold text-gray-500 mb-2">Chiffre d'affaires total</p>
     <p class="font-extrabold text-3xl text-ink"><?= number_format($totalRevenue, 2, ',', ' ') ?> €</p>
   </div>
-  <div class="bg-white border border-gray-100 rounded-2xl p-6">
+  <div class="card card-md">
     <p class="text-sm font-semibold text-gray-500 mb-2">Chiffre d'affaires ce mois</p>
     <p class="font-extrabold text-3xl text-ink"><?= number_format($totalRevenueMonth, 2, ',', ' ') ?> €</p>
   </div>
-  <div class="bg-white border border-gray-100 rounded-2xl p-6">
+  <div class="card card-md">
     <p class="text-sm font-semibold text-gray-500 mb-2">Factures ce mois</p>
     <p class="font-extrabold text-3xl text-ink"><?= $countThisMonth ?></p>
   </div>
 </div>
 
-<div class="bg-white border border-gray-100 rounded-2xl overflow-hidden">
+<div class="card card-md overflow-hidden">
   <?php if (empty($invoices)): ?>
     <div class="text-center py-16 px-6">
       <p class="text-gray-500 font-medium">Aucune facture pour le moment.</p>
