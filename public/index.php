@@ -9,6 +9,7 @@ use App\Core\App;
 use App\Core\Router;
 
 require dirname(__DIR__) . '/app/Core/App.php';
+require dirname(__DIR__) . '/app/helpers.php';
 
 App::registerAutoloader();
 App::boot();

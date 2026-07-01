@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initChatChips();
   initChatFab();
   initProximityWidget();
+  initContactForm();
 });
 
 /**
@@ -152,6 +153,42 @@ function weatherCodeToLabel(code) {
     80: 'Averses', 95: 'Orage',
   };
   return map[code] || 'Conditions variables';
+}
+
+/** Formulaire de contact : envoi en AJAX vers /contact, sans recharger la page */
+function initContactForm() {
+  const form = document.getElementById('contact-form');
+  const feedback = document.getElementById('contact-feedback');
+  const submitBtn = document.getElementById('contact-submit');
+  if (!form || !feedback) return;
+
+  const showFeedback = (message, isError) => {
+    feedback.textContent = message;
+    feedback.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-700', 'bg-red-50', 'text-red-700');
+    feedback.classList.add(isError ? 'bg-red-50' : 'bg-emerald-50', isError ? 'text-red-700' : 'text-emerald-700');
+  };
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours...';
+
+    fetch(form.action, { method: 'POST', body: new FormData(form) })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          showFeedback(data.message || 'Votre message a bien été envoyé.', false);
+          form.reset();
+        } else {
+          showFeedback(data.error || 'Une erreur est survenue, merci de réessayer.', true);
+        }
+      })
+      .catch(() => showFeedback('Une erreur est survenue, merci de réessayer.', true))
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Envoyer le message';
+      });
+  });
 }
 
 /** Clique sur une suggestion de l'assistant -> remplit le champ */

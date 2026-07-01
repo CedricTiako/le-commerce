@@ -9,15 +9,16 @@ class ContactController extends Controller
 {
     public function index(): void
     {
-        $this->view('pages/placeholder', [
+        $this->view('pages/contact', [
             'title'   => 'Contact — Le Commerce',
             'heading' => 'Contactez-nous',
-            'text'    => "Le formulaire de contact complet sera intégré dans le prochain lot.",
         ]);
     }
 
     public function send(): void
     {
+        $this->verifyCsrf();
+
         $name    = trim((string) $this->input('name', ''));
         $email   = trim((string) $this->input('email', ''));
         $message = trim((string) $this->input('message', ''));
