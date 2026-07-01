@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Controllers;
+
+use App\Core\Controller;
+use App\Models\ContactMessage;
+
+class ContactController extends Controller
+{
+    public function index(): void
+    {
+        $this->view('pages/placeholder', [
+            'title'   => 'Contact — Le Commerce',
+            'heading' => 'Contactez-nous',
+            'text'    => "Le formulaire de contact complet sera intégré dans le prochain lot.",
+        ]);
+    }
+
+    public function send(): void
+    {
+        $name    = trim((string) $this->input('name', ''));
+        $email   = trim((string) $this->input('email', ''));
+        $message = trim((string) $this->input('message', ''));
+
+        if ($name === '' || $email === '' || $message === '') {
+            $this->json(['success' => false, 'error' => 'Tous les champs sont obligatoires.'], 422);
+        }
+
+        ContactMessage::create([
+            'name'    => $name,
+            'email'   => $email,
+            'subject' => (string) $this->input('subject', ''),
+            'message' => $message,
+        ]);
+
+        $this->json(['success' => true, 'message' => 'Votre message a bien été envoyé.']);
+    }
+}

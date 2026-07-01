@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .font-logo {
+    font-family: 'Dancing Script', cursive;
+  }
+  .nav-link {
+    position: relative;
+  }
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -22px;
+    height: 3px;
+    background: #c8102e;
+  }
+  .chat-chip:hover {
+    border-color: #c8102e;
+    color: #c8102e;
+  }
+}
