@@ -46,6 +46,13 @@ class App
     /**
      * Charge les variables du fichier .env dans l'environnement (getenv/$_ENV),
      * car aucune dépendance externe (phpdotenv) n'est utilisée.
+     *
+     * Le parsing est fait ligne à ligne "à la main" plutôt qu'avec
+     * parse_ini_file() : le lexer INI natif de PHP échoue sur des caractères
+     * pourtant courants dans des valeurs (parenthèses, &, |, !, ~, ^...) dès
+     * qu'ils ne sont pas quotés, quel que soit le mode de scan utilisé. Ce
+     * parseur maison n'a pas cette limite : chaque valeur est prise telle
+     * quelle, sans grammaire d'expression à respecter.
      */
     private static function loadEnv(): void
     {
@@ -56,14 +63,37 @@ class App
             return;
         }
 
-        // INI_SCANNER_RAW : les valeurs ne sont pas interprétées comme des expressions
-        // (parenthèses, opérateurs...), ce qui évite les erreurs de syntaxe sur des
-        // valeurs non quotées (ex. un nom de commerce contenant des parenthèses).
-        $vars = parse_ini_file($envFile, false, INI_SCANNER_RAW);
+        $lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        $vars = [];
 
-        if ($vars === false) {
-            error_log("[App::loadEnv] Échec du parsing de .env (syntaxe INI invalide) : $envFile");
-            return;
+        foreach ($lines as $line) {
+            $line = trim($line);
+
+            if ($line === '' || $line[0] === ';' || $line[0] === '#') {
+                continue;
+            }
+
+            $equalsPos = strpos($line, '=');
+
+            if ($equalsPos === false) {
+                continue;
+            }
+
+            $key = trim(substr($line, 0, $equalsPos));
+            $value = trim(substr($line, $equalsPos + 1));
+
+            if ($key === '') {
+                continue;
+            }
+
+            $isQuoted = strlen($value) >= 2
+                && (($value[0] === '"' && $value[-1] === '"') || ($value[0] === "'" && $value[-1] === "'"));
+
+            if ($isQuoted) {
+                $value = substr($value, 1, -1);
+            }
+
+            $vars[$key] = $value;
         }
 
         foreach ($vars as $key => $value) {
