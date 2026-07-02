@@ -49,17 +49,21 @@ $categoryLabels = [
     <?php endif; ?>
   </div>
 
-  <div class="grid lg:grid-cols-2 gap-6">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
     <!-- Planches -->
     <div class="card card-md">
       <h2 class="font-bold text-lg text-ink mb-1">NOS PLANCHES À PARTAGER</h2>
       <div class="w-10 h-1 bg-brand-500 rounded-full mb-5"></div>
       <ul class="space-y-4">
         <?php foreach ($planches as $planche): ?>
+          <?php $thumb = 'https://source.unsplash.com/200x140/?' . rawurlencode($planche['name']); ?>
           <li class="flex items-start justify-between gap-4 pb-4 border-b border-gray-50 last:border-0 last:pb-0">
-            <div>
-              <p class="font-semibold text-ink text-sm"><?= htmlspecialchars($planche['name']) ?></p>
-              <p class="text-gray-500 text-xs mt-1"><?= htmlspecialchars($planche['desc']) ?></p>
+            <div class="flex items-center gap-3">
+              <img src="<?= $thumb ?>" alt="<?= htmlspecialchars($planche['name']) ?>" class="w-16 h-12 object-cover rounded-md shrink-0" loading="lazy" decoding="async">
+              <div>
+                <p class="font-semibold text-ink text-sm"><?= htmlspecialchars($planche['name']) ?></p>
+                <p class="text-gray-500 text-xs mt-1"><?= htmlspecialchars($planche['desc']) ?></p>
+              </div>
             </div>
             <p class="font-bold text-brand-500 text-sm whitespace-nowrap"><?= number_format($planche['price'], 2, ',', ' ') ?> €</p>
           </li>
@@ -71,7 +75,7 @@ $categoryLabels = [
     <div class="card card-md">
       <h2 class="font-bold text-lg text-ink mb-1">SOFTS, CAFÉS & BOISSONS CHAUDES</h2>
       <div class="w-10 h-1 bg-brand-500 rounded-full mb-5"></div>
-      <ul class="grid sm:grid-cols-2 gap-3">
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <?php foreach ($softs as $soft): ?>
           <li class="flex items-center gap-2.5 text-sm text-gray-600">
             <span class="w-2 h-2 rounded-full bg-brand-500 shrink-0"></span>

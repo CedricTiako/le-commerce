@@ -3,41 +3,19 @@ $beers = $drinks ?: [];
 ?>
 
 <!-- =====================  HERO  ===================== -->
-<section class="max-w-[1536px] mx-auto px-6 lg:px-10 pt-10 pb-14 grid lg:grid-cols-2 gap-10 items-center">
-  <div>
-    <p class="text-brand-500 font-bold text-sm tracking-wide mb-3">
-      VOTRE COMMERCE DE PROXIMITÉ À <?= htmlspecialchars(mb_strtoupper($shop['city'])) ?>
-    </p>
-    <h1 class="font-extrabold text-5xl sm:text-6xl leading-[0.95] tracking-tight text-ink mb-4">
-      LE COMMERCE
-    </h1>
-    <p class="font-bold text-lg text-gray-700 tracking-wide mb-5">
-      BAR • TABAC • PMU • FDJ • PRESSE • NIRIO
-    </p>
-    <p class="text-gray-500 max-w-md mb-8 leading-relaxed">
-      Un lieu convivial où se retrouver, se détendre et profiter de nombreux services au quotidien.
-    </p>
-    <div class="flex flex-wrap gap-3">
-      <a href="<?= BASE_PATH ?>/le-bar" class="btn-primary">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M4 3h13l-1 9.5A4 4 0 0 1 12 16H8a4 4 0 0 1-4-3.5L3 3zm14 3h2a3 3 0 0 1 0 6h-1.4"/></svg>
-        Découvrir le Bar
-      </a>
-      <a href="<?= BASE_PATH ?>/contact" class="btn-outline">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C7.6 2 4 5.6 4 10c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
-        Nous trouver
-      </a>
-    </div>
-  </div>
-
-  <div class="rounded-2xl overflow-hidden shadow-lg">
-    <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1200&auto=format&fit=crop"
-         alt="Façade du bar-tabac Le Commerce à <?= htmlspecialchars($shop['city']) ?>"
-         class="w-full h-[340px] lg:h-[400px] object-cover">
-  </div>
-</section>
+<?php
+$heroEyebrow = 'VOTRE COMMERCE DE PROXIMITÉ À ' . htmlspecialchars(mb_strtoupper($shop['city']));
+$heading = 'LE COMMERCE';
+$heroText = 'Un lieu convivial où se retrouver, se détendre et profiter de nombreux services au quotidien.';
+$heroActions = [
+  ['href' => BASE_PATH . '/le-bar', 'label' => 'Découvrir le Bar', 'class' => 'btn-primary'],
+  ['href' => BASE_PATH . '/contact', 'label' => 'Nous trouver', 'class' => 'btn-outline'],
+];
+require __DIR__ . '/../partials/page-hero.php';
+?>
 
 <!-- =====================  BLOC 3 COLONNES  ===================== -->
-<section class="max-w-[1536px] mx-auto px-6 lg:px-10 pb-10 grid lg:grid-cols-[1.6fr_1fr] gap-6">
+<section class="max-w-[1536px] mx-auto px-6 lg:px-10 pb-10 grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-6">
 
   <!-- Colonne gauche : Bières + Planche -->
   <div class="flex flex-col gap-6">
@@ -63,9 +41,19 @@ $beers = $drinks ?: [];
     </div>
 
     <!-- Planche à saucisson -->
-    <div class="bg-white border border-gray-100 rounded-2xl p-6 sm:p-8 grid sm:grid-cols-[220px_1fr] gap-6 items-center">
-      <img src="https://images.unsplash.com/photo-1626200926749-2dc71c4b6e6e?q=80&w=600&auto=format&fit=crop"
-           alt="Planche à saucisson, cornichons et fromage" class="w-full h-40 object-cover rounded-xl">
+    <div class="bg-white border border-gray-100 rounded-2xl p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-[220px_1fr] gap-6 items-center">
+      <picture>
+        <source type="image/webp"
+                srcset="https://images.unsplash.com/photo-1626200926749-2dc71c4b6e6e?q=80&fm=webp&fit=crop&w=400 400w, https://images.unsplash.com/photo-1626200926749-2dc71c4b6e6e?q=80&fm=webp&fit=crop&w=800 800w, https://images.unsplash.com/photo-1626200926749-2dc71c4b6e6e?q=80&fm=webp&fit=crop&w=1200 1200w"
+                sizes="(min-width: 640px) 220px, 100vw">
+        <img
+          src="https://images.unsplash.com/photo-1626200926749-2dc71c4b6e6e?q=80&w=600&auto=format&fit=crop"
+          srcset="https://images.unsplash.com/photo-1626200926749-2dc71c4b6e6e?q=80&auto=format&fit=crop&w=400 400w, https://images.unsplash.com/photo-1626200926749-2dc71c4b6e6e?q=80&auto=format&fit=crop&w=800 800w, https://images.unsplash.com/photo-1626200926749-2dc71c4b6e6e?q=80&auto=format&fit=crop&w=1200 1200w"
+          sizes="(min-width: 640px) 220px, 100vw"
+          alt="Planche à saucisson, cornichons et fromage"
+          class="w-full h-40 object-cover rounded-xl"
+          loading="lazy" decoding="async">
+      </picture>
       <div>
         <h2 class="font-bold text-lg text-ink mb-1">NOTRE PLANCHE À SAUCISSON</h2>
         <div class="w-10 h-1 bg-brand-500 rounded-full mb-3"></div>
@@ -130,7 +118,7 @@ $beers = $drinks ?: [];
 </section>
 
 <!-- =====================  BANDE INFOS (4 colonnes)  ===================== -->
-<section class="max-w-[1536px] mx-auto px-6 lg:px-10 pb-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<section class="max-w-[1536px] mx-auto px-6 lg:px-10 pb-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
   <!-- Avis Google -->
   <div class="bg-white border border-gray-100 rounded-2xl p-6">
@@ -184,7 +172,7 @@ $beers = $drinks ?: [];
       <?php endforeach; ?>
     </div>
     <form id="assistant-form" class="mt-auto flex gap-2">
-      <input type="text" placeholder="Écrivez votre question…" class="flex-1 border border-gray-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30">
+      <input type="text" placeholder="Écrivez votre question…" class="min-w-0 flex-1 border border-gray-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30">
       <button type="submit" class="w-9 h-9 rounded-full bg-brand-500 hover:bg-brand-600 text-white flex items-center justify-center shrink-0">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
       </button>

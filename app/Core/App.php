@@ -9,6 +9,8 @@ class App
 {
     public static function boot(): void
     {
+        self::loadEnv();
+
         $appConfig = require dirname(__DIR__, 2) . '/config/app.php';
 
         date_default_timezone_set($appConfig['timezone']);
@@ -21,6 +23,24 @@ class App
         }
 
         session_start();
+    }
+
+    /**
+     * Charge les variables du fichier .env dans l'environnement (getenv/$_ENV),
+     * car aucune dépendance externe (phpdotenv) n'est utilisée.
+     */
+    private static function loadEnv(): void
+    {
+        $envFile = dirname(__DIR__, 2) . '/.env';
+
+        if (!file_exists($envFile)) {
+            return;
+        }
+
+        foreach (parse_ini_file($envFile) as $key => $value) {
+            putenv("$key=$value");
+            $_ENV[$key] = $value;
+        }
     }
 
     /**
