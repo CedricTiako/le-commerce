@@ -56,7 +56,10 @@ class App
             return;
         }
 
-        $vars = parse_ini_file($envFile);
+        // INI_SCANNER_RAW : les valeurs ne sont pas interprétées comme des expressions
+        // (parenthèses, opérateurs...), ce qui évite les erreurs de syntaxe sur des
+        // valeurs non quotées (ex. un nom de commerce contenant des parenthèses).
+        $vars = parse_ini_file($envFile, false, INI_SCANNER_RAW);
 
         if ($vars === false) {
             error_log("[App::loadEnv] Échec du parsing de .env (syntaxe INI invalide) : $envFile");
