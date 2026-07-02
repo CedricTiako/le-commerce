@@ -28,7 +28,8 @@ class App
 
     /**
      * Redirige les logs PHP (error_log, warnings, exceptions non catchées)
-     * vers storage/logs/app.log plutôt que le log système par défaut.
+     * vers storage/logs/app.txt plutôt que le log système par défaut.
+     * Extension .txt (plutôt que .log) pour l'ouvrir facilement d'un double-clic.
      */
     private static function configureLogging(): void
     {
@@ -39,7 +40,7 @@ class App
         }
 
         ini_set('log_errors', '1');
-        ini_set('error_log', $logDir . '/app.log');
+        ini_set('error_log', $logDir . '/app.txt');
     }
 
     /**
