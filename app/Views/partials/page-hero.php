@@ -1,6 +1,6 @@
 <?php
 $heroEyebrow = $heroEyebrow ?? null;
-$heroImage = $heroImage ?? 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&auto=format&fit=crop&w=1600';
+$heroImage = siteImage($heroSlug ?? '', 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&auto=format&fit=crop&w=1600');
 $heroActions = $heroActions ?? [];
 ?>
 <section class="max-w-[1536px] mx-auto px-6 lg:px-10 py-12">

@@ -20,9 +20,9 @@ class BarController extends Controller
             'heading'    => 'Le Bar',
             'categories' => $categories,
             'planches'   => [
-                ['name' => 'Planche à saucisson', 'desc' => 'Saucisson sec, cornichons, fromage et pain frais.', 'price' => 8.5],
-                ['name' => 'Planche mixte', 'desc' => 'Charcuterie, fromage et crudités de saison.', 'price' => 11.0],
-                ['name' => 'Planche fromage', 'desc' => 'Sélection de fromages affinés et pain de campagne.', 'price' => 9.0],
+                ['name' => 'Planche à saucisson', 'desc' => 'Saucisson sec, cornichons, fromage et pain frais.', 'price' => 8.5, 'slug' => 'bar_planche_saucisson'],
+                ['name' => 'Planche mixte', 'desc' => 'Charcuterie, fromage et crudités de saison.', 'price' => 11.0, 'slug' => 'bar_planche_mixte'],
+                ['name' => 'Planche fromage', 'desc' => 'Sélection de fromages affinés et pain de campagne.', 'price' => 9.0, 'slug' => 'bar_planche_fromage'],
             ],
             'softs' => ['Coca-Cola', 'Orangina', 'Jus de fruits pressés', 'Eaux plates & gazeuses', 'Café, thé & chocolat chaud'],
         ]);

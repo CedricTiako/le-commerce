@@ -2,6 +2,7 @@
 $heroEyebrow = 'CONTACT';
 $heroText = "Une question, une réservation, une remarque ? Écrivez-nous, notre équipe vous répond rapidement.";
 $heroActions = [];
+$heroSlug = 'hero_contact';
 require __DIR__ . '/../partials/page-hero.php';
 
 $mapQuery = urlencode($shop['address'] . ', ' . $shop['zipcode'] . ' ' . $shop['city']);

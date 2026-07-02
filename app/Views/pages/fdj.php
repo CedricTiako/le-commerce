@@ -4,6 +4,7 @@ $heroText = "Loto, Euromillions, Illiko, Amigo... Tous les jeux de La Française
 $heroActions = [
     ['href' => 'tel:' . $shop['phone_href'], 'label' => 'Appeler le commerce', 'class' => 'btn-primary'],
 ];
+$heroSlug = 'hero_fdj';
 require __DIR__ . '/../partials/page-hero.php';
 ?>
 

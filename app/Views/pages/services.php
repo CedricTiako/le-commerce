@@ -4,6 +4,7 @@ $heroText = "Un commerce de proximité qui simplifie votre quotidien : colis, fa
 $heroActions = [
     ['href' => BASE_PATH . '/contact', 'label' => 'Une question ?', 'class' => 'btn-primary'],
 ];
+$heroSlug = 'hero_services';
 require __DIR__ . '/../partials/page-hero.php';
 ?>
 

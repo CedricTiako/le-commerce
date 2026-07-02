@@ -30,6 +30,7 @@ use App\Controllers\Admin\AdminReviewController;
 use App\Controllers\Admin\AdminStatisticsController;
 use App\Controllers\Admin\AdminBillingController;
 use App\Controllers\Admin\AdminSettingsController;
+use App\Controllers\Admin\AdminImageController;
 use App\Controllers\Admin\AdminPlaceholderController;
 use App\Controllers\Client\ClientOfferController;
 use App\Controllers\Client\PollController;
@@ -115,6 +116,10 @@ $router->get('/admin/facturation/{id}', AdminBillingController::class, 'show');
 
 $router->get('/admin/parametres', AdminSettingsController::class, 'index');
 $router->post('/admin/parametres', AdminSettingsController::class, 'update');
+
+$router->get('/admin/images', AdminImageController::class, 'index');
+$router->post('/admin/images', AdminImageController::class, 'store');
+$router->post('/admin/images/{slug}/supprimer', AdminImageController::class, 'destroy');
 
 // Routes "prochainement" pour les autres sections du menu admin (Lots 6 à 10)
 // IMPORTANT : doit rester déclarée en dernier pour ne pas intercepter les routes ci-dessus

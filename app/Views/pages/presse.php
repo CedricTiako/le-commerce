@@ -4,6 +4,7 @@ $heroText = "Quotidiens, presse régionale et magazines : toute l'actualité liv
 $heroActions = [
     ['href' => 'tel:' . $shop['phone_href'], 'label' => 'Appeler le commerce', 'class' => 'btn-primary'],
 ];
+$heroSlug = 'hero_presse';
 require __DIR__ . '/../partials/page-hero.php';
 ?>
 

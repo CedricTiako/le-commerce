@@ -6,13 +6,21 @@ use App\Core\Database;
 
 class Settings
 {
+    private static ?array $cache = null;
+
     /**
      * Retourne tous les paramètres sous forme de tableau clé => valeur.
      * Renvoie un tableau vide (au lieu de planter) si la table n'existe
      * pas encore — utile en transition, avant application de la migration.
+     * Mis en cache pour la durée de la requête (appelé plusieurs fois par
+     * page via siteImage()).
      */
     public static function all(): array
     {
+        if (self::$cache !== null) {
+            return self::$cache;
+        }
+
         try {
             $stmt = Database::connection()->query('SELECT `key`, `value` FROM settings');
             $rows = $stmt->fetchAll();
@@ -20,9 +28,9 @@ class Settings
             foreach ($rows as $row) {
                 $result[$row['key']] = $row['value'];
             }
-            return $result;
+            return self::$cache = $result;
         } catch (\Throwable $e) {
-            return [];
+            return self::$cache = [];
         }
     }
 
@@ -45,5 +53,6 @@ class Settings
         foreach ($data as $key => $value) {
             $stmt->execute(['key' => $key, 'value' => $value]);
         }
+        self::$cache = null;
     }
 }

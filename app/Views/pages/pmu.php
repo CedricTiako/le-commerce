@@ -4,6 +4,7 @@ $heroText = "Toutes les courses hippiques du jour, vos paris préférés et le s
 $heroActions = [
     ['href' => 'tel:' . $shop['phone_href'], 'label' => 'Appeler le commerce', 'class' => 'btn-primary'],
 ];
+$heroSlug = 'hero_pmu';
 require __DIR__ . '/../partials/page-hero.php';
 ?>
 

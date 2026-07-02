@@ -36,3 +36,16 @@ if (!function_exists('drinkTone')) {
         ][$category] ?? 'gold';
     }
 }
+
+/**
+ * Retourne l'URL de la photo uploadée pour un emplacement donné
+ * (voir config/image_slots.php et /admin/images), ou $default si
+ * aucune photo n'a encore été uploadée pour ce slug.
+ */
+if (!function_exists('siteImage')) {
+    function siteImage(string $slug, string $default = ''): string
+    {
+        $path = \App\Models\Settings::get('img_' . $slug);
+        return $path ? BASE_PATH . $path : $default;
+    }
+}

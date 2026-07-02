@@ -5,6 +5,7 @@ $heroActions = [
     ['href' => 'https://wa.me/' . str_replace(['+', ' '], '', $shop['phone_href']), 'label' => 'Nous écrire sur WhatsApp', 'class' => 'btn-whatsapp'],
     ['href' => BASE_PATH . '/contact', 'label' => 'Réserver une table', 'class' => 'btn-outline'],
 ];
+$heroSlug = 'hero_bar';
 require __DIR__ . '/../partials/page-hero.php';
 
 $categoryLabels = [
@@ -56,7 +57,7 @@ $categoryLabels = [
       <div class="w-10 h-1 bg-brand-500 rounded-full mb-5"></div>
       <ul class="space-y-4">
         <?php foreach ($planches as $planche): ?>
-          <?php $thumb = 'https://source.unsplash.com/200x140/?' . rawurlencode($planche['name']); ?>
+          <?php $thumb = siteImage($planche['slug'] ?? '', 'https://source.unsplash.com/200x140/?' . rawurlencode($planche['name'])); ?>
           <li class="flex items-start justify-between gap-4 pb-4 border-b border-gray-50 last:border-0 last:pb-0">
             <div class="flex items-center gap-3">
               <img src="<?= $thumb ?>" alt="<?= htmlspecialchars($planche['name']) ?>" class="w-16 h-12 object-cover rounded-md shrink-0" loading="lazy" decoding="async">

@@ -15,9 +15,14 @@ $navItems = [
     <div class="flex items-center justify-between h-[88px] gap-6">
 
       <!-- Logo -->
+      <?php $logoUrl = siteImage('logo_site', ''); ?>
       <a href="<?= BASE_PATH ?>/" class="flex flex-col leading-none shrink-0 min-w-0">
-        <span class="font-logo text-[26px] md:text-[34px] font-bold text-slate-900 -mb-1 whitespace-nowrap">Le Commerce</span>
-        <span class="text-[8px] md:text-[11px] tracking-[0.12em] md:tracking-[0.22em] text-slate-500 font-semibold uppercase whitespace-nowrap">BAR · TABAC · PMU · FDJ · PRESSE · NIRIO</span>
+        <?php if ($logoUrl): ?>
+          <img src="<?= htmlspecialchars($logoUrl) ?>" alt="<?= htmlspecialchars($shop['name']) ?>" class="h-10 md:h-12 w-auto">
+        <?php else: ?>
+          <span class="font-logo text-[26px] md:text-[34px] font-bold text-slate-900 -mb-1 whitespace-nowrap">Le Commerce</span>
+          <span class="text-[8px] md:text-[11px] tracking-[0.12em] md:tracking-[0.22em] text-slate-500 font-semibold uppercase whitespace-nowrap">BAR · TABAC · PMU · FDJ · PRESSE · NIRIO</span>
+        <?php endif; ?>
       </a>
 
       <!-- Navigation -->

@@ -4,6 +4,7 @@ $sidebarSections = [
         '/admin'              => ['Tableau de bord', 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6'],
         '/admin/etablissement'=> ['Mon établissement', 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2M5 21h2m0 0h10M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h0a1 1 0 011 1v5'],
         '/admin/services'     => ['Services du quotidien', 'M9 3v2m6-2v2M4 7h16M5 7h14v12a2 2 0 01-2 2H7a2 2 0 01-2-2V7z'],
+        '/admin/images'       => ['Photos du site', 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M6 4h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2z'],
     ],
     'Clients' => [
         '/admin/clients'      => ['Clients inscrits', 'M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-1.13a4 4 0 10-4-4 4 4 0 004 4zm6 0a4 4 0 10-4-4'],
@@ -25,15 +26,20 @@ $sidebarSections = [
     ],
 ];
 
-$implementedRoutes = ['/admin', '/admin/clients', '/admin/etablissement', '/admin/services', '/admin/portefeuilles', '/admin/messages', '/admin/reservations', '/admin/offres', '/admin/offres/scanner', '/admin/sondages', '/admin/zonage', '/admin/avis-google', '/admin/statistiques', '/admin/facturation', '/admin/parametres'];
+$implementedRoutes = ['/admin', '/admin/clients', '/admin/etablissement', '/admin/services', '/admin/images', '/admin/portefeuilles', '/admin/messages', '/admin/reservations', '/admin/offres', '/admin/offres/scanner', '/admin/sondages', '/admin/zonage', '/admin/avis-google', '/admin/statistiques', '/admin/facturation', '/admin/parametres'];
 ?>
 <div id="admin-sidebar-backdrop" class="hidden fixed inset-0 bg-black/40 z-40 lg:hidden"></div>
 <aside id="admin-sidebar" class="fixed lg:sticky top-0 left-0 z-50 flex flex-col w-80 shrink-0 bg-slate-950 text-gray-300 h-screen overflow-y-auto -translate-x-full lg:translate-x-0 transition-transform duration-200 shadow-2xl">
 
   <div class="px-6 py-6 border-b border-white/10 sidebar-brand flex items-center justify-between gap-3">
+    <?php $sidebarLogoUrl = siteImage('logo_site', ''); ?>
     <a href="<?= BASE_PATH ?>/admin" class="flex flex-col leading-none sidebar-logo">
-      <span class="font-logo text-[28px] font-bold text-brand-500 -mb-1 sidebar-logo-text"><?= htmlspecialchars($shop['name']) ?></span>
-      <span class="text-[10px] tracking-[0.18em] text-gray-500 font-medium sidebar-logo-tagline">BAR · TABAC · PMU · FDJ · PRESSE</span>
+      <?php if ($sidebarLogoUrl): ?>
+        <img src="<?= htmlspecialchars($sidebarLogoUrl) ?>" alt="<?= htmlspecialchars($shop['name']) ?>" class="h-9 w-auto sidebar-logo-text">
+      <?php else: ?>
+        <span class="font-logo text-[28px] font-bold text-brand-500 -mb-1 sidebar-logo-text"><?= htmlspecialchars($shop['name']) ?></span>
+        <span class="text-[10px] tracking-[0.18em] text-gray-500 font-medium sidebar-logo-tagline">BAR · TABAC · PMU · FDJ · PRESSE</span>
+      <?php endif; ?>
     </a>
     <button id="admin-collapse-menu-btn" class="hidden lg:inline-flex items-center justify-center p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-shadow shadow-sm" aria-label="Réduire le menu" aria-pressed="false">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

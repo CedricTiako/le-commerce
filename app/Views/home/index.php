@@ -11,6 +11,7 @@ $heroActions = [
   ['href' => BASE_PATH . '/le-bar', 'label' => 'Découvrir le Bar', 'class' => 'btn-primary'],
   ['href' => BASE_PATH . '/contact', 'label' => 'Nous trouver', 'class' => 'btn-outline'],
 ];
+$heroSlug = 'hero_accueil';
 require __DIR__ . '/../partials/page-hero.php';
 ?>
 
@@ -42,18 +43,12 @@ require __DIR__ . '/../partials/page-hero.php';
 
     <!-- Planche à saucisson -->
     <div class="bg-white border border-gray-100 rounded-2xl p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-[220px_1fr] gap-6 items-center">
-      <picture>
-        <source type="image/webp"
-                srcset="https://images.unsplash.com/photo-1626200926749-2dc71c4b6e6e?q=80&fm=webp&fit=crop&w=400 400w, https://images.unsplash.com/photo-1626200926749-2dc71c4b6e6e?q=80&fm=webp&fit=crop&w=800 800w, https://images.unsplash.com/photo-1626200926749-2dc71c4b6e6e?q=80&fm=webp&fit=crop&w=1200 1200w"
-                sizes="(min-width: 640px) 220px, 100vw">
-        <img
-          src="https://images.unsplash.com/photo-1626200926749-2dc71c4b6e6e?q=80&w=600&auto=format&fit=crop"
-          srcset="https://images.unsplash.com/photo-1626200926749-2dc71c4b6e6e?q=80&auto=format&fit=crop&w=400 400w, https://images.unsplash.com/photo-1626200926749-2dc71c4b6e6e?q=80&auto=format&fit=crop&w=800 800w, https://images.unsplash.com/photo-1626200926749-2dc71c4b6e6e?q=80&auto=format&fit=crop&w=1200 1200w"
-          sizes="(min-width: 640px) 220px, 100vw"
-          alt="Planche à saucisson, cornichons et fromage"
-          class="w-full h-40 object-cover rounded-xl"
-          loading="lazy" decoding="async">
-      </picture>
+      <?php $saucissonImg = siteImage('bar_planche_saucisson', 'https://images.unsplash.com/photo-1626200926749-2dc71c4b6e6e?q=80&w=600&auto=format&fit=crop'); ?>
+      <img
+        src="<?= htmlspecialchars($saucissonImg) ?>"
+        alt="Planche à saucisson, cornichons et fromage"
+        class="w-full h-40 object-cover rounded-xl"
+        loading="lazy" decoding="async">
       <div>
         <h2 class="font-bold text-lg text-ink mb-1">NOTRE PLANCHE À SAUCISSON</h2>
         <div class="w-10 h-1 bg-brand-500 rounded-full mb-3"></div>

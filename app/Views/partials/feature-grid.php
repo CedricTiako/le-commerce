@@ -13,7 +13,7 @@ $gridCols = $gridCols ?? 2;
       <div class="feature-card">
         <?php
           $keyword = rawurlencode($item['name'] ?? 'service');
-          $imgUrl = "https://source.unsplash.com/600x400/?$keyword";
+          $imgUrl = siteImage($item['slug'] ?? '', "https://source.unsplash.com/600x400/?$keyword");
         ?>
         <div class="mb-3 rounded-md overflow-hidden">
           <img src="<?= $imgUrl ?>" alt="<?= htmlspecialchars($item['name'] ?? 'image') ?>" class="w-full h-28 object-cover" loading="lazy" decoding="async">
