@@ -8,7 +8,7 @@ return [
     'baseline'    => 'BAR · TABAC · PMU · FDJ · PRESSE · NIRIO',
     'url'         => getenv('APP_URL') ?: 'http://localhost:8000',
     'env'         => getenv('APP_ENV') ?: 'development',
-    'debug'       => true,
+    'debug'       => filter_var(getenv('APP_DEBUG'), FILTER_VALIDATE_BOOLEAN),
     'timezone'    => 'Europe/Paris',
     'locale'      => 'fr',
 
