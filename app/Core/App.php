@@ -34,13 +34,23 @@ class App
         $envFile = dirname(__DIR__, 2) . '/.env';
 
         if (!file_exists($envFile)) {
+            error_log("[App::loadEnv] Fichier .env introuvable : $envFile");
             return;
         }
 
-        foreach (parse_ini_file($envFile) as $key => $value) {
+        $vars = parse_ini_file($envFile);
+
+        if ($vars === false) {
+            error_log("[App::loadEnv] Échec du parsing de .env (syntaxe INI invalide) : $envFile");
+            return;
+        }
+
+        foreach ($vars as $key => $value) {
             putenv("$key=$value");
             $_ENV[$key] = $value;
         }
+
+        error_log('[App::loadEnv] .env chargé (' . count($vars) . ' variables) : ' . implode(', ', array_keys($vars)));
     }
 
     /**
