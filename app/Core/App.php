@@ -9,6 +9,7 @@ class App
 {
     public static function boot(): void
     {
+        self::configureLogging();
         self::loadEnv();
 
         $appConfig = require dirname(__DIR__, 2) . '/config/app.php';
@@ -23,6 +24,22 @@ class App
         }
 
         session_start();
+    }
+
+    /**
+     * Redirige les logs PHP (error_log, warnings, exceptions non catchées)
+     * vers storage/logs/app.log plutôt que le log système par défaut.
+     */
+    private static function configureLogging(): void
+    {
+        $logDir = dirname(__DIR__, 2) . '/storage/logs';
+
+        if (!is_dir($logDir)) {
+            mkdir($logDir, 0755, true);
+        }
+
+        ini_set('log_errors', '1');
+        ini_set('error_log', $logDir . '/app.log');
     }
 
     /**
