@@ -48,7 +48,7 @@ $heroImage = siteImage('hero_accueil', 'https://images.unsplash.com/photo-152860
       <div class="grid grid-cols-3 sm:grid-cols-5 gap-4 mb-6">
         <?php foreach ($beers as $beer): ?>
           <div class="text-center">
-            <?= beerGlass(drinkTone($beer['category'])) ?>
+            <?= beerGlass(drinkTone($beer['category']), drinkShape($beer['category'])) ?>
             <p class="text-white text-xs font-semibold mt-2 leading-tight"><?= htmlspecialchars($beer['name']) ?></p>
           </div>
         <?php endforeach; ?>

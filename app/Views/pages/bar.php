@@ -32,7 +32,7 @@ $categoryLabels = [
         <div class="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-6 gap-5">
           <?php foreach ($categories[$key] as $beer): ?>
             <div class="text-center">
-              <?= beerGlass(drinkTone($beer['category'])) ?>
+              <?= beerGlass(drinkTone($beer['category']), drinkShape($beer['category'])) ?>
               <p class="text-white text-xs font-semibold mt-2 leading-tight"><?= htmlspecialchars($beer['name']) ?></p>
               <p class="text-gray-500 text-[11px] mt-0.5">
                 <?php if ($beer['degree']): ?><?= number_format((float) $beer['degree'], 1, ',', '') ?>°<?php endif; ?>
