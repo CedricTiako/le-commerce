@@ -1,19 +1,38 @@
 <?php
 $beers = $drinks ?: [];
+$heroImage = siteImage('hero_accueil', 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&auto=format&fit=crop&w=1600');
 ?>
 
 <!-- =====================  HERO  ===================== -->
-<?php
-$heroEyebrow = 'VOTRE COMMERCE DE PROXIMITÉ À ' . htmlspecialchars(mb_strtoupper($shop['city']));
-$heading = 'LE COMMERCE';
-$heroText = 'Un lieu convivial où se retrouver, se détendre et profiter de nombreux services au quotidien.';
-$heroActions = [
-  ['href' => BASE_PATH . '/le-bar', 'label' => 'Découvrir le Bar', 'class' => 'btn-primary'],
-  ['href' => BASE_PATH . '/contact', 'label' => 'Nous trouver', 'class' => 'btn-outline'],
-];
-$heroSlug = 'hero_accueil';
-require __DIR__ . '/../partials/page-hero.php';
-?>
+<section class="bg-white">
+  <div class="max-w-[1536px] mx-auto grid grid-cols-1 lg:grid-cols-2 lg:items-stretch">
+    <div class="px-6 lg:px-10 xl:pl-16 py-10 lg:py-16 flex flex-col justify-center">
+      <p class="text-brand-500 font-extrabold text-xs sm:text-sm tracking-[0.15em] uppercase mb-3">
+        Votre commerce de proximité à <?= htmlspecialchars(mb_strtoupper($shop['city'])) ?>
+      </p>
+      <h1 class="text-5xl sm:text-6xl font-extrabold text-ink leading-[1.02] mb-2">LE COMMERCE</h1>
+      <p class="text-sm sm:text-base font-bold tracking-[0.2em] text-ink uppercase mb-5">
+        <?= htmlspecialchars($app['baseline']) ?>
+      </p>
+      <p class="text-slate-500 text-base leading-relaxed mb-8 max-w-md">
+        Un lieu convivial où se retrouver, se détendre et profiter de nombreux services au quotidien.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="<?= BASE_PATH ?>/le-bar" class="btn-primary uppercase tracking-wide">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 3h13v9a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V3z"/><path stroke-linecap="round" stroke-linejoin="round" d="M17 8h1.5a2.5 2.5 0 0 1 0 5H17"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 19h9"/></svg>
+          Découvrir le Bar
+        </a>
+        <a href="<?= BASE_PATH ?>/contact" class="btn-outline uppercase tracking-wide">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-6.1-7-11a7 7 0 1 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Nous trouver
+        </a>
+      </div>
+    </div>
+    <div class="relative min-h-[280px] lg:min-h-0">
+      <img src="<?= htmlspecialchars($heroImage) ?>" alt="Façade du commerce" class="absolute inset-0 w-full h-full object-cover" loading="eager" decoding="async">
+    </div>
+  </div>
+</section>
 
 <!-- =====================  BLOC 3 COLONNES  ===================== -->
 <section class="max-w-[1536px] mx-auto px-6 lg:px-10 pb-10 grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-6">

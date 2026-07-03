@@ -20,7 +20,7 @@ $navItems = [
         <?php if ($logoUrl): ?>
           <img src="<?= htmlspecialchars($logoUrl) ?>" alt="<?= htmlspecialchars($shop['name']) ?>" class="h-10 md:h-12 w-auto">
         <?php else: ?>
-          <span class="font-logo text-[26px] md:text-[34px] font-bold text-slate-900 -mb-1 whitespace-nowrap">Le Commerce</span>
+          <span class="font-logo text-[26px] md:text-[34px] font-bold text-brand-500 -mb-1 whitespace-nowrap">Le Commerce</span>
           <span class="text-[8px] md:text-[11px] tracking-[0.12em] md:tracking-[0.22em] text-slate-500 font-semibold uppercase whitespace-nowrap">BAR · TABAC · PMU · FDJ · PRESSE · NIRIO</span>
         <?php endif; ?>
       </a>
@@ -62,11 +62,11 @@ $navItems = [
 
         <a href="tel:<?= htmlspecialchars($shop['phone_href']) ?>"
            aria-label="Appeler le <?= htmlspecialchars($shop['phone']) ?>"
-           class="hidden md:inline-flex shrink-0 items-center gap-2 whitespace-nowrap bg-slate-900 hover:bg-slate-800 text-white text-[13px] font-semibold px-5 xl:px-3.5 2xl:px-5 py-3 rounded-full transition-colors shadow-sm">
+           class="hidden md:inline-flex shrink-0 items-center gap-2 whitespace-nowrap bg-brand-500 hover:bg-brand-600 text-white text-[13px] font-semibold px-5 py-3 rounded-full transition-colors shadow-sm">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
             <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/>
           </svg>
-          <span class="xl:hidden 2xl:inline"><?= htmlspecialchars($shop['phone']) ?></span>
+          <span><?= htmlspecialchars($shop['phone']) ?></span>
         </a>
         <button id="mobile-menu-btn" class="xl:hidden p-2 text-slate-900" aria-label="Menu">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
