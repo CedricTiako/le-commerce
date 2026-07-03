@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initProximityWidget();
   initContactForm();
   initCookieConsent();
+  initEventTracking();
 });
 
 /**
@@ -179,6 +180,7 @@ function initContactForm() {
       .then((data) => {
         if (data.success) {
           showFeedback(data.message || 'Votre message a bien été envoyé.', false);
+          trackEvent('contact_form_submit', { page: location.pathname });
           form.reset();
         } else {
           showFeedback(data.error || 'Une erreur est survenue, merci de réessayer.', true);
@@ -219,21 +221,94 @@ function initChatFab() {
   });
 }
 
-/** Bandeau d'information cookies : simple mention + mémorisation locale (pas de gestion de consentement, un seul cookie technique existe). */
+/**
+ * Bandeau cookies. Deux modes selon si Google Analytics est configuré :
+ * - Analytics désactivé : simple mention à acquitter (aucun cookie de mesure d'audience).
+ * - Analytics activé : vrai choix Accepter/Refuser, gtag.js n'est chargé qu'après acceptation.
+ */
 function initCookieConsent() {
   const banner = document.getElementById('cookie-consent-banner');
   if (!banner) return;
 
-  const STORAGE_KEY = 'lc_cookie_banner_dismissed';
-
-  if (localStorage.getItem(STORAGE_KEY) === '1') {
+  // Le bouton flottant de l'assistant (fixed bottom-6) chevauche sinon la
+  // bannière : on le remonte tant qu'elle est affichée.
+  const fab = document.getElementById('chat-fab');
+  const dismiss = () => {
     banner.remove();
+    fab?.style.removeProperty('bottom');
+  };
+  if (fab) {
+    fab.style.bottom = (banner.getBoundingClientRect().height + 24) + 'px';
+  }
+
+  const gaEnabled = banner.dataset.gaEnabled === '1';
+  const gaId = banner.dataset.gaId;
+
+  if (!gaEnabled) {
+    const STORAGE_KEY = 'lc_cookie_banner_dismissed';
+    if (localStorage.getItem(STORAGE_KEY) === '1') {
+      dismiss();
+      return;
+    }
+    document.getElementById('cookie-consent-dismiss')?.addEventListener('click', () => {
+      localStorage.setItem(STORAGE_KEY, '1');
+      dismiss();
+    });
     return;
   }
 
-  const dismissBtn = document.getElementById('cookie-consent-dismiss');
-  dismissBtn?.addEventListener('click', () => {
-    localStorage.setItem(STORAGE_KEY, '1');
-    banner.remove();
+  const CONSENT_KEY = 'lc_cookie_consent';
+  const consent = localStorage.getItem(CONSENT_KEY);
+
+  if (consent === 'accepted') {
+    loadGoogleAnalytics(gaId);
+    dismiss();
+    return;
+  }
+  if (consent === 'declined') {
+    dismiss();
+    return;
+  }
+
+  document.getElementById('cookie-consent-accept')?.addEventListener('click', () => {
+    localStorage.setItem(CONSENT_KEY, 'accepted');
+    loadGoogleAnalytics(gaId);
+    dismiss();
+  });
+  document.getElementById('cookie-consent-decline')?.addEventListener('click', () => {
+    localStorage.setItem(CONSENT_KEY, 'declined');
+    dismiss();
+  });
+}
+
+/** Injecte gtag.js et l'active — appelé uniquement après consentement explicite (jamais au chargement initial). */
+function loadGoogleAnalytics(measurementId) {
+  if (!measurementId || window.dataLayer) return;
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { window.dataLayer.push(arguments); };
+  window.gtag('js', new Date());
+  window.gtag('config', measurementId);
+
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(measurementId);
+  document.head.appendChild(script);
+}
+
+/** Envoie un événement gtag si Analytics est chargé et consenti ; ne fait rien sinon. */
+function trackEvent(name, params = {}) {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', name, params);
+  }
+}
+
+/** Suivi des interactions clés : clic WhatsApp, clic téléphone (le contact form est suivi dans initContactForm). */
+function initEventTracking() {
+  document.querySelectorAll('a[href^="https://wa.me/"]').forEach((link) => {
+    link.addEventListener('click', () => trackEvent('click_whatsapp', { page: location.pathname }));
+  });
+  document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
+    link.addEventListener('click', () => trackEvent('click_phone', { page: location.pathname }));
   });
 }

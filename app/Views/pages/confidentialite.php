@@ -58,12 +58,26 @@
 
     <h2 id="cookies" class="text-xl font-bold text-ink mt-8 mb-3">7. Cookies</h2>
     <p class="text-sm text-slate-600 leading-relaxed mb-4">
-      Ce site utilise uniquement un cookie de session strictement nécessaire à son fonctionnement
+      Ce site utilise un cookie de session strictement nécessaire à son fonctionnement
       (<code class="text-xs bg-slate-100 px-1.5 py-0.5 rounded">PHPSESSID</code>), permettant de vous maintenir
       connecté à votre espace client. Ce cookie ne collecte aucune donnée à des fins statistiques ou
-      publicitaires et n'est pas partagé avec des tiers. Aucun cookie de mesure d'audience ni de publicité
-      n'est utilisé sur ce site.
+      publicitaires et n'est pas partagé avec des tiers.
     </p>
+    <?php if (!empty($app['google_analytics_id'])): ?>
+    <p class="text-sm text-slate-600 leading-relaxed mb-4">
+      Avec votre consentement, ce site utilise également <strong>Google Analytics</strong> (cookies de mesure
+      d'audience) pour comprendre la fréquentation du site (pages visitées, provenance des visites) de façon
+      agrégée et anonymisée. Ces cookies ne sont déposés qu'après avoir cliqué sur « Accepter » dans la bannière
+      cookies, et vous pouvez refuser leur dépôt sans que cela n'affecte votre navigation. Google peut être
+      amené à traiter ces données en dehors de l'Union européenne ; consultez la
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="text-brand-500 hover:text-brand-600 underline">politique de confidentialité de Google</a>
+      pour plus d'informations.
+    </p>
+    <?php else: ?>
+    <p class="text-sm text-slate-600 leading-relaxed mb-4">
+      Aucun cookie de mesure d'audience ni de publicité n'est utilisé sur ce site.
+    </p>
+    <?php endif; ?>
 
     <h2 class="text-xl font-bold text-ink mt-8 mb-3">8. Vos droits</h2>
     <p class="text-sm text-slate-600 leading-relaxed mb-4">

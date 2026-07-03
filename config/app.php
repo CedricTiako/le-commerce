@@ -11,6 +11,10 @@ return [
     'debug'       => filter_var(getenv('APP_DEBUG'), FILTER_VALIDATE_BOOLEAN),
     'timezone'    => 'Europe/Paris',
     'locale'      => 'fr',
+    // Identifiant de mesure Google Analytics 4 (ex. "G-XXXXXXXXXX").
+    // Le script n'est chargé côté navigateur qu'après consentement de
+    // l'utilisateur via la bannière cookies (voir partials/cookie-consent.php).
+    'google_analytics_id' => getenv('GOOGLE_ANALYTICS_ID') ?: '',
 
     // Informations de l'établissement (affichées dans header/footer)
     'shop' => [
