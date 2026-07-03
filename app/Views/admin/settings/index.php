@@ -107,6 +107,62 @@ require __DIR__ . '/../../partials/admin-page-header.php';
       </div>
     </div>
 
+    <div class="card card-md">
+      <h2 class="font-bold text-ink mb-4">Mentions légales &amp; hébergeur</h2>
+      <p class="text-sm text-gray-500 mb-4">Ces informations apparaissent sur la page « Mentions légales ». Elles peuvent être complétées plus tard.</p>
+      <div class="space-y-4">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold text-ink mb-1.5">Forme juridique</label>
+            <input type="text" name="legal_forme_juridique" placeholder="Ex : Entreprise individuelle, SARL..."
+                   value="<?= htmlspecialchars($shop['legal']['forme_juridique']) ?>" class="form-input">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-ink mb-1.5">Capital social <span class="text-gray-400 font-normal">(si société)</span></label>
+            <input type="text" name="legal_capital_social" placeholder="Ex : 10 000 €"
+                   value="<?= htmlspecialchars($shop['legal']['capital_social']) ?>" class="form-input">
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold text-ink mb-1.5">SIRET</label>
+            <input type="text" name="legal_siret" value="<?= htmlspecialchars($shop['legal']['siret']) ?>" class="form-input">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-ink mb-1.5">Directeur de la publication</label>
+            <input type="text" name="legal_directeur_publication" value="<?= htmlspecialchars($shop['legal']['directeur_publication']) ?>" class="form-input">
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold text-ink mb-1.5">Numéro RCS</label>
+            <input type="text" name="legal_rcs_numero" value="<?= htmlspecialchars($shop['legal']['rcs_numero']) ?>" class="form-input">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-ink mb-1.5">Ville d'immatriculation (RCS)</label>
+            <input type="text" name="legal_rcs_ville" value="<?= htmlspecialchars($shop['legal']['rcs_ville']) ?>" class="form-input">
+          </div>
+        </div>
+        <div class="border-t border-gray-100 pt-4">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">Hébergeur du site</p>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-semibold text-ink mb-1.5">Nom de l'hébergeur</label>
+              <input type="text" name="legal_hebergeur_nom" value="<?= htmlspecialchars($shop['legal']['hebergeur_nom']) ?>" class="form-input">
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-ink mb-1.5">Téléphone de l'hébergeur</label>
+              <input type="text" name="legal_hebergeur_telephone" value="<?= htmlspecialchars($shop['legal']['hebergeur_telephone']) ?>" class="form-input">
+            </div>
+          </div>
+          <div class="mt-4">
+            <label class="block text-sm font-semibold text-ink mb-1.5">Adresse de l'hébergeur</label>
+            <input type="text" name="legal_hebergeur_adresse" value="<?= htmlspecialchars($shop['legal']['hebergeur_adresse']) ?>" class="form-input">
+          </div>
+        </div>
+      </div>
+    </div>
+
     <button type="submit" class="btn-primary w-full">
       Enregistrer les modifications
     </button>

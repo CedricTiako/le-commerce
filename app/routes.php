@@ -13,6 +13,7 @@ use App\Controllers\FdjController;
 use App\Controllers\PresseController;
 use App\Controllers\ServicesController;
 use App\Controllers\ContactController;
+use App\Controllers\LegalController;
 use App\Controllers\Client\ClientDashboardController;
 use App\Controllers\Client\WalletController;
 use App\Controllers\Client\ClientPlaceholderController;
@@ -46,6 +47,10 @@ $router->get('/presse', PresseController::class, 'index');
 $router->get('/nos-services', ServicesController::class, 'index');
 $router->get('/contact', ContactController::class, 'index');
 $router->post('/contact', ContactController::class, 'send');
+$router->get('/mentions-legales', LegalController::class, 'mentionsLegales');
+$router->get('/cgu', LegalController::class, 'cgu');
+$router->get('/cgv', LegalController::class, 'cgv');
+$router->get('/politique-de-confidentialite', LegalController::class, 'confidentialite');
 
 // --- Authentification client ---
 $router->get('/inscription', RegisterController::class, 'index');

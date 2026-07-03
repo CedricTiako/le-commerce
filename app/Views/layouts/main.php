@@ -28,6 +28,7 @@
 
 <?php require __DIR__ . '/../partials/footer.php'; ?>
 <?php require __DIR__ . '/../partials/chat-widget.php'; ?>
+<?php require __DIR__ . '/../partials/cookie-consent.php'; ?>
 
 <script src="<?= BASE_PATH ?>/assets/js/app.js"></script>
 </body>

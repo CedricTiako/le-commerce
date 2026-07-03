@@ -44,9 +44,11 @@
 
     <div class="border-t border-slate-800 mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-slate-500">
       <p>&copy; <?= date('Y') ?> <?= htmlspecialchars($shop['name']) ?> - Tous droits réservés</p>
-      <div class="flex gap-2">
-        <span class="inline-block w-6 h-6 rounded bg-slate-800"></span>
-        <span class="inline-block w-6 h-6 rounded bg-slate-800"></span>
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-1 justify-center md:justify-end">
+        <a href="<?= BASE_PATH ?>/mentions-legales" class="hover:text-brand-500 transition-colors">Mentions légales</a>
+        <a href="<?= BASE_PATH ?>/cgu" class="hover:text-brand-500 transition-colors">CGU</a>
+        <a href="<?= BASE_PATH ?>/cgv" class="hover:text-brand-500 transition-colors">CGV</a>
+        <a href="<?= BASE_PATH ?>/politique-de-confidentialite" class="hover:text-brand-500 transition-colors">Confidentialité</a>
       </div>
     </div>
   </div>

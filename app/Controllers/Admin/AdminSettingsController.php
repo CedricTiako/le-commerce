@@ -36,6 +36,16 @@ class AdminSettingsController extends Controller
             'social_instagram' => trim((string) $this->input('social_instagram', '')),
             'latitude'         => trim((string) $this->input('latitude', '')),
             'longitude'        => trim((string) $this->input('longitude', '')),
+
+            'legal_forme_juridique'       => trim((string) $this->input('legal_forme_juridique', '')),
+            'legal_capital_social'        => trim((string) $this->input('legal_capital_social', '')),
+            'legal_siret'                 => trim((string) $this->input('legal_siret', '')),
+            'legal_rcs_numero'            => trim((string) $this->input('legal_rcs_numero', '')),
+            'legal_rcs_ville'             => trim((string) $this->input('legal_rcs_ville', '')),
+            'legal_directeur_publication' => trim((string) $this->input('legal_directeur_publication', '')),
+            'legal_hebergeur_nom'         => trim((string) $this->input('legal_hebergeur_nom', '')),
+            'legal_hebergeur_adresse'     => trim((string) $this->input('legal_hebergeur_adresse', '')),
+            'legal_hebergeur_telephone'   => trim((string) $this->input('legal_hebergeur_telephone', '')),
         ];
 
         if ($data['shop_name'] === '' || $data['shop_email'] === '' || !filter_var($data['shop_email'], FILTER_VALIDATE_EMAIL)) {

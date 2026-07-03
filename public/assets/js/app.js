@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initChatFab();
   initProximityWidget();
   initContactForm();
+  initCookieConsent();
 });
 
 /**
@@ -215,5 +216,24 @@ function initChatFab() {
       target.scrollIntoView({ behavior: 'smooth', block: 'center' });
       target.querySelector('input')?.focus();
     }
+  });
+}
+
+/** Bandeau d'information cookies : simple mention + mémorisation locale (pas de gestion de consentement, un seul cookie technique existe). */
+function initCookieConsent() {
+  const banner = document.getElementById('cookie-consent-banner');
+  if (!banner) return;
+
+  const STORAGE_KEY = 'lc_cookie_banner_dismissed';
+
+  if (localStorage.getItem(STORAGE_KEY) === '1') {
+    banner.remove();
+    return;
+  }
+
+  const dismissBtn = document.getElementById('cookie-consent-dismiss');
+  dismissBtn?.addEventListener('click', () => {
+    localStorage.setItem(STORAGE_KEY, '1');
+    banner.remove();
   });
 }

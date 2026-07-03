@@ -35,5 +35,20 @@ return [
         // dans le module Zonage & Proximité (Lot 7).
         'latitude'  => 49.6136,
         'longitude' => 1.5399,
+
+        // Informations légales (mentions légales / CGU / CGV), éditables
+        // depuis /admin/parametres. Vides par défaut : à compléter par le
+        // commerçant, affichées en « — » tant qu'elles ne le sont pas.
+        'legal' => [
+            'forme_juridique'       => '',
+            'capital_social'        => '',
+            'siret'                 => '',
+            'rcs_numero'            => '',
+            'rcs_ville'             => '',
+            'directeur_publication' => '',
+            'hebergeur_nom'         => '',
+            'hebergeur_adresse'     => '',
+            'hebergeur_telephone'   => '',
+        ],
     ],
 ];

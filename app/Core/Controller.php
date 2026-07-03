@@ -49,6 +49,17 @@ abstract class Controller
             ],
             'latitude'  => isset($overrides['latitude']) ? (float) $overrides['latitude'] : $defaults['latitude'],
             'longitude' => isset($overrides['longitude']) ? (float) $overrides['longitude'] : $defaults['longitude'],
+            'legal' => [
+                'forme_juridique'       => $overrides['legal_forme_juridique'] ?? $defaults['legal']['forme_juridique'],
+                'capital_social'        => $overrides['legal_capital_social'] ?? $defaults['legal']['capital_social'],
+                'siret'                 => $overrides['legal_siret'] ?? $defaults['legal']['siret'],
+                'rcs_numero'            => $overrides['legal_rcs_numero'] ?? $defaults['legal']['rcs_numero'],
+                'rcs_ville'             => $overrides['legal_rcs_ville'] ?? $defaults['legal']['rcs_ville'],
+                'directeur_publication' => $overrides['legal_directeur_publication'] ?? $defaults['legal']['directeur_publication'],
+                'hebergeur_nom'         => $overrides['legal_hebergeur_nom'] ?? $defaults['legal']['hebergeur_nom'],
+                'hebergeur_adresse'     => $overrides['legal_hebergeur_adresse'] ?? $defaults['legal']['hebergeur_adresse'],
+                'hebergeur_telephone'   => $overrides['legal_hebergeur_telephone'] ?? $defaults['legal']['hebergeur_telephone'],
+            ],
         ]);
     }
 
