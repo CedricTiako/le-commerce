@@ -19,7 +19,7 @@ $categoryLabels = [
 <section class="max-w-[1536px] mx-auto px-6 lg:px-10 py-12 space-y-10">
 
   <!-- Bières -->
-  <div class="bg-[#161513] rounded-2xl p-6 sm:p-10">
+  <div class="reveal hover-lift bg-[#161513] rounded-2xl p-6 sm:p-10">
     <h2 class="text-white font-bold text-xl mb-1">NOS BIÈRES À LA PRESSION ET EN BOUTEILLE</h2>
     <div class="w-10 h-1 bg-brand-500 rounded-full mb-8"></div>
 
@@ -52,7 +52,7 @@ $categoryLabels = [
 
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
     <!-- Planches -->
-    <div class="card card-md">
+    <div class="reveal hover-lift card card-md">
       <h2 class="font-bold text-lg text-ink mb-1">NOS PLANCHES À PARTAGER</h2>
       <div class="w-10 h-1 bg-brand-500 rounded-full mb-5"></div>
       <ul class="space-y-4">
@@ -73,7 +73,7 @@ $categoryLabels = [
     </div>
 
     <!-- Softs & chauds -->
-    <div class="card card-md">
+    <div class="reveal hover-lift card card-md" style="transition-delay:80ms">
       <h2 class="font-bold text-lg text-ink mb-1">SOFTS, CAFÉS & BOISSONS CHAUDES</h2>
       <div class="w-10 h-1 bg-brand-500 rounded-full mb-5"></div>
       <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">

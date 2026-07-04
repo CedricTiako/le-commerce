@@ -93,6 +93,43 @@
     @apply mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-600;
   }
 
+  /* Micro-interaction au survol des cartes (accueil, listes de contenu) */
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg;
+  }
+
+  /* Apparition en fondu + léger glissement au scroll (voir initScrollReveal en JS) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  /* Zoom lent (Ken Burns) sur la photo du hero, pour donner du mouvement sans distraire */
+  .hero-kenburns {
+    animation: hero-kenburns 18s ease-in-out infinite alternate;
+  }
+  @keyframes hero-kenburns {
+    from { transform: scale(1); }
+    to   { transform: scale(1.08); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-kenburns {
+      animation: none;
+    }
+  }
+
   .sidebar-collapsed {
     width: 88px !important;
     min-width: 88px !important;

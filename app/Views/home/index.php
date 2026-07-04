@@ -6,7 +6,7 @@ $heroImage = siteImage('hero_accueil', 'https://images.unsplash.com/photo-152860
 <!-- =====================  HERO  ===================== -->
 <section class="bg-white">
   <div class="max-w-[1536px] mx-auto grid grid-cols-1 lg:grid-cols-2 lg:items-stretch">
-    <div class="px-6 lg:px-10 xl:pl-16 py-10 lg:py-16 flex flex-col justify-center">
+    <div class="reveal px-6 lg:px-10 xl:pl-16 py-10 lg:py-16 flex flex-col justify-center">
       <p class="text-brand-500 font-extrabold text-xs sm:text-sm tracking-[0.15em] uppercase mb-3">
         Votre commerce de proximité à <?= htmlspecialchars(mb_strtoupper($shop['city'])) ?>
       </p>
@@ -28,8 +28,8 @@ $heroImage = siteImage('hero_accueil', 'https://images.unsplash.com/photo-152860
         </a>
       </div>
     </div>
-    <div class="relative min-h-[280px] lg:min-h-0">
-      <img src="<?= htmlspecialchars($heroImage) ?>" alt="Façade du commerce" class="absolute inset-0 w-full h-full object-cover" loading="eager" decoding="async">
+    <div class="relative min-h-[280px] lg:min-h-0 overflow-hidden">
+      <img src="<?= htmlspecialchars($heroImage) ?>" alt="Façade du commerce" class="hero-kenburns absolute inset-0 w-full h-full object-cover" loading="eager" decoding="async">
     </div>
   </div>
 </section>
@@ -41,7 +41,7 @@ $heroImage = siteImage('hero_accueil', 'https://images.unsplash.com/photo-152860
   <div class="flex flex-col gap-6">
 
     <!-- Nos bières -->
-    <div class="bg-[#161513] rounded-2xl p-6 sm:p-8">
+    <div class="reveal hover-lift bg-[#161513] rounded-2xl p-6 sm:p-8">
       <h2 class="text-white font-bold text-lg mb-1">NOS BIÈRES À DÉCOUVRIR</h2>
       <div class="w-10 h-1 bg-brand-500 rounded-full mb-6"></div>
 
@@ -61,7 +61,7 @@ $heroImage = siteImage('hero_accueil', 'https://images.unsplash.com/photo-152860
     </div>
 
     <!-- Planche à saucisson -->
-    <div class="bg-white border border-gray-100 rounded-2xl p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-[220px_1fr] gap-6 items-center">
+    <div class="reveal hover-lift bg-white border border-gray-100 rounded-2xl p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-[220px_1fr] gap-6 items-center" style="transition-delay:80ms">
       <?php $saucissonImg = siteImage('bar_planche_saucisson', 'https://images.unsplash.com/photo-1626200926749-2dc71c4b6e6e?q=80&w=600&auto=format&fit=crop'); ?>
       <img
         src="<?= htmlspecialchars($saucissonImg) ?>"
@@ -84,7 +84,7 @@ $heroImage = siteImage('hero_accueil', 'https://images.unsplash.com/photo-152860
   <div class="flex flex-col gap-6">
 
     <!-- WhatsApp -->
-    <div class="bg-white border border-gray-100 rounded-2xl p-6 sm:p-8 text-center">
+    <div class="reveal hover-lift bg-white border border-gray-100 rounded-2xl p-6 sm:p-8 text-center">
       <h2 class="font-bold text-lg text-ink mb-1">REJOIGNEZ-NOUS SUR <span class="text-emerald-500">WHATSAPP</span> !</h2>
       <div class="w-10 h-1 bg-brand-500 rounded-full mx-auto mb-3"></div>
       <p class="text-gray-500 text-sm mb-6">Recevez en exclusivité nos promotions, événements et nouveautés !</p>
@@ -101,7 +101,7 @@ $heroImage = siteImage('hero_accueil', 'https://images.unsplash.com/photo-152860
     </div>
 
     <!-- Tous les services -->
-    <div class="bg-white border border-gray-100 rounded-2xl p-6 sm:p-8">
+    <div class="reveal hover-lift bg-white border border-gray-100 rounded-2xl p-6 sm:p-8" style="transition-delay:80ms">
       <h2 class="font-bold text-lg text-ink mb-1">TOUS VOS SERVICES DU QUOTIDIEN</h2>
       <div class="w-10 h-1 bg-brand-500 rounded-full mb-4"></div>
 
@@ -135,7 +135,7 @@ $heroImage = siteImage('hero_accueil', 'https://images.unsplash.com/photo-152860
 <section class="max-w-[1536px] mx-auto px-6 lg:px-10 pb-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
   <!-- Avis Google -->
-  <div class="bg-white border border-gray-100 rounded-2xl p-6">
+  <div class="reveal hover-lift bg-white border border-gray-100 rounded-2xl p-6">
     <h3 class="font-bold text-sm text-ink mb-4">AVIS GOOGLE</h3>
     <div class="flex items-center gap-3 mb-2">
       <svg class="w-8 h-8" viewBox="0 0 48 48"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.1-.4-4.6H24v9h11.8c-.5 2.8-2.1 5.1-4.4 6.7v5.6h7.1c4.2-3.9 6.6-9.6 6.6-16.7z"/><path fill="#34A853" d="M24 46c6 0 11-2 14.6-5.4l-7.1-5.6c-2 1.4-4.5 2.2-7.5 2.2-5.8 0-10.7-3.9-12.4-9.2H4.3v5.8C7.9 41.1 15.3 46 24 46z"/><path fill="#FBBC05" d="M11.6 27.9c-.5-1.4-.7-2.9-.7-4.4s.3-3.1.7-4.4v-5.8H4.3C2.8 16.5 2 20.1 2 23.5s.8 7 2.3 10.2l7.3-5.8z"/><path fill="#EA4335" d="M24 10.9c3.3 0 6.2 1.1 8.5 3.3l6.3-6.3C34.9 4.2 29.9 2 24 2 15.3 2 7.9 6.9 4.3 13.7l7.3 5.8c1.7-5.3 6.6-9.2 12.4-9.2z"/></svg>
@@ -151,7 +151,7 @@ $heroImage = siteImage('hero_accueil', 'https://images.unsplash.com/photo-152860
   </div>
 
   <!-- Bons plans -->
-  <div class="bg-white border border-gray-100 rounded-2xl p-6">
+  <div class="reveal hover-lift bg-white border border-gray-100 rounded-2xl p-6" style="transition-delay:80ms">
     <h3 class="font-bold text-sm text-ink mb-4">LES BONS PLANS DU MOMENT</h3>
     <?php if ($deal): ?>
       <div class="bg-ink rounded-xl px-4 py-4 mb-3 text-center">
@@ -166,7 +166,7 @@ $heroImage = siteImage('hero_accueil', 'https://images.unsplash.com/photo-152860
   </div>
 
   <!-- Météo -->
-  <div class="bg-white border border-gray-100 rounded-2xl p-6" id="weather-widget" data-lat="49.6136" data-lng="1.5399">
+  <div class="reveal hover-lift bg-white border border-gray-100 rounded-2xl p-6" id="weather-widget" data-lat="49.6136" data-lng="1.5399" style="transition-delay:160ms">
     <h3 class="font-bold text-sm text-ink mb-4">MÉTÉO À <?= htmlspecialchars(mb_strtoupper($shop['city'])) ?></h3>
     <div class="flex items-center gap-3 mb-2">
       <svg class="w-10 h-10 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><circle cx="8" cy="12" r="5"/><g class="text-gray-300" fill="currentColor"><path d="M14 16a4 4 0 0 0 0 8h6a3.5 3.5 0 0 0 .5-6.96A4.5 4.5 0 0 0 14 16z" transform="translate(0 -6)" fill="#d1d5db"/></g></svg>
@@ -177,7 +177,7 @@ $heroImage = siteImage('hero_accueil', 'https://images.unsplash.com/photo-152860
   </div>
 
   <!-- Assistant -->
-  <div class="bg-white border border-gray-100 rounded-2xl p-6 flex flex-col">
+  <div class="reveal hover-lift bg-white border border-gray-100 rounded-2xl p-6 flex flex-col" style="transition-delay:240ms">
     <h3 class="font-bold text-sm text-ink mb-3">ASSISTANT LE COMMERCE</h3>
     <p class="text-sm text-gray-600 mb-3">Bonjour ! 👋<br>Que recherchez-vous aujourd'hui ?</p>
     <div class="flex flex-wrap gap-2 mb-3">
