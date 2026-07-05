@@ -4,106 +4,109 @@ $heroImage = siteImage('hero_accueil', 'https://images.unsplash.com/photo-152860
 ?>
 
 <!-- =====================  HERO  ===================== -->
-<section class="bg-white">
-  <div class="max-w-[1536px] mx-auto grid grid-cols-1 lg:grid-cols-2 lg:items-stretch">
-    <div class="reveal px-6 lg:px-10 xl:pl-16 py-10 lg:py-16 flex flex-col justify-center">
+<section class="relative h-[500px] lg:h-[600px]">
+  <!-- Image en background sur toute la section -->
+  <div class="absolute inset-0">
+    <img src="<?= htmlspecialchars($heroImage) ?>" alt="Façade du commerce" class="absolute inset-0 w-full h-full object-cover" loading="eager" decoding="async">
+  </div>
+
+  <!-- Contenu -->
+  <div class="max-w-[1536px] mx-auto px-6 lg:px-10 h-full flex items-start justify-start">
+    <div class="bg-white/90 backdrop-blur-sm p-6 h-full flex flex-col items-center justify-center">
       <p class="text-brand-500 font-extrabold text-xs sm:text-sm tracking-[0.15em] uppercase mb-3">
-        Votre commerce de proximité à <?= htmlspecialchars(mb_strtoupper($shop['city'])) ?>
+        VOTRE COMMERCE DE PROXIMITÉ À FORGES-LES-EAUX
       </p>
       <h1 class="text-5xl sm:text-6xl font-extrabold text-ink leading-[1.02] mb-2">LE COMMERCE</h1>
       <p class="text-sm sm:text-base font-bold tracking-[0.2em] text-ink uppercase mb-5">
-        <?= htmlspecialchars($app['baseline']) ?>
+        Bar, Tabac, PMU, FDJ, Presse
       </p>
       <p class="text-slate-500 text-base leading-relaxed mb-8 max-w-md">
-        Un lieu convivial où se retrouver, se détendre et profiter de nombreux services au quotidien.
+        Votre commerce de proximité à Forges-les-Eaux
       </p>
       <div class="flex flex-wrap gap-3">
         <a href="<?= BASE_PATH ?>/le-bar" class="btn-primary uppercase tracking-wide">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 3h13v9a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V3z"/><path stroke-linecap="round" stroke-linejoin="round" d="M17 8h1.5a2.5 2.5 0 0 1 0 5H17"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 19h9"/></svg>
-          Découvrir le Bar
+          DÉCOUVRIR LE BAR
         </a>
         <a href="<?= BASE_PATH ?>/contact" class="btn-outline uppercase tracking-wide">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-6.1-7-11a7 7 0 1 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Nous trouver
+          NOUS TROUVER
         </a>
       </div>
-    </div>
-    <div class="relative min-h-[280px] lg:min-h-0 overflow-hidden">
-      <img src="<?= htmlspecialchars($heroImage) ?>" alt="Façade du commerce" class="hero-kenburns absolute inset-0 w-full h-full object-cover" loading="eager" decoding="async">
     </div>
   </div>
 </section>
 
-<!-- =====================  BLOC 3 COLONNES  ===================== -->
-<section class="max-w-[1536px] mx-auto px-6 lg:px-10 pb-10 grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-6">
+<!-- =====================  BLOC 4 COLONNES  ===================== -->
+<section class="max-w-[1536px] mx-auto px-6 lg:px-10 pb-10 grid grid-cols-1 lg:grid-cols-12 gap-6">
 
-  <!-- Colonne gauche : Bières + Planche -->
-  <div class="flex flex-col gap-6">
-
-    <!-- Nos bières -->
-    <div class="reveal hover-lift bg-[#161513] rounded-2xl p-6 sm:p-8">
-      <h2 class="text-white font-bold text-lg mb-1">NOS BIÈRES À DÉCOUVRIR</h2>
-      <div class="w-10 h-1 bg-brand-500 rounded-full mb-6"></div>
-
-      <div class="grid grid-cols-3 sm:grid-cols-5 gap-4 mb-6">
-        <?php foreach ($beers as $beer): ?>
-          <div class="text-center">
-            <?= beerGlass(drinkTone($beer['category']), drinkShape($beer['category'])) ?>
-            <p class="text-white text-xs font-semibold mt-2 leading-tight"><?= htmlspecialchars($beer['name']) ?></p>
-          </div>
-        <?php endforeach; ?>
+    <!-- Nos bières (5/12) -->
+    <div class="reveal hover-lift rounded-2xl p-6 sm:p-8 lg:col-span-5 flex flex-col relative overflow-hidden">
+      <!-- Image de fond -->
+      <div class="absolute inset-0">
+        <img src="<?= BASE_PATH ?>/assets/images/biere-1.jpeg" alt="Bières" class="w-full h-full object-cover" loading="lazy" decoding="async">
+        <div class="absolute inset-0 bg-black/60"></div>
       </div>
+      
+      <div class="relative z-10 flex flex-col h-full">
+        <h2 class="text-white font-bold text-lg mb-1">NOS BIÈRES À DÉCOUVRIR</h2>
+        <div class="w-10 h-1 bg-brand-500 rounded-full mb-6"></div>
+
+      <div class="flex-grow"></div>
 
       <a href="<?= BASE_PATH ?>/le-bar" class="flex items-center justify-between bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm px-6 py-3.5 rounded-full transition-colors">
         VOIR LA CARTE COMPLÈTE DES BOISSONS
         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </a>
+      </div>
     </div>
 
-    <!-- Planche à saucisson -->
-    <div class="reveal hover-lift bg-white border border-gray-100 rounded-2xl p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-[220px_1fr] gap-6 items-center" style="transition-delay:80ms">
+    <!-- Planche à saucisson (3/12) -->
+    <div class="reveal hover-lift bg-white border border-gray-100 rounded-2xl p-5 lg:p-6 lg:col-span-3 flex flex-col" style="transition-delay:80ms">
       <?php $saucissonImg = siteImage('bar_planche_saucisson', 'https://images.unsplash.com/photo-1626200926749-2dc71c4b6e6e?q=80&w=600&auto=format&fit=crop'); ?>
       <img
         src="<?= htmlspecialchars($saucissonImg) ?>"
         alt="Planche à saucisson, cornichons et fromage"
-        class="w-full h-40 object-cover rounded-xl"
+        class="w-full h-28 lg:h-32 object-cover rounded-xl mb-3"
         loading="lazy" decoding="async">
-      <div>
-        <h2 class="font-bold text-lg text-ink mb-1">NOTRE PLANCHE À SAUCISSON</h2>
-        <div class="w-10 h-1 bg-brand-500 rounded-full mb-3"></div>
-        <p class="text-gray-500 text-sm mb-5">Saucisson, cornichons, fromage et pain frais. Le plaisir de partager un bon moment !</p>
-        <a href="<?= BASE_PATH ?>/le-bar" class="btn-primary">
+      <div class="flex-grow flex flex-col">
+        <h2 class="font-bold text-base text-ink mb-1">NOTRE PLANCHE À SAUCISSON</h2>
+        <div class="w-10 h-1 bg-brand-500 rounded-full mb-2"></div>
+        <p class="text-gray-500 text-xs mb-3 flex-grow">Saucisson, cornichons, fromage et pain frais. Le plaisir de partager un bon moment !</p>
+        <a href="<?= BASE_PATH ?>/le-bar" class="btn-primary w-full justify-center text-xs py-2.5">
           Découvrir notre planche
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
         </a>
       </div>
     </div>
-  </div>
 
-  <!-- Colonne droite : WhatsApp + Services -->
-  <div class="flex flex-col gap-6">
+    <!-- WhatsApp (2/12) -->
+    <div class="reveal hover-lift bg-white border border-gray-100 rounded-2xl p-4 lg:p-5 lg:col-span-2 text-center flex flex-col" style="transition-delay:160ms">
+      <h2 class="font-bold text-sm text-ink mb-1">REJOIGNEZ-NOUS SUR <span class="text-emerald-500">WHATSAPP</span> !</h2>
+      <div class="w-10 h-1 bg-brand-500 rounded-full mx-auto mb-2"></div>
+      <p class="text-gray-500 text-xs mb-3">Recevez en exclusivité nos promotions, événements et nouveautés !</p>
 
-    <!-- WhatsApp -->
-    <div class="reveal hover-lift bg-white border border-gray-100 rounded-2xl p-6 sm:p-8 text-center">
-      <h2 class="font-bold text-lg text-ink mb-1">REJOIGNEZ-NOUS SUR <span class="text-emerald-500">WHATSAPP</span> !</h2>
-      <div class="w-10 h-1 bg-brand-500 rounded-full mx-auto mb-3"></div>
-      <p class="text-gray-500 text-sm mb-6">Recevez en exclusivité nos promotions, événements et nouveautés !</p>
-
-      <div class="w-16 h-16 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center mx-auto mb-6">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20z"/></svg>
+      <div class="bg-white border border-gray-200 rounded-xl p-2 inline-block mb-3 flex-grow flex items-center justify-center">
+        <svg viewBox="0 0 100 100" class="w-20 h-20 lg:w-24 lg:h-24">
+          <rect width="100" height="100" fill="#fff"/>
+          <rect x="18" y="6" width="6" height="6" fill="#111"/><rect x="24" y="6" width="6" height="6" fill="#111"/><rect x="84" y="6" width="6" height="6" fill="#111"/><rect x="6" y="12" width="6" height="6" fill="#111"/><rect x="24" y="12" width="6" height="6" fill="#111"/><rect x="30" y="12" width="6" height="6" fill="#111"/><rect x="72" y="12" width="6" height="6" fill="#111"/><rect x="84" y="12" width="6" height="6" fill="#111"/><rect x="6" y="18" width="6" height="6" fill="#111"/><rect x="12" y="18" width="6" height="6" fill="#111"/><rect x="42" y="18" width="6" height="6" fill="#111"/><rect x="48" y="18" width="6" height="6" fill="#111"/><rect x="60" y="18" width="6" height="6" fill="#111"/><rect x="66" y="18" width="6" height="6" fill="#111"/><rect x="72" y="18" width="6" height="6" fill="#111"/><rect x="78" y="18" width="6" height="6" fill="#111"/><rect x="84" y="18" width="6" height="6" fill="#111"/><rect x="6" y="24" width="6" height="6" fill="#111"/><rect x="12" y="24" width="6" height="6" fill="#111"/><rect x="42" y="24" width="6" height="6" fill="#111"/><rect x="48" y="24" width="6" height="6" fill="#111"/><rect x="60" y="24" width="6" height="6" fill="#111"/><rect x="66" y="24" width="6" height="6" fill="#111"/><rect x="72" y="24" width="6" height="6" fill="#111"/><rect x="78" y="24" width="6" height="6" fill="#111"/><rect x="84" y="24" width="6" height="6" fill="#111"/><rect x="12" y="30" width="6" height="6" fill="#111"/><rect x="30" y="30" width="6" height="6" fill="#111"/><rect x="42" y="30" width="6" height="6" fill="#111"/><rect x="54" y="30" width="6" height="6" fill="#111"/><rect x="60" y="30" width="6" height="6" fill="#111"/><rect x="78" y="30" width="6" height="6" fill="#111"/><rect x="12" y="36" width="6" height="6" fill="#111"/><rect x="18" y="36" width="6" height="6" fill="#111"/><rect x="24" y="36" width="6" height="6" fill="#111"/><rect x="30" y="36" width="6" height="6" fill="#111"/><rect x="36" y="36" width="6" height="6" fill="#111"/><rect x="42" y="36" width="6" height="6" fill="#111"/><rect x="84" y="36" width="6" height="6" fill="#111"/><rect x="12" y="42" width="6" height="6" fill="#111"/><rect x="18" y="42" width="6" height="6" fill="#111"/><rect x="24" y="42" width="6" height="6" fill="#111"/><rect x="30" y="42" width="6" height="6" fill="#111"/><rect x="60" y="42" width="6" height="6" fill="#111"/><rect x="12" y="48" width="6" height="6" fill="#111"/><rect x="24" y="48" width="6" height="6" fill="#111"/><rect x="30" y="48" width="6" height="6" fill="#111"/><rect x="42" y="48" width="6" height="6" fill="#111"/><rect x="48" y="48" width="6" height="6" fill="#111"/><rect x="54" y="48" width="6" height="6" fill="#111"/><rect x="60" y="48" width="6" height="6" fill="#111"/><rect x="66" y="48" width="6" height="6" fill="#111"/><rect x="84" y="48" width="6" height="6" fill="#111"/><rect x="6" y="54" width="6" height="6" fill="#111"/><rect x="24" y="54" width="6" height="6" fill="#111"/><rect x="30" y="54" width="6" height="6" fill="#111"/><rect x="54" y="54" width="6" height="6" fill="#111"/><rect x="60" y="54" width="6" height="6" fill="#111"/><rect x="66" y="54" width="6" height="6" fill="#111"/><rect x="12" y="60" width="6" height="6" fill="#111"/><rect x="18" y="60" width="6" height="6" fill="#111"/><rect x="24" y="60" width="6" height="6" fill="#111"/><rect x="36" y="60" width="6" height="6" fill="#111"/><rect x="48" y="60" width="6" height="6" fill="#111"/><rect x="66" y="60" width="6" height="6" fill="#111"/><rect x="84" y="60" width="6" height="6" fill="#111"/><rect x="6" y="66" width="6" height="6" fill="#111"/><rect x="12" y="66" width="6" height="6" fill="#111"/><rect x="18" y="66" width="6" height="6" fill="#111"/><rect x="48" y="66" width="6" height="6" fill="#111"/><rect x="54" y="66" width="6" height="6" fill="#111"/><rect x="60" y="66" width="6" height="6" fill="#111"/><rect x="78" y="66" width="6" height="6" fill="#111"/><rect x="84" y="66" width="6" height="6" fill="#111"/><rect x="12" y="72" width="6" height="6" fill="#111"/><rect x="24" y="72" width="6" height="6" fill="#111"/><rect x="42" y="72" width="6" height="6" fill="#111"/><rect x="48" y="72" width="6" height="6" fill="#111"/><rect x="54" y="72" width="6" height="6" fill="#111"/><rect x="72" y="72" width="6" height="6" fill="#111"/><rect x="78" y="72" width="6" height="6" fill="#111"/><rect x="6" y="78" width="6" height="6" fill="#111"/><rect x="24" y="78" width="6" height="6" fill="#111"/><rect x="30" y="78" width="6" height="6" fill="#111"/><rect x="60" y="78" width="6" height="6" fill="#111"/><rect x="66" y="78" width="6" height="6" fill="#111"/><rect x="72" y="78" width="6" height="6" fill="#111"/><rect x="78" y="78" width="6" height="6" fill="#111"/><rect x="84" y="78" width="6" height="6" fill="#111"/><rect x="6" y="84" width="6" height="6" fill="#111"/><rect x="36" y="84" width="6" height="6" fill="#111"/><rect x="54" y="84" width="6" height="6" fill="#111"/><rect x="66" y="84" width="6" height="6" fill="#111"/><rect x="78" y="84" width="6" height="6" fill="#111"/>          <rect x="6" y="6" width="18" height="18" fill="none" stroke="#111" stroke-width="4"/>
+          <rect x="76" y="6" width="18" height="18" fill="none" stroke="#111" stroke-width="4"/>
+          <rect x="6" y="76" width="18" height="18" fill="none" stroke="#111" stroke-width="4"/>
+        </svg>
       </div>
 
       <a href="https://wa.me/<?= htmlspecialchars(str_replace(['+',' '], '', $shop['phone_href'])) ?>"
-         target="_blank" rel="noopener" class="btn-whatsapp w-full">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20z"/></svg>
-        Je m'inscris sur WhatsApp
+         target="_blank" rel="noopener"
+         class="flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs px-4 py-2.5 rounded-lg transition-colors mt-auto">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20z"/></svg>
+        Je m'inscris
       </a>
     </div>
 
-    <!-- Tous les services -->
-    <div class="reveal hover-lift bg-white border border-gray-100 rounded-2xl p-6 sm:p-8" style="transition-delay:80ms">
-      <h2 class="font-bold text-lg text-ink mb-1">TOUS VOS SERVICES DU QUOTIDIEN</h2>
-      <div class="w-10 h-1 bg-brand-500 rounded-full mb-4"></div>
+    <!-- Tous les services (2/12) -->
+    <div class="reveal hover-lift bg-white border border-gray-100 rounded-2xl p-4 lg:p-5 lg:col-span-2 flex flex-col" style="transition-delay:240ms">
+      <h2 class="font-bold text-sm text-ink mb-1">TOUS VOS SERVICES DU QUOTIDIEN</h2>
+      <div class="w-10 h-1 bg-brand-500 rounded-full mb-2"></div>
 
       <?php
         $services = [
@@ -112,23 +115,22 @@ $heroImage = siteImage('hero_accueil', 'https://images.unsplash.com/photo-152860
           'Retrait d\'espèces', 'Et bien plus encore !',
         ];
       ?>
-      <ul class="space-y-2.5 mb-5">
+      <ul class="space-y-1.5 mb-3 flex-grow">
         <?php foreach ($services as $service): ?>
-          <li class="flex items-center gap-3 text-sm text-gray-600">
-            <span class="w-6 h-6 rounded-md bg-brand-50 text-brand-500 flex items-center justify-center shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <li class="flex items-center gap-2 text-xs text-gray-600">
+            <span class="w-5 h-5 rounded-md bg-brand-50 text-brand-500 flex items-center justify-center shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </span>
             <?= htmlspecialchars($service) ?>
           </li>
         <?php endforeach; ?>
       </ul>
 
-      <a href="<?= BASE_PATH ?>/nos-services" class="flex items-center justify-between bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm px-6 py-3.5 rounded-lg transition-colors">
+      <a href="<?= BASE_PATH ?>/nos-services" class="flex items-center justify-between bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs px-4 py-2.5 rounded-lg transition-colors mt-auto">
         VOIR TOUS LES SERVICES
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </a>
     </div>
-  </div>
 </section>
 
 <!-- =====================  BANDE INFOS (4 colonnes)  ===================== -->

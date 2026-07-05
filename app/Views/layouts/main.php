@@ -13,11 +13,14 @@
 <!-- CSS compilé (Tailwind + DaisyUI, build local via `npm run build`) -->
 <link rel="stylesheet" href="<?= BASE_PATH ?>/assets/css/app.css">
 <style>
-  ::-webkit-scrollbar { width: 8px; height: 8px; }
-  ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 8px; }
+  html, body { scrollbar-width: none !important; }
+  ::-webkit-scrollbar { width: 0px !important; height: 0px !important; display: none !important; }
+  ::-webkit-scrollbar-track { background: transparent !important; }
+  ::-webkit-scrollbar-thumb { background: transparent !important; }
+  ::-webkit-scrollbar-corner { background: transparent !important; }
 </style>
 </head>
-<body class="bg-white text-ink antialiased font-sans">
+<body class="bg-white text-ink antialiased font-sans overflow-x-hidden">
 
 <?php require __DIR__ . '/../partials/header.php'; ?>
 <?php require __DIR__ . '/../partials/flash.php'; ?>
