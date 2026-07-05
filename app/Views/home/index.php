@@ -4,31 +4,35 @@ $heroImage = siteImage('hero_accueil', 'https://images.unsplash.com/photo-152860
 ?>
 
 <!-- =====================  HERO  ===================== -->
-<section class="relative h-[500px] lg:h-[600px]">
+<section class="relative h-[420px] sm:h-[500px] lg:h-[560px] overflow-hidden">
   <!-- Image en background sur toute la section -->
   <div class="absolute inset-0">
-    <img src="<?= htmlspecialchars($heroImage) ?>" alt="Façade du commerce" class="absolute inset-0 w-full h-full object-cover" loading="eager" decoding="async">
+    <img src="<?= htmlspecialchars($heroImage) ?>" alt="Façade du commerce" class="absolute inset-0 w-full h-full object-cover object-center" loading="eager" decoding="async">
   </div>
 
-  <!-- Contenu -->
-  <div class="h-full flex items-start justify-start">
-    <div class="bg-white/90 backdrop-blur-sm p-6 h-full flex flex-col items-center justify-center">
-      <p class="text-brand-500 font-extrabold text-xs sm:text-sm tracking-[0.15em] uppercase mb-3">
+  <!-- Overlay dégradé blanc de gauche vers transparent -->
+  <div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent" style="width:60%"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-white via-white/50 to-transparent"></div>
+
+  <!-- Contenu aligné à gauche -->
+  <div class="relative h-full flex items-center">
+    <div class="px-8 sm:px-12 lg:px-16 max-w-xl flex flex-col justify-center">
+      <p class="text-brand-500 font-extrabold text-xs sm:text-sm tracking-[0.18em] uppercase mb-3">
         VOTRE COMMERCE DE PROXIMITÉ À FORGES-LES-EAUX
       </p>
-      <h1 class="text-5xl sm:text-6xl font-extrabold text-ink leading-[1.02] mb-2">LE COMMERCE</h1>
-      <p class="text-sm sm:text-base font-bold tracking-[0.2em] text-ink uppercase mb-5">
-        Bar, Tabac, PMU, FDJ, Presse
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-ink leading-[1.0] mb-2">LE COMMERCE</h1>
+      <p class="text-sm sm:text-base font-bold tracking-[0.18em] text-ink uppercase mb-4">
+        BAR · TABAC · PMU · FDJ · PRESSE · NIRIO
       </p>
-      <p class="text-slate-500 text-base leading-relaxed mb-8 max-w-md">
-        Votre commerce de proximité à Forges-les-Eaux
+      <p class="text-slate-500 text-sm sm:text-base leading-relaxed mb-7">
+        Un lieu convivial où se retrouver,<br>se détendre et profiter de nombreux<br>services au quotidien.
       </p>
       <div class="flex flex-wrap gap-3">
-        <a href="<?= BASE_PATH ?>/le-bar" class="btn-primary uppercase tracking-wide">
+        <a href="<?= BASE_PATH ?>/le-bar" class="btn-primary uppercase tracking-wide text-xs sm:text-sm">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 3h13v9a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V3z"/><path stroke-linecap="round" stroke-linejoin="round" d="M17 8h1.5a2.5 2.5 0 0 1 0 5H17"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 19h9"/></svg>
           DÉCOUVRIR LE BAR
         </a>
-        <a href="<?= BASE_PATH ?>/contact" class="btn-outline uppercase tracking-wide">
+        <a href="<?= BASE_PATH ?>/contact" class="btn-outline uppercase tracking-wide text-xs sm:text-sm">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-6.1-7-11a7 7 0 1 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           NOUS TROUVER
         </a>
