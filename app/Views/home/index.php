@@ -42,26 +42,29 @@ $heroImage = siteImage('hero_accueil', 'https://images.unsplash.com/photo-152860
 </section>
 
 <!-- =====================  BLOC 4 COLONNES  ===================== -->
-<section class="max-w-[1536px] mx-auto px-6 lg:px-10 pb-10 grid grid-cols-1 lg:grid-cols-12 gap-6">
+<section class="max-w-[1536px] mx-auto px-6 lg:px-10 pb-10 grid grid-cols-1 lg:grid-cols-12 gap-6 relative z-10 -mt-4">
 
     <!-- Nos bières (5/12) -->
-    <div class="reveal hover-lift rounded-2xl p-6 sm:p-8 lg:col-span-5 flex flex-col relative overflow-hidden">
+    <div class="reveal hover-lift rounded-2xl lg:col-span-5 flex flex-col relative overflow-hidden min-h-[280px]">
       <!-- Image de fond -->
       <div class="absolute inset-0">
-        <img src="<?= BASE_PATH ?>/assets/images/biere-1.jpeg" alt="Bières" class="w-full h-full object-cover" loading="lazy" decoding="async">
-        <div class="absolute inset-0 bg-black/60"></div>
+        <img src="<?= BASE_PATH ?>/assets/images/biere-1.jpeg" alt="Bières" class="w-full h-full object-cover object-center" loading="lazy" decoding="async">
+        <!-- Overlay sombre en bas pour lisibilité du titre et du bouton -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10"></div>
       </div>
-      
-      <div class="relative z-10 flex flex-col h-full">
-        <h2 class="text-white font-bold text-lg mb-1">NOS BIÈRES À DÉCOUVRIR</h2>
-        <div class="w-10 h-1 bg-brand-500 rounded-full mb-6"></div>
 
-      <div class="flex-grow"></div>
+      <div class="relative z-10 flex flex-col h-full p-6 sm:p-8">
+        <div>
+          <h2 class="text-white font-bold text-lg mb-1">NOS BIÈRES À DÉCOUVRIR</h2>
+          <div class="w-10 h-1 bg-brand-500 rounded-full"></div>
+        </div>
 
-      <a href="<?= BASE_PATH ?>/le-bar" class="flex items-center justify-between bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm px-6 py-3.5 rounded-full transition-colors">
-        VOIR LA CARTE COMPLÈTE DES BOISSONS
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-      </a>
+        <div class="flex-grow"></div>
+
+        <a href="<?= BASE_PATH ?>/le-bar" class="flex items-center justify-between bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm px-6 py-3.5 rounded-full transition-colors">
+          VOIR LA CARTE COMPLÈTE DES BOISSONS
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </a>
       </div>
     </div>
 
