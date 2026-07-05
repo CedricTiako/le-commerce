@@ -11,7 +11,7 @@ $heroImage = siteImage('hero_accueil', 'https://images.unsplash.com/photo-152860
   </div>
 
   <!-- Contenu -->
-  <div class="max-w-[1536px] mx-auto px-6 lg:px-10 h-full flex items-start justify-start">
+  <div class="h-full flex items-start justify-start">
     <div class="bg-white/90 backdrop-blur-sm p-6 h-full flex flex-col items-center justify-center">
       <p class="text-brand-500 font-extrabold text-xs sm:text-sm tracking-[0.15em] uppercase mb-3">
         VOTRE COMMERCE DE PROXIMITÉ À FORGES-LES-EAUX
