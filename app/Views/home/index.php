@@ -42,7 +42,7 @@ $heroImage = siteImage('hero_accueil', 'https://images.unsplash.com/photo-152860
 </section>
 
 <!-- =====================  BLOC 4 COLONNES  ===================== -->
-<section class="max-w-[1536px] mx-auto px-6 lg:px-10 pb-10 grid grid-cols-1 lg:grid-cols-12 gap-6 relative z-10 -mt-4">
+<section class="px-6 lg:px-10 pb-10 grid grid-cols-1 lg:grid-cols-12 gap-6 relative z-10 -mt-4">
 
     <!-- Nos bières (5/12) -->
     <div class="reveal hover-lift rounded-2xl lg:col-span-5 flex flex-col relative overflow-hidden min-h-[280px]">
@@ -141,61 +141,85 @@ $heroImage = siteImage('hero_accueil', 'https://images.unsplash.com/photo-152860
 </section>
 
 <!-- =====================  BANDE INFOS (4 colonnes)  ===================== -->
-<section class="max-w-[1536px] mx-auto px-6 lg:px-10 pb-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<section class="px-6 lg:px-10 pb-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
 
   <!-- Avis Google -->
-  <div class="reveal hover-lift bg-white border border-gray-100 rounded-2xl p-6">
-    <h3 class="font-bold text-sm text-ink mb-4">AVIS GOOGLE</h3>
-    <div class="flex items-center gap-3 mb-2">
-      <svg class="w-8 h-8" viewBox="0 0 48 48"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.1-.4-4.6H24v9h11.8c-.5 2.8-2.1 5.1-4.4 6.7v5.6h7.1c4.2-3.9 6.6-9.6 6.6-16.7z"/><path fill="#34A853" d="M24 46c6 0 11-2 14.6-5.4l-7.1-5.6c-2 1.4-4.5 2.2-7.5 2.2-5.8 0-10.7-3.9-12.4-9.2H4.3v5.8C7.9 41.1 15.3 46 24 46z"/><path fill="#FBBC05" d="M11.6 27.9c-.5-1.4-.7-2.9-.7-4.4s.3-3.1.7-4.4v-5.8H4.3C2.8 16.5 2 20.1 2 23.5s.8 7 2.3 10.2l7.3-5.8z"/><path fill="#EA4335" d="M24 10.9c3.3 0 6.2 1.1 8.5 3.3l6.3-6.3C34.9 4.2 29.9 2 24 2 15.3 2 7.9 6.9 4.3 13.7l7.3 5.8c1.7-5.3 6.6-9.2 12.4-9.2z"/></svg>
-      <div>
-        <div class="flex items-center gap-1 text-amber-400">
-          <?php for ($i = 0; $i < 5; $i++): ?><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.5 3 2-6.5L1 7h6.5L10 1l2.5 6H19l-5.5 4.5 2 6.5z"/></svg><?php endfor; ?>
-        </div>
-        <p class="font-bold text-ink text-lg leading-none"><?= number_format($shop['google_rating'], 1) ?>/5</p>
+  <div class="reveal hover-lift bg-white border border-gray-100 rounded-3xl p-6 shadow-sm" style="transition-delay:0ms">
+    <div class="flex items-center gap-2 mb-4">
+      <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
+        <svg class="w-5 h-5" viewBox="0 0 48 48"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.1-.4-4.6H24v9h11.8c-.5 2.8-2.1 5.1-4.4 6.7v5.6h7.1c4.2-3.9 6.6-9.6 6.6-16.7z"/><path fill="#34A853" d="M24 46c6 0 11-2 14.6-5.4l-7.1-5.6c-2 1.4-4.5 2.2-7.5 2.2-5.8 0-10.7-3.9-12.4-9.2H4.3v5.8C7.9 41.1 15.3 46 24 46z"/><path fill="#FBBC05" d="M11.6 27.9c-.5-1.4-.7-2.9-.7-4.4s.3-3.1.7-4.4v-5.8H4.3C2.8 16.5 2 20.1 2 23.5s.8 7 2.3 10.2l7.3-5.8z"/><path fill="#EA4335" d="M24 10.9c3.3 0 6.2 1.1 8.5 3.3l6.3-6.3C34.9 4.2 29.9 2 24 2 15.3 2 7.9 6.9 4.3 13.7l7.3 5.8c1.7-5.3 6.6-9.2 12.4-9.2z"/></svg>
       </div>
+      <h3 class="font-bold text-sm text-ink">AVIS GOOGLE</h3>
+    </div>
+    <div class="mb-1">
+      <span class="text-3xl font-extrabold text-ink"><?= number_format($shop['google_rating'], 1) ?></span>
+      <span class="text-sm text-gray-500 font-semibold">/5</span>
+    </div>
+    <div class="flex items-center gap-1 text-amber-400 mb-2">
+      <?php for ($i = 0; $i < 5; $i++): ?><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.5 3 2-6.5L1 7h6.5L10 1l2.5 6H19l-5.5 4.5 2 6.5z"/></svg><?php endfor; ?>
     </div>
     <p class="text-gray-500 text-xs mb-4">Basé sur plus de <?= $shop['google_reviews_count'] ?> avis</p>
-    <a href="https://www.google.com/maps" target="_blank" rel="noopener" class="block text-center border border-gray-200 rounded-full py-2.5 text-sm font-semibold text-ink hover:bg-gray-50 transition-colors">Laisser un avis</a>
+    <a href="https://www.google.com/maps" target="_blank" rel="noopener" class="block text-center border border-gray-200 rounded-full py-2.5 text-sm font-semibold text-ink hover:border-brand-500 hover:text-brand-500 transition-colors">Laisser un avis</a>
   </div>
 
   <!-- Bons plans -->
-  <div class="reveal hover-lift bg-white border border-gray-100 rounded-2xl p-6" style="transition-delay:80ms">
-    <h3 class="font-bold text-sm text-ink mb-4">LES BONS PLANS DU MOMENT</h3>
+  <div class="reveal hover-lift bg-white border border-gray-100 rounded-3xl p-6 shadow-sm flex flex-col" style="transition-delay:80ms">
+    <div class="flex items-center gap-2 mb-4">
+      <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-500">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a4 4 0 0 0-7.7-1.6A4 4 0 0 0 1 8v4a4 4 0 0 0 3.3 3.9l1 .2V20a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2h2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-3.8l1-.2A4 4 0 0 0 23 12V8a4 4 0 0 0-4-4 4 4 0 0 0-3.3 1.6A4 4 0 0 0 12 6v2z"/></svg>
+      </div>
+      <h3 class="font-bold text-sm text-ink">LES BONS PLANS</h3>
+    </div>
     <?php if ($deal): ?>
-      <div class="bg-ink rounded-xl px-4 py-4 mb-3 text-center">
+      <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl px-4 py-4 mb-3 text-center">
         <p class="text-brand-500 font-extrabold text-xl tracking-widest" style="text-shadow:0 0 8px rgba(200,16,46,.6)">
           <?= htmlspecialchars(mb_strtoupper($deal['title'])) ?>
         </p>
       </div>
       <p class="font-bold text-sm text-ink mb-1"><?= substr($deal['starts_at'],0,5) ?> - <?= substr($deal['ends_at'],0,5) ?></p>
       <p class="text-brand-500 font-bold text-sm mb-4"><?= htmlspecialchars(mb_strtoupper($deal['subtitle'])) ?></p>
+    <?php else: ?>
+      <div class="flex-grow flex items-center justify-center text-center py-4">
+        <p class="text-gray-400 text-sm">Aucune offre en cours</p>
+      </div>
     <?php endif; ?>
-    <a href="<?= BASE_PATH ?>/le-bar" class="block text-center border border-gray-200 rounded-full py-2.5 text-sm font-semibold text-ink hover:bg-gray-50 transition-colors">En profiter</a>
+    <a href="<?= BASE_PATH ?>/le-bar" class="block text-center bg-brand-500 hover:bg-brand-600 text-white rounded-full py-2.5 text-sm font-semibold transition-colors mt-auto">En profiter</a>
   </div>
 
   <!-- Météo -->
-  <div class="reveal hover-lift bg-white border border-gray-100 rounded-2xl p-6" id="weather-widget" data-lat="49.6136" data-lng="1.5399" style="transition-delay:160ms">
-    <h3 class="font-bold text-sm text-ink mb-4">MÉTÉO À <?= htmlspecialchars(mb_strtoupper($shop['city'])) ?></h3>
-    <div class="flex items-center gap-3 mb-2">
-      <svg class="w-10 h-10 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><circle cx="8" cy="12" r="5"/><g class="text-gray-300" fill="currentColor"><path d="M14 16a4 4 0 0 0 0 8h6a3.5 3.5 0 0 0 .5-6.96A4.5 4.5 0 0 0 14 16z" transform="translate(0 -6)" fill="#d1d5db"/></g></svg>
-      <p class="font-extrabold text-3xl text-ink" id="weather-temp">--°C</p>
+  <div class="reveal hover-lift bg-white border border-gray-100 rounded-3xl p-6 shadow-sm" id="weather-widget" data-lat="49.6136" data-lng="1.5399" style="transition-delay:160ms">
+    <div class="flex items-center gap-2 mb-4">
+      <div class="w-10 h-10 rounded-xl bg-sky-50 flex items-center justify-center text-sky-500">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 1v2m0 18v2M4.2 4.2l1.4 1.4m12.8 12.8l1.4 1.4M1 12h2m18 0h2M4.2 19.8l1.4-1.4m12.8-12.8l1.4-1.4"/></svg>
+      </div>
+      <h3 class="font-bold text-sm text-ink">MÉTÉO</h3>
     </div>
-    <p class="text-gray-500 text-xs mb-4" id="weather-desc">Chargement…</p>
+    <div class="flex items-center gap-4 mb-3">
+      <svg class="w-16 h-16 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 2v3m0 14v3M4.9 4.9l2.1 2.1m10 10l2.1 2.1M2 12h3m14 0h3M4.9 19.1l2.1-2.1m10-10l2.1-2.1"/></svg>
+      <div>
+        <p class="font-extrabold text-4xl text-ink" id="weather-temp">--°C</p>
+        <p class="text-gray-500 text-sm" id="weather-desc">Chargement…</p>
+      </div>
+    </div>
     <p class="text-gray-500 text-sm">Profitez de notre terrasse !</p>
   </div>
 
   <!-- Assistant -->
-  <div class="reveal hover-lift bg-white border border-gray-100 rounded-2xl p-6 flex flex-col" style="transition-delay:240ms">
-    <h3 class="font-bold text-sm text-ink mb-3">ASSISTANT LE COMMERCE</h3>
-    <p class="text-sm text-gray-600 mb-3">Bonjour ! 👋<br>Que recherchez-vous aujourd'hui ?</p>
-    <div class="flex flex-wrap gap-2 mb-3">
-      <?php foreach (['Êtes-vous ouvert ?', 'Match ce soir ?', 'Bières disponibles ?', 'Horaires PMU ?', 'Réserver une table ?', 'Jeux FDJ ?'] as $chip): ?>
-        <button type="button" class="chat-chip text-xs font-medium border border-gray-200 rounded-full px-3 py-1.5 hover:bg-gray-50"><?= htmlspecialchars($chip) ?></button>
+  <div class="reveal hover-lift bg-gradient-to-br from-slate-900 to-slate-800 border border-gray-100 rounded-3xl p-6 shadow-sm text-white flex flex-col" style="transition-delay:240ms">
+    <div class="flex items-center gap-2 mb-4">
+      <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01"/></svg>
+      </div>
+      <h3 class="font-bold text-sm">ASSISTANT</h3>
+    </div>
+    <p class="text-sm text-gray-300 mb-3">Bonjour ! 👋<br>Que recherchez-vous aujourd'hui ?</p>
+    <div class="flex flex-wrap gap-2 mb-4">
+      <?php foreach (['Ouvert ?', 'Match ?', 'Bières ?', 'PMU ?', 'Table ?', 'FDJ ?'] as $chip): ?>
+        <button type="button" class="chat-chip text-xs font-medium border border-white/20 rounded-full px-3 py-1.5 hover:bg-white/10 text-gray-200"><?= htmlspecialchars($chip) ?></button>
       <?php endforeach; ?>
     </div>
     <form id="assistant-form" class="mt-auto flex gap-2">
-      <input type="text" placeholder="Écrivez votre question…" class="min-w-0 flex-1 border border-gray-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30">
+      <input type="text" placeholder="Écrivez votre question…" class="min-w-0 flex-1 bg-white/10 border border-white/20 rounded-full px-4 py-2 text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500/30">
       <button type="submit" class="w-9 h-9 rounded-full bg-brand-500 hover:bg-brand-600 text-white flex items-center justify-center shrink-0">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
       </button>
