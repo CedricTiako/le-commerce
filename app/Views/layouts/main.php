@@ -8,7 +8,7 @@
 
 <!-- Polices -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
 
 <!-- CSS compilé (Tailwind + DaisyUI, build local via `npm run build`) -->
 <link rel="stylesheet" href="<?= BASE_PATH ?>/assets/css/app.css">

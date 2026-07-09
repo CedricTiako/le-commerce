@@ -1,55 +1,70 @@
-<footer class="bg-slate-950 text-slate-300">
-  <div class="max-w-[1536px] mx-auto px-6 lg:px-10 py-14">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+<footer style="background:#11213c; color:#ffffff;">
+  <div class="max-w-[1536px] mx-auto px-6 lg:px-8" style="padding-top:36px; padding-bottom:36px;">
 
-      <!-- Logo -->
+    <!-- Grille 4 colonnes (proportions maquette) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6" style="--lg-tpl:1.3fr 1.2fr 1.3fr 1fr;">
+
+      <!-- Col 1 : Logo + copyright -->
       <div>
-        <span class="font-logo text-[32px] font-bold text-brand-500 block -mb-1"><?= htmlspecialchars($shop['name']) ?></span>
-        <p class="text-[11px] tracking-[0.22em] text-slate-500 font-semibold mt-1 uppercase">BAR · TABAC · PMU · FDJ · PRESSE · NIRIO</p>
-        <p class="text-sm text-slate-400 leading-relaxed mt-5">Un commerce de proximité qui vous accueille avec professionnalisme et services rapides au cœur de <?= htmlspecialchars($shop['city']) ?>.</p>
+        <div class="font-logo leading-none mb-1" style="font-size:22px; color:#e8555a;">Le Commerce</div>
+        <div class="font-semibold uppercase" style="font-size:10px; letter-spacing:1px; color:#b7bfcf; margin-bottom:14px;">BAR &bull; TABAC &bull; PMU &bull; FDJ &bull; PRESSE &bull; NIRIO</div>
+        <div style="font-size:11.5px; color:#8b93a5;">&copy; <?= date('Y') ?> <?= htmlspecialchars($shop['name']) ?> - Tous droits réservés</div>
       </div>
 
-      <div>
-        <h3 class="font-semibold text-white mb-4">Coordonnées</h3>
-        <div class="space-y-3 text-sm text-slate-400">
-          <p><?= htmlspecialchars($shop['address']) ?><br><?= htmlspecialchars($shop['zipcode'] . ' ' . $shop['city']) ?></p>
-          <p>Téléphone : <a href="tel:<?= htmlspecialchars($shop['phone_href']) ?>" class="text-brand-500 hover:text-brand-400"><?= htmlspecialchars($shop['phone']) ?></a></p>
-          <p>Email : <a href="mailto:<?= htmlspecialchars($shop['email']) ?>" class="text-brand-500 hover:text-brand-400 break-all"><?= htmlspecialchars($shop['email']) ?></a></p>
+      <!-- Col 2 : Coordonnées -->
+      <div class="flex flex-col gap-3.5" style="font-size:13px; color:#dfe3ea;">
+        <div class="flex gap-2.5">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" class="shrink-0 mt-0.5"><path d="M12 22s7-7.5 7-13a7 7 0 10-14 0c0 5.5 7 13 7 13z" stroke="#e8555a" stroke-width="2"/><circle cx="12" cy="9" r="2.5" stroke="#e8555a" stroke-width="2"/></svg>
+          <span><?= htmlspecialchars($shop['address']) ?><br><?= htmlspecialchars($shop['zipcode'] . ' ' . $shop['city']) ?></span>
+        </div>
+        <div class="flex gap-2.5 items-center">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" class="shrink-0"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="#e8555a"/></svg>
+          <a href="tel:<?= htmlspecialchars($shop['phone_href']) ?>" class="hover:text-white transition-colors"><?= htmlspecialchars($shop['phone']) ?></a>
+        </div>
+        <div class="flex gap-2.5 items-center">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" class="shrink-0"><rect x="2" y="4" width="20" height="16" rx="2" stroke="#e8555a" stroke-width="2"/><path d="M2 6l10 7 10-7" stroke="#e8555a" stroke-width="2"/></svg>
+          <a href="mailto:<?= htmlspecialchars($shop['email']) ?>" class="hover:text-white transition-colors break-all"><?= htmlspecialchars($shop['email']) ?></a>
         </div>
       </div>
 
+      <!-- Col 3 : Horaires -->
       <div>
-        <h3 class="font-semibold text-white mb-4">Horaires</h3>
-        <div class="space-y-2 text-sm text-slate-400">
-          <p>Lundi au Samedi : <?= htmlspecialchars($shop['hours']['lun_sam']) ?></p>
-          <p>Dimanche : <?= htmlspecialchars($shop['hours']['dim']) ?></p>
+        <div class="flex items-center gap-2 font-extrabold mb-3" style="font-size:13px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#e8555a" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#e8555a" stroke-width="2" stroke-linecap="round"/></svg>
+          HORAIRES D'OUVERTURE
+        </div>
+        <div style="font-size:12.5px; color:#dfe3ea; line-height:2;">
+          Lundi au Samedi : <?= htmlspecialchars($shop['hours']['lun_sam']) ?><br>
+          Dimanche : <?= htmlspecialchars($shop['hours']['dim']) ?>
         </div>
       </div>
 
+      <!-- Col 4 : Réseaux sociaux -->
       <div>
-        <h3 class="font-semibold text-white mb-4">Suivez-nous</h3>
-        <p class="text-sm text-slate-400 mb-4">Retrouvez-nous sur Facebook et Instagram pour nos offres exclusives.</p>
-        <div class="flex items-center gap-3">
+        <div class="font-extrabold mb-3.5" style="font-size:13px;">SUIVEZ-NOUS</div>
+        <div class="flex gap-2.5">
           <a href="<?= htmlspecialchars($shop['social']['facebook']) ?>" target="_blank" rel="noopener" aria-label="Facebook"
-             class="w-10 h-10 rounded-full bg-brand-500 hover:bg-brand-600 flex items-center justify-center transition-colors text-white">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M13.5 21v-7.4h2.5l.4-2.9h-2.9V8.8c0-.85.24-1.43 1.46-1.43H16.5V4.8c-.26-.03-1.15-.11-2.19-.11-2.17 0-3.65 1.32-3.65 3.75v2.26H8.2v2.9h2.46V21h2.84z"/></svg>
+             class="flex items-center justify-center rounded-full hover:opacity-80 transition-opacity"
+             style="width:32px; height:32px; background:#1c2c4a;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M15 8h2V4h-2c-2.2 0-4 1.8-4 4v2H9v4h2v8h4v-8h3l1-4h-4v-2c0-.6.4-1 1-1z" fill="#ffffff"/></svg>
           </a>
           <a href="<?= htmlspecialchars($shop['social']['instagram']) ?>" target="_blank" rel="noopener" aria-label="Instagram"
-             class="w-10 h-10 rounded-full bg-brand-500 hover:bg-brand-600 flex items-center justify-center transition-colors text-white">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c2.7 0 3 0 4 .05 1 .05 1.7.2 2.3.45.6.25 1.1.6 1.6 1.1.5.5.85 1 1.1 1.6.25.6.4 1.3.45 2.3.05 1 .05 1.3.05 4s0 3-.05 4c-.05 1-.2 1.7-.45 2.3-.25.6-.6 1.1-1.1 1.6-.5.5-1 .85-1.6 1.1-.6.25-1.3.4-2.3.45-1 .05-1.3.05-4 .05s-3 0-4-.05c-1-.05-1.7-.2-2.3-.45-.6-.25-1.1-.6-1.6-1.1-.5-.5-.85-1-1.1-1.6-.25-.6-.4-1.3-.45-2.3-.05-1-.05-1.3-.05-4s0-3 .05-4c.05-1 .2-1.7.45-2.3.25-.6.6-1.1 1.1-1.6.5-.5 1-.85 1.6-1.1.6-.25 1.3-.4 2.3-.45 1-.05 1.3-.05 4-.05zM12 0C9.3 0 8.9 0 7.9.06 6.8.1 6 .3 5.3.6c-.8.3-1.4.7-2.1 1.3C2.5 2.6 2.1 3.2 1.8 4c-.3.7-.5 1.5-.55 2.6C1.2 7.6 1.2 8 1.2 10.7v2.6c0 2.7 0 3.1.06 4.1.05 1.1.25 1.9.55 2.6.3.8.7 1.4 1.3 2.1.7.6 1.3 1 2.1 1.3.7.3 1.5.5 2.6.55 1.1.06 1.5.06 4.1.06s3.1 0 4.1-.06c1.1-.05 1.9-.25 2.6-.55.8-.3 1.4-.7 2.1-1.3.6-.7 1-1.3 1.3-2.1.3-.7.5-1.5.55-2.6.06-1.1.06-1.5.06-4.1v-2.6c0-2.7 0-3.1-.06-4.1-.05-1.1-.25-1.9-.55-2.6-.3-.8-.7-1.4-1.3-2.1-.7-.6-1.3-1-2.1-1.3-.7-.3-1.5-.5-2.6-.55C15.1 0 14.7 0 12 0zM12 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM19.6 5.6a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
+             class="flex items-center justify-center rounded-full hover:opacity-80 transition-opacity"
+             style="width:32px; height:32px; background:#1c2c4a;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#ffffff" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="#ffffff" stroke-width="2"/><circle cx="18" cy="6" r="1.2" fill="#ffffff"/></svg>
           </a>
         </div>
       </div>
+
     </div>
 
-    <div class="border-t border-slate-800 mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-slate-500">
-      <p>&copy; <?= date('Y') ?> <?= htmlspecialchars($shop['name']) ?> - Tous droits réservés</p>
-      <div class="flex flex-wrap items-center gap-x-4 gap-y-1 justify-center md:justify-end">
-        <a href="<?= BASE_PATH ?>/mentions-legales" class="hover:text-brand-500 transition-colors">Mentions légales</a>
-        <a href="<?= BASE_PATH ?>/cgu" class="hover:text-brand-500 transition-colors">CGU</a>
-        <a href="<?= BASE_PATH ?>/cgv" class="hover:text-brand-500 transition-colors">CGV</a>
-        <a href="<?= BASE_PATH ?>/politique-de-confidentialite" class="hover:text-brand-500 transition-colors">Confidentialité</a>
-      </div>
+    <!-- Liens légaux (hors maquette mais obligatoires légalement) -->
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-8 pt-5" style="border-top:1px solid #1c2c4a; font-size:11px; color:#5a6a80;">
+      <a href="<?= BASE_PATH ?>/mentions-legales" class="hover:text-white transition-colors">Mentions légales</a>
+      <a href="<?= BASE_PATH ?>/cgu" class="hover:text-white transition-colors">CGU</a>
+      <a href="<?= BASE_PATH ?>/cgv" class="hover:text-white transition-colors">CGV</a>
+      <a href="<?= BASE_PATH ?>/politique-de-confidentialite" class="hover:text-white transition-colors">Confidentialité</a>
     </div>
+
   </div>
 </footer>

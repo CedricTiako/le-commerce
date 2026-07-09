@@ -6,8 +6,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Poppins', 'sans-serif'],
-        logo: ['Dancing Script', 'cursive'],
+        sans: ['Montserrat', 'sans-serif'],
+        logo: ['Pacifico', 'cursive'],
       },
       colors: {
         brand: {
