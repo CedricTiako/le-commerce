@@ -1,8 +1,8 @@
 <?php use App\Core\Csrf; ?>
 
 <div class="w-full max-w-md bg-white border border-gray-100 rounded-2xl shadow-sm p-8">
-  <h1 class="font-extrabold text-2xl text-ink mb-1">Connexion</h1>
-  <p class="text-gray-500 text-sm mb-6">Accédez à votre portefeuille et vos avantages fidélité.</p>
+  <h1 class="font-extrabold text-ink mb-1" style="font-size:22px; letter-spacing:-0.5px;">Connexion</h1>
+  <p class="text-gray-500 mb-6" style="font-size:13px; letter-spacing:0.3px;">Accédez à votre portefeuille et vos avantages fidélité.</p>
 
   <?php if ($error): ?>
     <div class="flex items-start gap-2 bg-brand-50 text-brand-700 border border-brand-100 rounded-lg px-4 py-3 text-sm mb-5">
@@ -15,16 +15,16 @@
     <?= Csrf::field() ?>
 
     <div>
-      <label class="block text-sm font-semibold text-ink mb-1.5">Numéro WhatsApp</label>
+      <label class="block font-semibold text-ink mb-1.5" style="font-size:13px; letter-spacing:0.3px;">Numéro WhatsApp</label>
       <input type="tel" name="phone_whatsapp" required autofocus placeholder="06 12 34 56 78"
              value="<?= htmlspecialchars($old['phone'] ?? '') ?>"
-             class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500">
+             class="w-full bg-gray-50 border border-gray-100 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500">
     </div>
 
     <div>
-      <label class="block text-sm font-semibold text-ink mb-1.5">Mot de passe</label>
+      <label class="block font-semibold text-ink mb-1.5" style="font-size:13px; letter-spacing:0.3px;">Mot de passe</label>
       <input type="password" name="password" required placeholder="••••••••"
-             class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500">
+             class="w-full bg-gray-50 border border-gray-100 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500">
     </div>
 
     <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm px-6 py-3.5 rounded-lg transition-colors">

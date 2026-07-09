@@ -31,21 +31,36 @@ $implementedRoutes = ['/admin', '/admin/clients', '/admin/etablissement', '/admi
 <div id="admin-sidebar-backdrop" class="hidden fixed inset-0 bg-black/40 z-40 lg:hidden"></div>
 <aside id="admin-sidebar" class="fixed lg:sticky top-0 left-0 z-50 flex flex-col w-80 shrink-0 bg-slate-950 text-gray-300 h-screen overflow-y-auto -translate-x-full lg:translate-x-0 transition-transform duration-200 shadow-2xl">
 
-  <div class="px-6 py-6 border-b border-white/10 sidebar-brand flex items-center justify-between gap-3">
-    <?php $sidebarLogoUrl = siteImage('logo_site', ''); ?>
-    <a href="<?= BASE_PATH ?>/admin" class="flex flex-col leading-none sidebar-logo">
-      <?php if ($sidebarLogoUrl): ?>
-        <img src="<?= htmlspecialchars($sidebarLogoUrl) ?>" alt="<?= htmlspecialchars($shop['name']) ?>" class="h-9 w-auto sidebar-logo-text">
-      <?php else: ?>
-        <span class="font-logo text-[28px] font-bold text-brand-500 -mb-1 sidebar-logo-text"><?= htmlspecialchars($shop['name']) ?></span>
-        <span class="text-[10px] tracking-[0.18em] text-gray-500 font-medium sidebar-logo-tagline">BAR · TABAC · PMU · FDJ · PRESSE</span>
-      <?php endif; ?>
-    </a>
-    <button id="admin-collapse-menu-btn" class="hidden lg:inline-flex items-center justify-center p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-shadow shadow-sm" aria-label="Réduire le menu" aria-pressed="false">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-      </svg>
-    </button>
+  <div class="px-6 py-6 border-b border-white/10 sidebar-brand">
+    <!-- Ligne logo + bouton collapse -->
+    <div class="flex items-center justify-between gap-3 mb-5">
+      <?php $sidebarLogoUrl = siteImage('logo_site', ''); ?>
+      <a href="<?= BASE_PATH ?>/admin" class="flex flex-col leading-none sidebar-logo">
+        <?php if ($sidebarLogoUrl): ?>
+          <img src="<?= htmlspecialchars($sidebarLogoUrl) ?>" alt="<?= htmlspecialchars($shop['name']) ?>" class="h-9 w-auto sidebar-logo-text">
+        <?php else: ?>
+          <span class="font-logo text-[28px] text-brand-500 -mb-1 sidebar-logo-text"><?= htmlspecialchars($shop['name']) ?></span>
+          <span class="text-[10px] tracking-[0.18em] text-gray-500 font-medium sidebar-logo-tagline">BAR · TABAC · PMU · FDJ · PRESSE</span>
+        <?php endif; ?>
+      </a>
+      <button id="admin-collapse-menu-btn" class="hidden lg:inline-flex items-center justify-center p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-shadow shadow-sm" aria-label="Réduire le menu" aria-pressed="false">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+    </div>
+    <!-- Photo du commerce + infos -->
+    <?php $shopPhotoUrl = siteImage('hero_accueil', BASE_PATH . '/assets/images/hero-facade.jpg'); ?>
+    <div class="flex flex-col items-center text-center sidebar-shop-info">
+      <div class="w-20 h-20 rounded-full overflow-hidden border-2 mb-3" style="border-color:#c8272c;">
+        <img src="<?= htmlspecialchars($shopPhotoUrl) ?>" alt="<?= htmlspecialchars($shop['name']) ?>" class="w-full h-full object-cover object-center">
+      </div>
+      <p class="font-bold text-white sidebar-logo-text" style="font-size:15px;"><?= htmlspecialchars($shop['name']) ?></p>
+      <p class="text-gray-400 sidebar-logo-tagline" style="font-size:11px; line-height:1.6;">
+        <?= htmlspecialchars($shop['address']) ?><br>
+        <?= htmlspecialchars($shop['zipcode'] . ' ' . $shop['city']) ?>
+      </p>
+    </div>
   </div>
 
   <nav class="flex-1 px-4 py-5 space-y-6">
@@ -56,6 +71,7 @@ $implementedRoutes = ['/admin', '/admin/clients', '/admin/etablissement', '/admi
           <?php foreach ($items as $href => [$label, $iconPath]): ?>
             <?php $isActive = $currentUri === $href; $isReady = in_array($href, $implementedRoutes, true); ?>
             <a href="<?= BASE_PATH . $href ?>"
+               data-label="<?= htmlspecialchars($label) ?>"
                class="sidebar-item flex items-center gap-3 px-3 py-2.5 rounded-2xl text-sm font-medium transition-colors
                       <?= $isActive ? 'bg-brand-500 text-white shadow-lg' : 'text-gray-300 hover:bg-white/5 hover:text-white' ?>">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-[18px] h-[18px] shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">

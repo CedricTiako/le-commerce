@@ -98,9 +98,13 @@ function initAdminSidebarCollapse() {
   const applyState = (collapsed) => {
     if (collapsed) {
       sidebar.classList.add('sidebar-collapsed');
+      sidebar.style.width = '72px';
+      sidebar.style.minWidth = '72px';
       btn.setAttribute('aria-pressed', 'true');
     } else {
       sidebar.classList.remove('sidebar-collapsed');
+      sidebar.style.width = '';
+      sidebar.style.minWidth = '';
       btn.setAttribute('aria-pressed', 'false');
     }
   };

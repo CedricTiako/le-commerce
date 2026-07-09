@@ -130,36 +130,90 @@
     }
   }
 
+  /* ── Sidebar réduite ── */
   .sidebar-collapsed {
-    width: 88px !important;
-    min-width: 88px !important;
+    width: 72px !important;
+    min-width: 72px !important;
   }
+
+  /* Masquer textes et labels */
   .sidebar-collapsed .sidebar-logo-text,
   .sidebar-collapsed .sidebar-logo-tagline,
   .sidebar-collapsed .sidebar-label,
   .sidebar-collapsed .sidebar-link-text,
   .sidebar-collapsed .sidebar-section-title,
-  .sidebar-collapsed .sidebar-footer {
+  .sidebar-collapsed .sidebar-footer,
+  .sidebar-collapsed .sidebar-shop-info p {
     display: none !important;
   }
+
+  /* Header : centrer photo réduite + bouton collapse */
+  .sidebar-collapsed .sidebar-brand {
+    padding: 12px 0 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+  .sidebar-collapsed .sidebar-brand > div:first-child {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+  .sidebar-collapsed .sidebar-shop-info {
+    display: flex !important;
+    justify-content: center !important;
+  }
+  .sidebar-collapsed .sidebar-shop-info > div {
+    width: 40px !important;
+    height: 40px !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Nav : padding réduit, centrage icônes */
+  .sidebar-collapsed nav {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .sidebar-collapsed .sidebar-section {
+    padding: 0 !important;
+  }
+
+  /* Liens : icône centrée dans un carré */
   .sidebar-collapsed .sidebar-item {
     justify-content: center !important;
     gap: 0 !important;
+    padding: 10px 0 !important;
+    margin: 1px 8px !important;
+    border-radius: 12px !important;
+    position: relative !important;
   }
-  .sidebar-collapsed .sidebar-item svg {
-    margin-right: 0 !important;
+  .sidebar-collapsed .sidebar-item.bg-brand-500 {
+    padding: 10px 0 !important;
   }
-  .sidebar-collapsed .sidebar-section {
-    padding-left: 0 !important;
+
+  /* Tooltip au survol */
+  .sidebar-collapsed .sidebar-item::after {
+    content: attr(data-label);
+    position: absolute;
+    left: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: #1e293b;
+    color: #f1f5f9;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    padding: 5px 10px;
+    border-radius: 8px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   }
-  .sidebar-collapsed .sidebar-brand {
-    justify-content: center !important;
-  }
-  .sidebar-collapsed .sidebar-brand .sidebar-logo {
-    margin: 0 auto !important;
-  }
-  .sidebar-collapsed .sidebar-brand .sidebar-logo-icon {
-    margin-right: 0 !important;
+  .sidebar-collapsed .sidebar-item:hover::after {
+    opacity: 1;
   }
 
   /* Bandeau de section public (Bar, Tabac, PMU, FDJ, Presse, Services, Contact) */

@@ -1,228 +1,177 @@
 <?php
 $beers = $drinks ?: [];
-$heroImage = siteImage('hero_accueil', 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&auto=format&fit=crop&w=1600');
+$heroImage = siteImage('hero_accueil', BASE_PATH . '/assets/images/hero-facade.jpg');
+$services = [
+    ['label' => 'Payer vos factures',         'color' => '#c8272c'],
+    ['label' => 'Amendes & sanctions',         'color' => '#e08a1e'],
+    ['label' => 'Paysafecard / Neosurf',       'color' => '#2e6fd6'],
+    ['label' => 'BlaBlaCar',                   'color' => '#1a1a3d'],
+    ['label' => 'Réserver votre place de bus', 'color' => '#c8272c'],
+    ['label' => 'Relais colis',                'color' => '#d6a12e'],
+    ['label' => 'Retrait d\'espèces',          'color' => '#2e6fd6'],
+    ['label' => 'Et bien plus encore !',       'color' => '#888888'],
+];
 ?>
 
 <!-- =====================  HERO  ===================== -->
-<section class="relative h-[420px] sm:h-[500px] lg:h-[560px] overflow-hidden">
-  <!-- Image en background sur toute la section -->
-  <div class="absolute inset-0">
-    <img src="<?= htmlspecialchars($heroImage) ?>" alt="Façade du commerce" class="absolute inset-0 w-full h-full object-cover object-center" loading="eager" decoding="async">
-  </div>
-
-  <!-- Overlay dégradé blanc de gauche vers transparent -->
-  <div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent" style="width:60%"></div>
-  <div class="absolute inset-0 bg-gradient-to-r from-white via-white/50 to-transparent"></div>
-
-  <!-- Contenu aligné à gauche -->
-  <div class="relative h-full flex items-center">
-    <div class="px-8 sm:px-12 lg:px-16 max-w-xl flex flex-col justify-center">
-      <p class="text-brand-500 font-extrabold text-xs sm:text-sm tracking-[0.18em] uppercase mb-3">
-        VOTRE COMMERCE DE PROXIMITÉ À FORGES-LES-EAUX
-      </p>
-      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-ink leading-[1.0] mb-2">LE COMMERCE</h1>
-      <p class="text-sm sm:text-base font-bold tracking-[0.18em] text-ink uppercase mb-4">
-        BAR · TABAC · PMU · FDJ · PRESSE · NIRIO
-      </p>
-      <p class="text-slate-500 text-sm sm:text-base leading-relaxed mb-7">
-        Un lieu convivial où se retrouver,<br>se détendre et profiter de nombreux<br>services au quotidien.
-      </p>
-      <div class="flex flex-wrap gap-3">
-        <a href="<?= BASE_PATH ?>/le-bar" class="btn-primary uppercase tracking-wide text-xs sm:text-sm">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 3h13v9a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V3z"/><path stroke-linecap="round" stroke-linejoin="round" d="M17 8h1.5a2.5 2.5 0 0 1 0 5H17"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 19h9"/></svg>
-          DÉCOUVRIR LE BAR
-        </a>
-        <a href="<?= BASE_PATH ?>/contact" class="btn-outline uppercase tracking-wide text-xs sm:text-sm">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-6.1-7-11a7 7 0 1 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          NOUS TROUVER
-        </a>
-      </div>
+<section class="relative w-full overflow-hidden" style="height:clamp(320px,55vw,460px);">
+  <img src="<?= htmlspecialchars($heroImage) ?>" alt="Façade du Commerce" class="absolute inset-0 w-full h-full object-cover object-center" loading="eager" decoding="async">
+  <div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.93) 32%,rgba(255,255,255,.55) 52%,rgba(255,255,255,.05) 68%,rgba(255,255,255,0) 100%);"></div>
+  <div class="relative h-full flex flex-col justify-center gap-3 px-6 sm:px-10 lg:px-8" style="max-width:480px;">
+    <p class="font-bold uppercase" style="color:#c8272c; font-size:13px; letter-spacing:.5px;">VOTRE COMMERCE DE PROXIMITÉ À FORGES-LES-EAUX</p>
+    <h1 class="font-black text-ink leading-[1.02]" style="font-size:clamp(2.8rem,5vw,3.75rem); letter-spacing:-1px;">LE COMMERCE</h1>
+    <p class="font-extrabold text-ink uppercase" style="font-size:clamp(1rem,1.8vw,1.3rem);">BAR &bull; TABAC &bull; PMU &bull; FDJ &bull; PRESSE &bull; NIRIO</p>
+    <p class="text-slate-500 leading-relaxed" style="font-size:15px; max-width:400px;">Un lieu convivial où se retrouver, se détendre et profiter de nombreux services au quotidien.</p>
+    <div class="flex flex-wrap gap-3 mt-2">
+      <a href="<?= BASE_PATH ?>/le-bar" class="inline-flex items-center gap-2 text-white font-bold px-6 py-3.5 rounded-lg transition-opacity hover:opacity-90" style="background:#c8272c; font-size:13px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 8h1a3 3 0 013 3v1a3 3 0 01-3 3h-1" stroke="white" stroke-width="2"/><path d="M2 8h16v6a4 4 0 01-4 4H6a4 4 0 01-4-4V8z" fill="white"/><path d="M6 2v3M10 2v3M14 2v3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+        DÉCOUVRIR LE BAR
+      </a>
+      <a href="<?= BASE_PATH ?>/contact" class="inline-flex items-center gap-2 font-bold px-6 py-3.5 rounded-lg border transition-colors text-ink hover:border-brand-500 hover:text-brand-500" style="background:#fff; border-color:#d8d8d8; font-size:13px;">
+        <svg width="14" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 22s7-7.5 7-13a7 7 0 10-14 0c0 5.5 7 13 7 13z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="2"/></svg>
+        NOUS TROUVER
+      </a>
     </div>
   </div>
 </section>
 
-<!-- =====================  BLOC 4 COLONNES  ===================== -->
-<section class="px-6 lg:px-10 pb-10 grid grid-cols-1 lg:grid-cols-12 gap-6 relative z-10 -mt-4">
+<style>
+@media (min-width:1024px) {
+  #home-cards { grid-template-columns: 4.05fr 1.62fr 1fr 1.34fr !important; }
+  #home-cards > div:first-child { grid-column: auto !important; }
+}
+</style>
+<!-- =====================  SECTION CARDS  ===================== -->
+<section class="px-6 sm:px-8 lg:px-8 py-5" style="background:#f4f3f1;">
+  <div id="home-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
-    <!-- Nos bières (5/12) -->
-    <div class="reveal hover-lift rounded-2xl lg:col-span-5 flex flex-col relative overflow-hidden min-h-[280px]">
-      <!-- Image de fond -->
-      <div class="absolute inset-0">
-        <img src="<?= BASE_PATH ?>/assets/images/biere-1.jpeg" alt="Bières" class="w-full h-full object-cover object-center" loading="lazy" decoding="async">
-        <!-- Overlay sombre en bas pour lisibilité du titre et du bouton -->
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10"></div>
+    <!-- Nos bières -->
+    <div class="reveal bg-white rounded-xl p-5 flex flex-col shadow-sm sm:col-span-2 lg:col-span-auto">
+      <h2 class="font-extrabold text-ink mb-3" style="font-size:17px; letter-spacing:.3px;">NOS BIÈRES À DÉCOUVRIR</h2>
+      <div class="rounded-lg flex flex-1 items-center overflow-hidden mb-3" style="background:#1c1815; padding:14px 12px;">
+        <?php $beersImg = siteImage('hero_bar', BASE_PATH . '/assets/images/beers-strip.jpg'); ?>
+        <img src="<?= htmlspecialchars($beersImg) ?>" alt="Bières à la carte" class="w-full h-auto block" loading="lazy" decoding="async">
       </div>
-
-      <div class="relative z-10 flex flex-col h-full p-6 sm:p-8">
-        <div>
-          <h2 class="text-white font-bold text-lg mb-1">NOS BIÈRES À DÉCOUVRIR</h2>
-          <div class="w-10 h-1 bg-brand-500 rounded-full"></div>
-        </div>
-
-        <div class="flex-grow"></div>
-
-        <a href="<?= BASE_PATH ?>/le-bar" class="flex items-center justify-between bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm px-6 py-3.5 rounded-full transition-colors">
-          VOIR LA CARTE COMPLÈTE DES BOISSONS
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-        </a>
-      </div>
+      <a href="<?= BASE_PATH ?>/le-bar" class="flex items-center justify-center gap-2 text-white font-bold rounded-lg py-3 transition-opacity hover:opacity-90" style="background:#c8272c; font-size:13px;">
+        VOIR LA CARTE COMPLÈTE DES BOISSONS
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
 
-    <!-- Planche à saucisson (3/12) -->
-    <div class="reveal hover-lift bg-white border border-gray-100 rounded-2xl p-5 lg:p-6 lg:col-span-3 flex flex-col" style="transition-delay:80ms">
-      <?php $saucissonImg = siteImage('bar_planche_saucisson', 'https://images.unsplash.com/photo-1626200926749-2dc71c4b6e6e?q=80&w=600&auto=format&fit=crop'); ?>
-      <img
-        src="<?= htmlspecialchars($saucissonImg) ?>"
-        alt="Planche à saucisson, cornichons et fromage"
-        class="w-full h-28 lg:h-32 object-cover rounded-xl mb-3"
-        loading="lazy" decoding="async">
-      <div class="flex-grow flex flex-col">
-        <h2 class="font-bold text-base text-ink mb-1">NOTRE PLANCHE À SAUCISSON</h2>
-        <div class="w-10 h-1 bg-brand-500 rounded-full mb-2"></div>
-        <p class="text-gray-500 text-xs mb-3 flex-grow">Saucisson, cornichons, fromage et pain frais. Le plaisir de partager un bon moment !</p>
-        <a href="<?= BASE_PATH ?>/le-bar" class="btn-primary w-full justify-center text-xs py-2.5">
-          Découvrir notre planche
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-        </a>
-      </div>
+    <!-- Planche à saucisson -->
+    <div class="reveal bg-white rounded-xl p-5 flex flex-col shadow-sm" style="transition-delay:80ms;">
+      <h2 class="font-extrabold text-ink mb-1" style="font-size:16px;">NOTRE PLANCHE À SAUCISSON</h2>
+      <div class="w-9 h-[3px] rounded-full mb-3" style="background:#c8272c;"></div>
+      <?php $saucissonImg = siteImage('bar_planche_saucisson', BASE_PATH . '/assets/images/charcuterie.jpg'); ?>
+      <img src="<?= htmlspecialchars($saucissonImg) ?>" alt="Planche à saucisson" class="w-full object-cover rounded-lg mb-3" style="height:150px;" loading="lazy" decoding="async">
+      <p class="text-slate-500 leading-relaxed flex-1 mb-3" style="font-size:13px;">Saucisson, cornichons, fromage et pain frais. Le plaisir de partager un bon moment !</p>
+      <a href="<?= BASE_PATH ?>/le-bar" class="flex items-center justify-center gap-2 text-white font-bold rounded-lg py-3 transition-opacity hover:opacity-90" style="background:#c8272c; font-size:12.5px;">
+        DÉCOUVRIR NOTRE PLANCHE
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
 
-    <!-- WhatsApp (2/12) -->
-    <div class="reveal hover-lift bg-white border border-gray-100 rounded-2xl p-4 lg:p-5 lg:col-span-2 text-center flex flex-col" style="transition-delay:160ms">
-      <h2 class="font-bold text-sm text-ink mb-1">REJOIGNEZ-NOUS SUR <span class="text-emerald-500">WHATSAPP</span> !</h2>
-      <div class="w-10 h-1 bg-brand-500 rounded-full mx-auto mb-2"></div>
-      <p class="text-gray-500 text-xs mb-3">Recevez en exclusivité nos promotions, événements et nouveautés !</p>
-
-      <div class="bg-white border border-gray-200 rounded-xl p-2 inline-block mb-3 flex-grow flex items-center justify-center">
-        <svg viewBox="0 0 100 100" class="w-20 h-20 lg:w-24 lg:h-24">
-          <rect width="100" height="100" fill="#fff"/>
-          <rect x="18" y="6" width="6" height="6" fill="#111"/><rect x="24" y="6" width="6" height="6" fill="#111"/><rect x="84" y="6" width="6" height="6" fill="#111"/><rect x="6" y="12" width="6" height="6" fill="#111"/><rect x="24" y="12" width="6" height="6" fill="#111"/><rect x="30" y="12" width="6" height="6" fill="#111"/><rect x="72" y="12" width="6" height="6" fill="#111"/><rect x="84" y="12" width="6" height="6" fill="#111"/><rect x="6" y="18" width="6" height="6" fill="#111"/><rect x="12" y="18" width="6" height="6" fill="#111"/><rect x="42" y="18" width="6" height="6" fill="#111"/><rect x="48" y="18" width="6" height="6" fill="#111"/><rect x="60" y="18" width="6" height="6" fill="#111"/><rect x="66" y="18" width="6" height="6" fill="#111"/><rect x="72" y="18" width="6" height="6" fill="#111"/><rect x="78" y="18" width="6" height="6" fill="#111"/><rect x="84" y="18" width="6" height="6" fill="#111"/><rect x="6" y="24" width="6" height="6" fill="#111"/><rect x="12" y="24" width="6" height="6" fill="#111"/><rect x="42" y="24" width="6" height="6" fill="#111"/><rect x="48" y="24" width="6" height="6" fill="#111"/><rect x="60" y="24" width="6" height="6" fill="#111"/><rect x="66" y="24" width="6" height="6" fill="#111"/><rect x="72" y="24" width="6" height="6" fill="#111"/><rect x="78" y="24" width="6" height="6" fill="#111"/><rect x="84" y="24" width="6" height="6" fill="#111"/><rect x="12" y="30" width="6" height="6" fill="#111"/><rect x="30" y="30" width="6" height="6" fill="#111"/><rect x="42" y="30" width="6" height="6" fill="#111"/><rect x="54" y="30" width="6" height="6" fill="#111"/><rect x="60" y="30" width="6" height="6" fill="#111"/><rect x="78" y="30" width="6" height="6" fill="#111"/><rect x="12" y="36" width="6" height="6" fill="#111"/><rect x="18" y="36" width="6" height="6" fill="#111"/><rect x="24" y="36" width="6" height="6" fill="#111"/><rect x="30" y="36" width="6" height="6" fill="#111"/><rect x="36" y="36" width="6" height="6" fill="#111"/><rect x="42" y="36" width="6" height="6" fill="#111"/><rect x="84" y="36" width="6" height="6" fill="#111"/><rect x="12" y="42" width="6" height="6" fill="#111"/><rect x="18" y="42" width="6" height="6" fill="#111"/><rect x="24" y="42" width="6" height="6" fill="#111"/><rect x="30" y="42" width="6" height="6" fill="#111"/><rect x="60" y="42" width="6" height="6" fill="#111"/><rect x="12" y="48" width="6" height="6" fill="#111"/><rect x="24" y="48" width="6" height="6" fill="#111"/><rect x="30" y="48" width="6" height="6" fill="#111"/><rect x="42" y="48" width="6" height="6" fill="#111"/><rect x="48" y="48" width="6" height="6" fill="#111"/><rect x="54" y="48" width="6" height="6" fill="#111"/><rect x="60" y="48" width="6" height="6" fill="#111"/><rect x="66" y="48" width="6" height="6" fill="#111"/><rect x="84" y="48" width="6" height="6" fill="#111"/><rect x="6" y="54" width="6" height="6" fill="#111"/><rect x="24" y="54" width="6" height="6" fill="#111"/><rect x="30" y="54" width="6" height="6" fill="#111"/><rect x="54" y="54" width="6" height="6" fill="#111"/><rect x="60" y="54" width="6" height="6" fill="#111"/><rect x="66" y="54" width="6" height="6" fill="#111"/><rect x="12" y="60" width="6" height="6" fill="#111"/><rect x="18" y="60" width="6" height="6" fill="#111"/><rect x="24" y="60" width="6" height="6" fill="#111"/><rect x="36" y="60" width="6" height="6" fill="#111"/><rect x="48" y="60" width="6" height="6" fill="#111"/><rect x="66" y="60" width="6" height="6" fill="#111"/><rect x="84" y="60" width="6" height="6" fill="#111"/><rect x="6" y="66" width="6" height="6" fill="#111"/><rect x="12" y="66" width="6" height="6" fill="#111"/><rect x="18" y="66" width="6" height="6" fill="#111"/><rect x="48" y="66" width="6" height="6" fill="#111"/><rect x="54" y="66" width="6" height="6" fill="#111"/><rect x="60" y="66" width="6" height="6" fill="#111"/><rect x="78" y="66" width="6" height="6" fill="#111"/><rect x="84" y="66" width="6" height="6" fill="#111"/><rect x="12" y="72" width="6" height="6" fill="#111"/><rect x="24" y="72" width="6" height="6" fill="#111"/><rect x="42" y="72" width="6" height="6" fill="#111"/><rect x="48" y="72" width="6" height="6" fill="#111"/><rect x="54" y="72" width="6" height="6" fill="#111"/><rect x="72" y="72" width="6" height="6" fill="#111"/><rect x="78" y="72" width="6" height="6" fill="#111"/><rect x="6" y="78" width="6" height="6" fill="#111"/><rect x="24" y="78" width="6" height="6" fill="#111"/><rect x="30" y="78" width="6" height="6" fill="#111"/><rect x="60" y="78" width="6" height="6" fill="#111"/><rect x="66" y="78" width="6" height="6" fill="#111"/><rect x="72" y="78" width="6" height="6" fill="#111"/><rect x="78" y="78" width="6" height="6" fill="#111"/><rect x="84" y="78" width="6" height="6" fill="#111"/><rect x="6" y="84" width="6" height="6" fill="#111"/><rect x="36" y="84" width="6" height="6" fill="#111"/><rect x="54" y="84" width="6" height="6" fill="#111"/><rect x="66" y="84" width="6" height="6" fill="#111"/><rect x="78" y="84" width="6" height="6" fill="#111"/>          <rect x="6" y="6" width="18" height="18" fill="none" stroke="#111" stroke-width="4"/>
-          <rect x="76" y="6" width="18" height="18" fill="none" stroke="#111" stroke-width="4"/>
-          <rect x="6" y="76" width="18" height="18" fill="none" stroke="#111" stroke-width="4"/>
-        </svg>
+    <!-- WhatsApp -->
+    <div class="reveal bg-white rounded-xl p-5 flex flex-col items-center shadow-sm" style="transition-delay:160ms;">
+      <h2 class="font-extrabold text-ink leading-snug self-start mb-2" style="font-size:15px;">REJOIGNEZ-NOUS<br>SUR <span style="color:#25D366;">WHATSAPP</span> !</h2>
+      <p class="text-slate-500 self-start mb-3" style="font-size:12.5px; line-height:1.6;">Recevez en exclusivité nos promotions, événements et nouveautés !</p>
+      <div class="flex-1 flex items-center justify-center py-2">
+        <img src="<?= BASE_PATH ?>/assets/images/qrcode.jpg" alt="QR Code WhatsApp" class="rounded-lg" style="width:120px; height:120px; object-fit:cover;" loading="lazy" decoding="async">
       </div>
-
-      <a href="https://wa.me/<?= htmlspecialchars(str_replace(['+',' '], '', $shop['phone_href'])) ?>"
+      <a href="https://wa.me/<?= htmlspecialchars(str_replace(['+', ' '], '', $shop['phone_href'])) ?>"
          target="_blank" rel="noopener"
-         class="flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs px-4 py-2.5 rounded-lg transition-colors mt-auto">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20z"/></svg>
-        Je m'inscris
+         class="flex items-center justify-center gap-2 text-white font-bold rounded-lg py-3 w-full mt-3 transition-opacity hover:opacity-90" style="background:#1fa855; font-size:13px;">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20z"/></svg>
+        JE M'INSCRIS
       </a>
     </div>
 
-    <!-- Tous les services (2/12) -->
-    <div class="reveal hover-lift bg-white border border-gray-100 rounded-2xl p-4 lg:p-5 lg:col-span-2 flex flex-col" style="transition-delay:240ms">
-      <h2 class="font-bold text-sm text-ink mb-1">TOUS VOS SERVICES DU QUOTIDIEN</h2>
-      <div class="w-10 h-1 bg-brand-500 rounded-full mb-2"></div>
 
-      <?php
-        $services = [
-          'Payer vos factures', 'Amendes & sanctions', 'Paysafecard / Neosurf',
-          'BlaBlaCar', 'Réserver votre place de bus', 'Relais colis',
-          'Retrait d\'espèces', 'Et bien plus encore !',
-        ];
-      ?>
-      <ul class="space-y-1.5 mb-3 flex-grow">
-        <?php foreach ($services as $service): ?>
-          <li class="flex items-center gap-2 text-xs text-gray-600">
-            <span class="w-5 h-5 rounded-md bg-brand-50 text-brand-500 flex items-center justify-center shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-            </span>
-            <?= htmlspecialchars($service) ?>
-          </li>
+    <!-- Services -->
+    <div class="reveal bg-white rounded-xl p-5 flex flex-col shadow-sm" style="transition-delay:240ms;">
+      <h2 class="font-extrabold text-ink mb-3" style="font-size:15.5px; line-height:1.3;">TOUS VOS SERVICES<br>DU QUOTIDIEN</h2>
+      <div class="flex flex-col gap-2.5 flex-1">
+        <?php foreach ($services as $svc): ?>
+          <div class="flex items-center gap-2.5" style="font-size:12.5px; font-weight:600; color:#2a2a2a;">
+            <span class="shrink-0 rounded" style="width:22px; height:22px; background:<?= htmlspecialchars($svc['color']) ?>;"></span>
+            <?= htmlspecialchars($svc['label']) ?>
+          </div>
         <?php endforeach; ?>
-      </ul>
-
-      <a href="<?= BASE_PATH ?>/nos-services" class="flex items-center justify-between bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs px-4 py-2.5 rounded-lg transition-colors mt-auto">
+      </div>
+      <a href="<?= BASE_PATH ?>/nos-services" class="flex items-center justify-center gap-2 text-white font-bold rounded-lg py-3 mt-4 transition-opacity hover:opacity-90" style="background:#c8272c; font-size:12.5px;">
         VOIR TOUS LES SERVICES
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
+
+  </div>
 </section>
 
-<!-- =====================  BANDE INFOS (4 colonnes)  ===================== -->
-<section class="px-6 lg:px-10 pb-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+<!-- =====================  INFO ROW (4 colonnes)  ===================== -->
+<section class="px-6 sm:px-8 lg:px-8 py-5 pb-10" style="background:#ffffff;">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
-  <!-- Avis Google -->
-  <div class="reveal hover-lift bg-white border border-gray-100 rounded-3xl p-6 shadow-sm" style="transition-delay:0ms">
-    <div class="flex items-center gap-2 mb-4">
-      <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
-        <svg class="w-5 h-5" viewBox="0 0 48 48"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.1-.4-4.6H24v9h11.8c-.5 2.8-2.1 5.1-4.4 6.7v5.6h7.1c4.2-3.9 6.6-9.6 6.6-16.7z"/><path fill="#34A853" d="M24 46c6 0 11-2 14.6-5.4l-7.1-5.6c-2 1.4-4.5 2.2-7.5 2.2-5.8 0-10.7-3.9-12.4-9.2H4.3v5.8C7.9 41.1 15.3 46 24 46z"/><path fill="#FBBC05" d="M11.6 27.9c-.5-1.4-.7-2.9-.7-4.4s.3-3.1.7-4.4v-5.8H4.3C2.8 16.5 2 20.1 2 23.5s.8 7 2.3 10.2l7.3-5.8z"/><path fill="#EA4335" d="M24 10.9c3.3 0 6.2 1.1 8.5 3.3l6.3-6.3C34.9 4.2 29.9 2 24 2 15.3 2 7.9 6.9 4.3 13.7l7.3 5.8c1.7-5.3 6.6-9.2 12.4-9.2z"/></svg>
+    <!-- Avis Google -->
+    <div class="reveal rounded-xl p-5 flex flex-col shadow-sm" style="background:#f7f7f6; transition-delay:0ms;">
+      <h3 class="font-extrabold text-ink mb-3" style="font-size:14px;">AVIS GOOGLE</h3>
+      <div class="flex items-center gap-3 mb-1.5">
+        <svg width="30" height="30" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.5 12.3c0-.9-.1-1.5-.2-2.2H12v4h6.5c-.1 1.1-.9 2.7-2.5 3.8l3.9 3c2.3-2.1 3.6-5.3 3.6-8.6z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 7.9-2.9l-3.9-3c-1 .7-2.4 1.2-4 1.2-3.1 0-5.7-2.1-6.6-4.9l-4 3.1C3.4 21.4 7.4 24 12 24z"/><path fill="#FBBC05" d="M5.4 14.4c-.2-.7-.4-1.4-.4-2.4s.1-1.6.4-2.4l-4-3.1C.5 8.1 0 10 0 12s.5 3.9 1.4 5.5l4-3.1z"/><path fill="#EA4335" d="M12 4.7c1.8 0 3.4.6 4.6 1.8l3.4-3.4C18 1.2 15.2 0 12 0 7.4 0 3.4 2.6 1.4 6.5l4 3.1C6.3 6.8 8.9 4.7 12 4.7z"/></svg>
+        <span class="font-black text-ink" style="font-size:26px;"><?= number_format((float)$shop['google_rating'], 1, ',', '') ?>/5</span>
       </div>
-      <h3 class="font-bold text-sm text-ink">AVIS GOOGLE</h3>
+      <div class="text-amber-400 mb-2" style="font-size:18px; letter-spacing:2px;">★★★★★</div>
+      <p class="text-slate-500 flex-1 mb-4" style="font-size:12.5px;">Basé sur plus de <strong><?= (int)$shop['google_reviews_count'] ?> avis</strong></p>
+      <a href="https://www.google.com/maps" target="_blank" rel="noopener" class="block text-center font-bold border rounded-lg py-2.5 transition-colors hover:bg-gray-50" style="font-size:12.5px; color:#c8272c; border-color:#d8d8d8;">LAISSER UN AVIS</a>
     </div>
-    <div class="mb-1">
-      <span class="text-3xl font-extrabold text-ink"><?= number_format($shop['google_rating'], 1) ?></span>
-      <span class="text-sm text-gray-500 font-semibold">/5</span>
-    </div>
-    <div class="flex items-center gap-1 text-amber-400 mb-2">
-      <?php for ($i = 0; $i < 5; $i++): ?><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.5 3 2-6.5L1 7h6.5L10 1l2.5 6H19l-5.5 4.5 2 6.5z"/></svg><?php endfor; ?>
-    </div>
-    <p class="text-gray-500 text-xs mb-4">Basé sur plus de <?= $shop['google_reviews_count'] ?> avis</p>
-    <a href="https://www.google.com/maps" target="_blank" rel="noopener" class="block text-center border border-gray-200 rounded-full py-2.5 text-sm font-semibold text-ink hover:border-brand-500 hover:text-brand-500 transition-colors">Laisser un avis</a>
-  </div>
 
-  <!-- Bons plans -->
-  <div class="reveal hover-lift bg-white border border-gray-100 rounded-3xl p-6 shadow-sm flex flex-col" style="transition-delay:80ms">
-    <div class="flex items-center gap-2 mb-4">
-      <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-500">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a4 4 0 0 0-7.7-1.6A4 4 0 0 0 1 8v4a4 4 0 0 0 3.3 3.9l1 .2V20a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2h2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-3.8l1-.2A4 4 0 0 0 23 12V8a4 4 0 0 0-4-4 4 4 0 0 0-3.3 1.6A4 4 0 0 0 12 6v2z"/></svg>
-      </div>
-      <h3 class="font-bold text-sm text-ink">LES BONS PLANS</h3>
+    <!-- Bons plans -->
+    <div class="reveal rounded-xl p-5 flex flex-col shadow-sm" style="background:#f7f7f6; transition-delay:80ms;">
+      <h3 class="font-extrabold text-ink mb-3 leading-snug" style="font-size:14px;">LES BONS PLANS<br>DU MOMENT</h3>
+      <?php if ($deal): ?>
+        <p class="font-extrabold" style="font-size:13px; color:#c8272c;"><?= htmlspecialchars(mb_strtoupper($deal['title'])) ?></p>
+        <p class="text-slate-500 mb-2" style="font-size:12px;"><?= substr($deal['starts_at'], 0, 5) ?>H - <?= substr($deal['ends_at'], 0, 5) ?>H</p>
+        <img src="<?= BASE_PATH ?>/assets/images/happy-hour.jpg" alt="Happy Hour" class="w-full rounded-lg object-cover mb-2" style="height:70px;" loading="lazy" decoding="async">
+        <p class="font-extrabold flex-1" style="font-size:12.5px; color:#c8272c;"><?= htmlspecialchars(mb_strtoupper($deal['subtitle'])) ?></p>
+      <?php else: ?>
+        <p class="text-slate-400 flex-1 text-sm">Aucune offre en cours</p>
+      <?php endif; ?>
+      <a href="<?= BASE_PATH ?>/le-bar" class="block text-center text-white font-bold rounded-lg py-2.5 mt-3 transition-opacity hover:opacity-90" style="font-size:12.5px; background:#c8272c;">EN PROFITER</a>
     </div>
-    <?php if ($deal): ?>
-      <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl px-4 py-4 mb-3 text-center">
-        <p class="text-brand-500 font-extrabold text-xl tracking-widest" style="text-shadow:0 0 8px rgba(200,16,46,.6)">
-          <?= htmlspecialchars(mb_strtoupper($deal['title'])) ?>
-        </p>
-      </div>
-      <p class="font-bold text-sm text-ink mb-1"><?= substr($deal['starts_at'],0,5) ?> - <?= substr($deal['ends_at'],0,5) ?></p>
-      <p class="text-brand-500 font-bold text-sm mb-4"><?= htmlspecialchars(mb_strtoupper($deal['subtitle'])) ?></p>
-    <?php else: ?>
-      <div class="flex-grow flex items-center justify-center text-center py-4">
-        <p class="text-gray-400 text-sm">Aucune offre en cours</p>
-      </div>
-    <?php endif; ?>
-    <a href="<?= BASE_PATH ?>/le-bar" class="block text-center bg-brand-500 hover:bg-brand-600 text-white rounded-full py-2.5 text-sm font-semibold transition-colors mt-auto">En profiter</a>
-  </div>
 
-  <!-- Météo -->
-  <div class="reveal hover-lift bg-white border border-gray-100 rounded-3xl p-6 shadow-sm" id="weather-widget" data-lat="49.6136" data-lng="1.5399" style="transition-delay:160ms">
-    <div class="flex items-center gap-2 mb-4">
-      <div class="w-10 h-10 rounded-xl bg-sky-50 flex items-center justify-center text-sky-500">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 1v2m0 18v2M4.2 4.2l1.4 1.4m12.8 12.8l1.4 1.4M1 12h2m18 0h2M4.2 19.8l1.4-1.4m12.8-12.8l1.4-1.4"/></svg>
+    <!-- Météo -->
+    <div class="reveal rounded-xl p-5 flex flex-col shadow-sm" id="weather-widget" data-lat="<?= (float)$shop['latitude'] ?>" data-lng="<?= (float)$shop['longitude'] ?>" style="background:#f7f7f6; transition-delay:160ms;">
+      <h3 class="font-extrabold text-ink mb-3 leading-snug" style="font-size:14px;">MÉTÉO À<br><?= htmlspecialchars(mb_strtoupper($shop['city'])) ?></h3>
+      <div class="flex items-center gap-4 mb-2">
+        <svg width="46" height="40" viewBox="0 0 46 40">
+          <circle cx="15" cy="14" r="9" fill="#f5b13d"/>
+          <ellipse cx="27" cy="26" rx="16" ry="11" fill="#bcd3e6"/>
+        </svg>
+        <p class="font-black text-ink" id="weather-temp" style="font-size:30px;">--°C</p>
       </div>
-      <h3 class="font-bold text-sm text-ink">MÉTÉO</h3>
+      <p class="font-bold text-ink mb-3" id="weather-desc" style="font-size:13px;">Chargement…</p>
+      <p class="text-slate-500 mt-auto" style="font-size:12.5px; line-height:1.6;">Profitez de notre terrasse !</p>
     </div>
-    <div class="flex items-center gap-4 mb-3">
-      <svg class="w-16 h-16 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 2v3m0 14v3M4.9 4.9l2.1 2.1m10 10l2.1 2.1M2 12h3m14 0h3M4.9 19.1l2.1-2.1m10-10l2.1-2.1"/></svg>
-      <div>
-        <p class="font-extrabold text-4xl text-ink" id="weather-temp">--°C</p>
-        <p class="text-gray-500 text-sm" id="weather-desc">Chargement…</p>
-      </div>
-    </div>
-    <p class="text-gray-500 text-sm">Profitez de notre terrasse !</p>
-  </div>
 
-  <!-- Assistant -->
-  <div class="reveal hover-lift bg-gradient-to-br from-slate-900 to-slate-800 border border-gray-100 rounded-3xl p-6 shadow-sm text-white flex flex-col" style="transition-delay:240ms">
-    <div class="flex items-center gap-2 mb-4">
-      <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01"/></svg>
+    <!-- Assistant -->
+    <div class="reveal rounded-xl p-5 flex flex-col shadow-sm" style="background:#f7f7f6; transition-delay:240ms;">
+      <div class="flex items-center gap-2 mb-3">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v11H8l-4 4V4z" fill="#c8272c"/></svg>
+        <h3 class="font-extrabold text-ink" style="font-size:14px;">ASSISTANT LE COMMERCE</h3>
       </div>
-      <h3 class="font-bold text-sm">ASSISTANT</h3>
+      <div class="bg-white rounded-xl p-3 mb-3 self-start" style="font-size:13px; color:#2a2a2a; line-height:1.6; max-width:80%;">Bonjour ! 👋<br>Que recherchez-vous aujourd'hui ?</div>
+      <div class="flex flex-wrap gap-2 mb-3">
+        <?php foreach (['Êtes-vous ouvert ?', 'Match ce soir ?', 'Bières disponibles ?', 'Horaires PMU ?', 'Réserver une table ?', 'Jeux FDJ ?'] as $chip): ?>
+          <button type="button" class="chat-chip bg-white border border-gray-200 rounded-full transition-colors hover:border-brand-500 hover:text-brand-500" style="font-size:11.5px; font-weight:600; padding:8px 14px;">
+            <?= htmlspecialchars($chip) ?>
+          </button>
+        <?php endforeach; ?>
+      </div>
+      <form id="assistant-form" class="flex items-center bg-white border border-gray-200 rounded-full mt-auto" style="padding:10px 14px; gap:10px;">
+        <input type="text" placeholder="Écrivez votre question..." class="flex-1 min-w-0 focus:outline-none text-ink placeholder-gray-400" style="font-size:12.5px; background:transparent; border:none;">
+        <button type="submit" class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-white transition-opacity hover:opacity-90" style="background:#c8272c;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M2 21l20-9L2 3v7l14 2-14 2v7z" fill="white"/></svg>
+        </button>
+      </form>
     </div>
-    <p class="text-sm text-gray-300 mb-3">Bonjour ! 👋<br>Que recherchez-vous aujourd'hui ?</p>
-    <div class="flex flex-wrap gap-2 mb-4">
-      <?php foreach (['Ouvert ?', 'Match ?', 'Bières ?', 'PMU ?', 'Table ?', 'FDJ ?'] as $chip): ?>
-        <button type="button" class="chat-chip text-xs font-medium border border-white/20 rounded-full px-3 py-1.5 hover:bg-white/10 text-gray-200"><?= htmlspecialchars($chip) ?></button>
-      <?php endforeach; ?>
-    </div>
-    <form id="assistant-form" class="mt-auto flex gap-2">
-      <input type="text" placeholder="Écrivez votre question…" class="min-w-0 flex-1 bg-white/10 border border-white/20 rounded-full px-4 py-2 text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500/30">
-      <button type="submit" class="w-9 h-9 rounded-full bg-brand-500 hover:bg-brand-600 text-white flex items-center justify-center shrink-0">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
-      </button>
-    </form>
+
   </div>
 </section>
