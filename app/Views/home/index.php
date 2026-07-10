@@ -39,6 +39,7 @@ $services = [
 @media (min-width:1024px) {
   #home-cards { grid-template-columns: 4.05fr 1.62fr 1fr 1.34fr !important; }
   #home-cards > div:first-child { grid-column: auto !important; }
+  #home-info-row { grid-template-columns: 1fr 1fr 1fr 1.9fr !important; }
 }
 </style>
 <!-- =====================  SECTION CARDS  ===================== -->
@@ -109,7 +110,7 @@ $services = [
 
 <!-- =====================  INFO ROW (4 colonnes)  ===================== -->
 <section class="px-6 sm:px-8 lg:px-8 py-5 pb-10" style="background:#ffffff;">
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+  <div id="home-info-row" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
     <!-- Avis Google -->
     <div class="reveal rounded-xl p-5 flex flex-col shadow-sm" style="background:#f7f7f6; transition-delay:0ms;">

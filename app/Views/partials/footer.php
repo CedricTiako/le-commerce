@@ -1,8 +1,13 @@
+<style>
+@media (min-width:1024px) {
+  #footer-grid { grid-template-columns: 1.3fr 1.2fr 1.3fr 1fr !important; }
+}
+</style>
 <footer style="background:#11213c; color:#ffffff;">
   <div class="max-w-[1536px] mx-auto px-6 lg:px-8" style="padding-top:36px; padding-bottom:36px;">
 
     <!-- Grille 4 colonnes (proportions maquette) -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6" style="--lg-tpl:1.3fr 1.2fr 1.3fr 1fr;">
+    <div id="footer-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
 
       <!-- Col 1 : Logo + copyright -->
       <div>
