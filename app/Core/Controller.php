@@ -38,6 +38,7 @@ abstract class Controller
             'zipcode'   => $overrides['shop_zipcode'] ?? $defaults['zipcode'],
             'city'      => $overrides['shop_city'] ?? $defaults['city'],
             'phone'     => $overrides['shop_phone'] ?? $defaults['phone'],
+            'phone_href'=> isset($overrides['shop_phone']) ? self::phoneHref($overrides['shop_phone']) : $defaults['phone_href'],
             'email'     => $overrides['shop_email'] ?? $defaults['email'],
             'hours' => [
                 'lun_sam' => $overrides['hours_lun_sam'] ?? $defaults['hours']['lun_sam'],
@@ -61,6 +62,23 @@ abstract class Controller
                 'hebergeur_telephone'   => $overrides['legal_hebergeur_telephone'] ?? $defaults['legal']['hebergeur_telephone'],
             ],
         ]);
+    }
+
+    /**
+     * Normalise un numéro français saisi en admin (ex. "07 81 77 15 52")
+     * vers le format international utilisé par les liens tel:/wa.me
+     * (ex. "+33781771552").
+     */
+    private static function phoneHref(string $phone): string
+    {
+        $digits = preg_replace('/[^\d+]/', '', $phone);
+        if (str_starts_with($digits, '+')) {
+            return $digits;
+        }
+        if (str_starts_with($digits, '0')) {
+            return '+33' . substr($digits, 1);
+        }
+        return '+' . $digits;
     }
 
     /**
