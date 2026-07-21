@@ -7,6 +7,7 @@ $navItems = [
     '/fdj'          => 'FDJ',
     '/presse'       => 'PRESSE',
     '/nos-services' => 'NOS SERVICES',
+    '/actualites'   => 'ACTUALITÉS',
     '/contact'      => 'CONTACT',
 ];
 ?>

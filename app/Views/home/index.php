@@ -2,19 +2,30 @@
 $beers = $drinks ?: [];
 $heroImage = siteImage('hero_accueil', BASE_PATH . '/assets/images/hero-facade.jpg');
 $services = [
-    ['label' => 'Payer vos factures',         'color' => '#c8272c'],
-    ['label' => 'Amendes & sanctions',         'color' => '#e08a1e'],
-    ['label' => 'Paysafecard / Neosurf',       'color' => '#2e6fd6'],
-    ['label' => 'BlaBlaCar',                   'color' => '#1a1a3d'],
-    ['label' => 'Réserver votre place de bus', 'color' => '#c8272c'],
-    ['label' => 'Relais colis',                'color' => '#d6a12e'],
-    ['label' => 'Retrait d\'espèces',          'color' => '#2e6fd6'],
-    ['label' => 'Et bien plus encore !',       'color' => '#888888'],
+    ['label' => 'Payer vos factures',         'color' => '#c8272c', 'icon' => 'clipboard'],
+    ['label' => 'Amendes & sanctions',         'color' => '#e08a1e', 'icon' => 'alert'],
+    ['label' => 'Paysafecard / Neosurf',       'color' => '#2e6fd6', 'icon' => 'card'],
+    ['label' => 'BlaBlaCar',                   'color' => '#1a1a3d', 'icon' => 'car'],
+    ['label' => 'Réserver votre place de bus', 'color' => '#c8272c', 'icon' => 'bus'],
+    ['label' => 'Relais colis',                'color' => '#d6a12e', 'icon' => 'package'],
+    ['label' => 'Retrait d\'espèces',          'color' => '#2e6fd6', 'icon' => 'eye'],
+    ['label' => 'Et bien plus encore !',       'color' => '#888888', 'icon' => 'plus'],
+];
+
+$serviceIcons = [
+    'clipboard' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect><line x1="9" y1="14" x2="15" y2="14"></line><line x1="9" y1="10" x2="15" y2="10"></line></svg>',
+    'alert' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>',
+    'card' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" ry="2"></rect><line x1="3" y1="10" x2="21" y2="10"></line></svg>',
+    'car' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h-1a6 6 0 0 0-6-6H7c-1.1 0-2 .9-2 2v12H3"></path><path d="M15 8h6v10c0 1.1-.9 2-2 2h-2"></path><circle cx="6" cy="20" r="2"></circle><circle cx="18" cy="20" r="2"></circle></svg>',
+    'bus' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h8M6 9h12v8c0 1-1 2-2 2H8c-1 0-2-1-2-2V9z"></path><circle cx="9" cy="20" r="1"></circle><circle cx="15" cy="20" r="1"></circle><path d="M6 9V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"></path></svg>',
+    'package' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>',
+    'eye' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>',
+    'plus' => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>',
 ];
 ?>
 
 <!-- =====================  HERO  ===================== -->
-<section class="relative w-full overflow-hidden" style="height:clamp(320px,55vw,460px);">
+<section class="relative w-full overflow-hidden rounded-b-3xl" style="height:clamp(380px,65vw,520px);">
   <img src="<?= htmlspecialchars($heroImage) ?>" alt="Façade du Commerce" class="absolute inset-0 w-full h-full object-cover object-center" loading="eager" decoding="async">
   <div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.93) 32%,rgba(255,255,255,.55) 52%,rgba(255,255,255,.05) 68%,rgba(255,255,255,0) 100%);"></div>
   <div class="relative h-full flex flex-col justify-center gap-3 px-6 sm:px-10 lg:px-8" style="max-width:480px;">
@@ -42,6 +53,92 @@ $services = [
   #home-info-row { grid-template-columns: 1fr 1fr 1fr 1.9fr !important; }
 }
 </style>
+
+<!-- =====================  SECTION CATÉGORIES  ===================== -->
+<section class="px-6 sm:px-8 lg:px-8 py-5 -mt-20 relative z-10" style="background:#ffffff;">
+  <div id="home-categories" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
+
+    <!-- LE BAR -->
+    <a href="<?= BASE_PATH ?>/le-bar" class="group flex flex-row gap-3 items-start p-4 rounded-lg hover:bg-slate-50 transition-colors">
+      <svg width="28" height="28" viewBox="0 0 24 24" class="flex-shrink-0 text-brand-500 group-hover:text-brand-600 transition-colors mt-0.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 8h1a3 3 0 013 3v1a3 3 0 01-3 3h-1"></path>
+        <path d="M2 8h16v6a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"></path>
+        <path d="M6 2v3M10 2v3M14 2v3"></path>
+      </svg>
+      <div class="flex-1 min-w-0">
+        <h3 class="font-bold text-sm text-slate-900">LE BAR</h3>
+        <p class="text-slate-500 text-xs mt-0.5 leading-tight">Cafés, bières, cocktails & spiritueux</p>
+      </div>
+    </a>
+
+    <!-- TABAC -->
+    <a href="<?= BASE_PATH ?>/tabac" class="group flex flex-row gap-3 items-start p-4 rounded-lg hover:bg-slate-50 transition-colors">
+      <svg width="28" height="28" viewBox="0 0 24 24" class="flex-shrink-0 text-brand-500 group-hover:text-brand-600 transition-colors mt-0.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="7" cy="18" r="3"></circle>
+        <path d="M11 14l3.5-5M14 2h-1a3 3 0 00-3 3v8"></path>
+        <path d="M17 2h-1a3 3 0 00-3 3v6M20 2h-1a3 3 0 00-3 3v4"></path>
+      </svg>
+      <div class="flex-1 min-w-0">
+        <h3 class="font-bold text-sm text-slate-900">TABAC</h3>
+        <p class="text-slate-500 text-xs mt-0.5 leading-tight">Cigarettes, cigares électroniques</p>
+      </div>
+    </a>
+
+    <!-- PMU -->
+    <a href="<?= BASE_PATH ?>/pmu" class="group flex flex-row gap-3 items-start p-4 rounded-lg hover:bg-slate-50 transition-colors">
+      <svg width="28" height="28" viewBox="0 0 24 24" class="flex-shrink-0 text-brand-500 group-hover:text-brand-600 transition-colors mt-0.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M13 2H7a2 2 0 00-2 2v16a2 2 0 002 2h10a2 2 0 002-2V9z"></path>
+        <polyline points="13 2 13 9 20 9"></polyline>
+      </svg>
+      <div class="flex-1 min-w-0">
+        <h3 class="font-bold text-sm text-slate-900">PMU</h3>
+        <p class="text-slate-500 text-xs mt-0.5 leading-tight">Pariez sur vos courses préférées</p>
+      </div>
+    </a>
+
+    <!-- FDJ -->
+    <a href="<?= BASE_PATH ?>/fdj" class="group flex flex-row gap-3 items-start p-4 rounded-lg hover:bg-slate-50 transition-colors">
+      <svg width="28" height="28" viewBox="0 0 24 24" class="flex-shrink-0 text-brand-500 group-hover:text-brand-600 transition-colors mt-0.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+        <line x1="9" y1="9" x2="15" y2="9"></line>
+        <line x1="9" y1="15" x2="15" y2="15"></line>
+      </svg>
+      <div class="flex-1 min-w-0">
+        <h3 class="font-bold text-sm text-slate-900">FDJ</h3>
+        <p class="text-slate-500 text-xs mt-0.5 leading-tight">Jeux de la franchise des Jeux</p>
+      </div>
+    </a>
+
+    <!-- PRESSE -->
+    <a href="<?= BASE_PATH ?>/presse" class="group flex flex-row gap-3 items-start p-4 rounded-lg hover:bg-slate-50 transition-colors">
+      <svg width="28" height="28" viewBox="0 0 24 24" class="flex-shrink-0 text-brand-500 group-hover:text-brand-600 transition-colors mt-0.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z"></path>
+        <line x1="8" y1="8" x2="16" y2="8"></line>
+        <line x1="8" y1="12" x2="16" y2="12"></line>
+        <line x1="8" y1="16" x2="12" y2="16"></line>
+      </svg>
+      <div class="flex-1 min-w-0">
+        <h3 class="font-bold text-sm text-slate-900">PRESSE</h3>
+        <p class="text-slate-500 text-xs mt-0.5 leading-tight">Journaux, magazines et livres</p>
+      </div>
+    </a>
+
+    <!-- NOS SERVICES -->
+    <a href="<?= BASE_PATH ?>/nos-services" class="group flex flex-row gap-3 items-start p-4 rounded-lg hover:bg-slate-50 transition-colors">
+      <svg width="28" height="28" viewBox="0 0 24 24" class="flex-shrink-0 text-brand-500 group-hover:text-brand-600 transition-colors mt-0.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="21 8 21 21 3 21 3 8"></polyline>
+        <rect x="1" y="3" width="22" height="5"></rect>
+        <path d="M10 12v8M14 12v8"></path>
+      </svg>
+      <div class="flex-1 min-w-0">
+        <h3 class="font-bold text-sm text-slate-900">NOS SERVICES</h3>
+        <p class="text-slate-500 text-xs mt-0.5 leading-tight">Paiement de proximité, relais colis & plus</p>
+      </div>
+    </a>
+
+  </div>
+</section>
+
 <!-- =====================  SECTION CARDS  ===================== -->
 <section class="px-6 sm:px-8 lg:px-8 py-5" style="background:#f4f3f1;">
   <div id="home-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -49,9 +146,9 @@ $services = [
     <!-- Nos bières -->
     <div class="reveal bg-white rounded-xl p-5 flex flex-col shadow-sm sm:col-span-2 lg:col-span-auto">
       <h2 class="font-extrabold text-ink mb-3" style="font-size:17px; letter-spacing:.3px;">NOS BIÈRES À DÉCOUVRIR</h2>
-      <div class="rounded-lg flex flex-1 items-center overflow-hidden mb-3" style="background:#1c1815; padding:14px 12px;">
+      <div class="rounded-lg overflow-hidden mb-3 flex-1">
         <?php $beersImg = siteImage('hero_bar', BASE_PATH . '/assets/images/beers-strip.jpg'); ?>
-        <img src="<?= htmlspecialchars($beersImg) ?>" alt="Bières à la carte" class="w-full h-auto block" loading="lazy" decoding="async">
+        <img src="<?= htmlspecialchars($beersImg) ?>" alt="Bières à la carte" class="w-full h-full object-cover" loading="lazy" decoding="async">
       </div>
       <a href="<?= BASE_PATH ?>/le-bar" class="flex items-center justify-center gap-2 text-white font-bold rounded-lg py-3 transition-opacity hover:opacity-90" style="background:#c8272c; font-size:13px;">
         VOIR LA CARTE COMPLÈTE DES BOISSONS
@@ -94,14 +191,15 @@ $services = [
       <div class="flex flex-col gap-2.5 flex-1">
         <?php foreach ($services as $svc): ?>
           <div class="flex items-center gap-2.5" style="font-size:12.5px; font-weight:600; color:#2a2a2a;">
-            <span class="shrink-0 rounded" style="width:22px; height:22px; background:<?= htmlspecialchars($svc['color']) ?>;"></span>
+            <span class="flex-shrink-0" style="color:<?= htmlspecialchars($svc['color']) ?>;">
+              <?= $serviceIcons[$svc['icon']] ?? '' ?>
+            </span>
             <?= htmlspecialchars($svc['label']) ?>
           </div>
         <?php endforeach; ?>
       </div>
-      <a href="<?= BASE_PATH ?>/nos-services" class="flex items-center justify-center gap-2 text-white font-bold rounded-lg py-3 mt-4 transition-opacity hover:opacity-90" style="background:#c8272c; font-size:12.5px;">
+      <a href="<?= BASE_PATH ?>/nos-services" class="flex items-center justify-center gap-2 font-bold rounded-full py-3 mt-4 transition-colors hover:bg-red-50" style="border:2px solid #c8272c; color:#c8272c; font-size:12.5px;">
         VOIR TOUS LES SERVICES
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
 
